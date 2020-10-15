@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>SpringBoot - 标签 - Lesan&#39;s blog</title>
-        <link>https://lllsss516.github.io/tags/springboot/</link>
+        <link>https://llssit.cn/tags/springboot/</link>
         <description>SpringBoot - 标签 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 12 Oct 2020 14:08:57 &#43;0800</lastBuildDate><atom:link href="https://lllsss516.github.io/tags/springboot/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 12 Oct 2020 14:08:57 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/tags/springboot/" rel="self" type="application/rss+xml" /><item>
     <title>浅学SpringSecurity&#43;SpringMybatis</title>
-    <link>https://lllsss516.github.io/%E6%B5%85%E5%AD%A6springsecurity-springmybatis/</link>
+    <link>https://llssit.cn/%E6%B5%85%E5%AD%A6springsecurity-springmybatis/</link>
     <pubDate>Mon, 12 Oct 2020 14:08:57 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://lllsss516.github.io/%E6%B5%85%E5%AD%A6springsecurity-springmybatis/</guid>
+    <guid>https://llssit.cn/%E6%B5%85%E5%AD%A6springsecurity-springmybatis/</guid>
     <description><![CDATA[一、引入依赖 1 2 3 4 5 6 7 8 9 &lt;dependency&gt; &lt;groupId&gt;org.thymeleaf.extras&lt;/groupId&gt; &lt;artifactId&gt;thymeleaf-extras-springsecurity4&lt;/artifactId&gt; &lt;version&gt;3.0.4.RELEASE&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt; &lt;/dependency&gt; 二、配置WebSecurityConfigurerAdapter 使用内存用户储存且认证 1 2 3]]></description>
 </item></channel>
 </rss>

@@ -1,7 +1,7 @@
 # 搭建个人网站:GitHub加Vercel
 
 
-#### GitHub Pages
+### GitHub Pages
 
 GitHub Pages是GitHub提供给大家的快速部署静态网页的功能，但是由于国内访问比较慢，这里提供一个相对较快的解决办法，就是用GitHub加Vercel。
 
