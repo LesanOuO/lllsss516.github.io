@@ -3,7 +3,21 @@
         <title>Java - 标签 - Lesan&#39;s blog</title>
         <link>https://llssit.cn/tags/java/</link>
         <description>Java - 标签 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 12 Oct 2020 14:07:39 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 13 Jan 2021 12:20:25 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Java集合</title>
+    <link>https://llssit.cn/java%E9%9B%86%E5%90%88/</link>
+    <pubDate>Wed, 13 Jan 2021 12:20:25 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://llssit.cn/java%E9%9B%86%E5%90%88/</guid>
+    <description><![CDATA[API Collection 接口的接口 对象的集合（单列集合） ├——-List 接口：元素按进入先后有序保存，可重复 │—————-├ LinkedList 接口实现类， 链表， 插入删除， 没有同]]></description>
+</item><item>
+    <title>Java数据结构</title>
+    <link>https://llssit.cn/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+    <pubDate>Wed, 13 Jan 2021 11:46:02 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://llssit.cn/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+    <description><![CDATA[API Vector Vector 类实现了一个动态数组。和 ArrayList 很相似，但是两者是不同的： Vector 是同步访问的。 Vector 包含了许多传统的方法，这些方法不属于集合框架。 Vector 主要用在事先不知]]></description>
+</item><item>
     <title>Java学习笔记</title>
     <link>https://llssit.cn/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <pubDate>Mon, 12 Oct 2020 14:07:39 &#43;0800</pubDate>
