@@ -164,7 +164,7 @@ LinkedList 实现了 java.io.Serializable 接口，即可支持序列化，能�
 
 **Queue接口与List、Set同一级别，都是继承了Collection接口。LinkedList实现了Deque接 口。**
 
-![img](https://images2017.cnblogs.com/blog/1182892/201711/1182892-20171122100317930-842768608.png)
+![img](images/JavaQueue.png)
 
 ​		**add**    增加一个元索           如果队列已满，则抛出一个IIIegaISlabEepeplian异常
 　　**remove**  移除并返回队列头部的元素  如果队列为空，则抛出一个NoSuchElementException异常

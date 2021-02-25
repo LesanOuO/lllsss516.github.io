@@ -3,7 +3,7 @@
 
 [API](https://www.runoob.com/manual/jdk11api/java.base/java/util/package-summary.html)
 
-![img](https://images2017.cnblogs.com/blog/1182892/201711/1182892-20171122101159430-391005054.jpg)
+![img](images/JavaCollection.jpg)
 
 **Collection** 接口的接口 对象的集合（单列集合） 
 ├——-**List** 接口：元素按进入先后有序保存，可重复 
