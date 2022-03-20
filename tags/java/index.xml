@@ -11,12 +11,12 @@
     <guid>https://llssit.cn/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</guid>
     <description><![CDATA[简介 Java集合框架为程序员提供了预先包装的数据结构和算法来操纵他们。这使得我们使用复杂的数据结构变得非常的方便，并且这些集合框架是高性能的]]></description>
 </item><item>
-    <title>Java集合</title>
-    <link>https://llssit.cn/java%E9%9B%86%E5%90%88/</link>
+    <title>Java集合(HashSet和HashMap)</title>
+    <link>https://llssit.cn/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/</link>
     <pubDate>Wed, 13 Jan 2021 12:20:25 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://llssit.cn/java%E9%9B%86%E5%90%88/</guid>
-    <description><![CDATA[API Collection 接口的接口 对象的集合（单列集合） ├——-List 接口：元素按进入先后有序保存，可重复 │—————-├ LinkedList 接口实现类， 链表， 插入删除， 没有同]]></description>
+    <guid>https://llssit.cn/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/</guid>
+    <description><![CDATA[API Collection 接口的接口 对象的集合（单列集合） |&ndash;List 接口：元素按进入先后有序保存，可重复 |&ndash;LinkedList 接口实现类， 链表， 插入删除， 没有同步， 线程不安全 |&ndash;ArrayList 接口实现类， 数]]></description>
 </item><item>
     <title>Java数据结构</title>
     <link>https://llssit.cn/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
