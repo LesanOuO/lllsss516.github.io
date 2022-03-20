@@ -3,9 +3,16 @@
         <title>Lesan&#39;s blog</title>
         <link>https://llssit.cn/</link>
         <description>这是我的全新 Hugo 网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 19 Mar 2022 19:14:25 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 20 Mar 2022 09:33:31 &#43;0800</lastBuildDate>
             <atom:link href="https://llssit.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Java集合学习</title>
+    <link>https://llssit.cn/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</link>
+    <pubDate>Sun, 20 Mar 2022 09:33:31 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://llssit.cn/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</guid>
+    <description><![CDATA[简介 Java集合框架为程序员提供了预先包装的数据结构和算法来操纵他们。这使得我们使用复杂的数据结构变得非常的方便，并且这些集合框架是高性能的]]></description>
+</item><item>
     <title>实现简单消息推送功能</title>
     <link>https://llssit.cn/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/</link>
     <pubDate>Sat, 19 Mar 2022 19:14:25 &#43;0800</pubDate>
@@ -68,12 +75,5 @@
     <author>作者</author>
     <guid>https://llssit.cn/%E6%B5%85%E5%AD%A6springsecurity-springmybatis/</guid>
     <description><![CDATA[一、引入依赖 1 2 3 4 5 6 7 8 9 &lt;dependency&gt; &lt;groupId&gt;org.thymeleaf.extras&lt;/groupId&gt; &lt;artifactId&gt;thymeleaf-extras-springsecurity4&lt;/artifactId&gt; &lt;version&gt;3.0.4.RELEASE&lt;/version&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt; &lt;/dependency&gt; 二、配置WebSecurityConfigurerAdapter 使用内存用户储存且认证 1 2 3]]></description>
-</item><item>
-    <title>Java学习笔记</title>
-    <link>https://llssit.cn/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
-    <pubDate>Mon, 12 Oct 2020 14:07:39 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://llssit.cn/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
-    <description><![CDATA[Java集合框架 导入包 import java.util.*; ArrayList 一、定义一个ArrayList 1 2 3 4 5 6 //默认创建一个ArrayList集合 List&lt;String&gt; list = new ArrayList&lt;&gt;(); //创建一个初始化长度]]></description>
 </item></channel>
 </rss>
