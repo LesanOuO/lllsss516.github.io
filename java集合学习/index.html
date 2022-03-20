@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/llssit.cn\/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0\/"
-        },"genre": "posts","keywords": "Java","wordcount":  9112 ,
+        },"genre": "posts","keywords": "Java","wordcount":  9121 ,
         "url": "https:\/\/llssit.cn\/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0\/","datePublished": "2022-03-20T09:33:31+08:00","dateModified": "2022-03-20T09:33:31+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java集合学习</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-20">2022-03-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 9112 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-20">2022-03-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 9121 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 19 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -208,10 +208,10 @@
 <h3 id="简介-1">简介</h3>
 <p>List集合代表一个有序、可重复集合，集合中每个元素都有其对应的顺序索引。List集合默认按照元素的添加顺序设置元素的索引，可以通过索引（类似数组的下标）来访问指定位置的集合元素。</p>
 <p>实现List接口的集合主要有：ArrayList、LinkedList、Vector、Stack。</p>
-<p>|&ndash;List:元素是有序的(怎么存的就怎么取出来，顺序不会乱)，元素可以重复（角标1上有个3，角标2上也可以有个3）因为该集合体系有索引，
-|&ndash; ArrayList：底层的数据结构使用的是数组结构（数组长度是可变的百分之五十延长）（特点是查询很快，但增删较慢）线程不同步
-|&ndash; LinkedList：底层的数据结构是链表结构（特点是查询较慢，增删较快） 线程不同步
-|&ndash; Vector：底层是数组数据结构 线程同步（数组长度是可变的百分之百延长）（无论查询还是增删都很慢，被ArrayList替代了）</p>
+<p>|&ndash;List:元素是有序的(怎么存的就怎么取出来，顺序不会乱)，元素可以重复（角标1上有个3，角标2上也可以有个3）因为该集合体系有索引</p>
+<p>​	|&ndash; ArrayList：底层的数据结构使用的是数组结构（数组长度是可变的百分之五十延长）（特点是查询很快，但增删较慢）线程不同步</p>
+<p>​	|&ndash; LinkedList：底层的数据结构是链表结构（特点是查询较慢，增删较快） 线程不同步</p>
+<p>​	|&ndash; Vector：底层是数组数据结构 线程同步（数组长度是可变的百分之百延长）（无论查询还是增删都很慢，被ArrayList替代了）</p>
 <h4 id="list排序通用方法">List排序通用方法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -486,10 +486,10 @@
 </div><h2 id="set接口">Set接口</h2>
 <h3 id="简介-2">简介</h3>
 <p>Set体系集合可以知道某物是否已近存在于集合中,不会存储重复的元素。加入Set的每个元素必须是唯一的，否则，Set是不会把它加进去的。要想加进Set，Object必须定义equals()，这样才能标明对象的唯一性。Set的接口和Collection的一摸一样。Set的接口不保证它会用哪种顺序来存储元素。</p>
-<p>|&ndash;Set
-|&ndash;HashSet : 为快速查找设计的Set。存入HashSet的对象必须定义hashCode()。
-|&ndash;TreeSet : 保存次序的Set, 底层为树结构。使用它可以从Set中提取有序的序列。
-|&ndash;LinkedHashSet : 具有HashSet的查询速度，且内部使用链表维护元素的顺序(插入的次序)。于是在使用迭代器遍历Set时，结果会按元素插入的次序显示。</p>
+<p>|&ndash;Set</p>
+<p>​	|&ndash;HashSet : 为快速查找设计的Set。存入HashSet的对象必须定义hashCode()。</p>
+<p>​	|&ndash;TreeSet : 保存次序的Set, 底层为树结构。使用它可以从Set中提取有序的序列。</p>
+<p>​	|&ndash;LinkedHashSet : 具有HashSet的查询速度，且内部使用链表维护元素的顺序(插入的次序)。于是在使用迭代器遍历Set时，结果会按元素插入的次序显示。</p>
 <h4 id="set排序">Set排序</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -583,8 +583,8 @@
 </div>
 </div><h3 id="hashset类">HashSet类</h3>
 <p>HashSet使用的是相当复杂的方式来存储元素的，使用HashSet能够最快的获取集合中的元素，效率非常高（以空间换时间）。它会根据hashcode和equals来判断是否是同一个对象，如果hashcode一样，并且equals返回true，则是同一个对象，不能重复存放。</p>
-<p>|&ndash;HashSet 底层是由HashMap实现的，通过对象的hashCode方法与equals方法来保证插入元素的唯一性，无序(存储顺序和取出顺序不一致)，。
-|&ndash;<strong>LinkedHashSet</strong> 底层数据结构由哈希表和链表组成。哈希表保证元素的唯一性，链表保证元素有序。(存储和取出是一致)</p>
+<p>|&ndash;HashSet 底层是由HashMap实现的，通过对象的hashCode方法与equals方法来保证插入元素的唯一性，无序(存储顺序和取出顺序不一致)，。</p>
+<p>​	|&ndash;<strong>LinkedHashSet</strong> 底层数据结构由哈希表和链表组成。哈希表保证元素的唯一性，链表保证元素有序。(存储和取出是一致)</p>
 <h4 id="linkedhashset类">LinkedHashSet类</h4>
 <p>LinkedHashSet是HashSet的一个子类，具有HashSet的特性，也是根据元素的hashCode值来决定元素的存储位置。但它使用链表维护元素的次序，元素的顺序与添加顺序一致。由于LinkedHashSet需要维护元素的插入顺序，因此性能略低于HashSet，但在迭代访问Set里的全部元素时由很好的性能。</p>
 <p>(1)HashSet是Set接口的实现。HashSet按Hash算法来存储集合中的元素，具有很好的存取和查找性能。
@@ -609,10 +609,10 @@
 <h2 id="map接口">Map接口</h2>
 <h3 id="简介-3">简介</h3>
 <p>Map 提供了一个更通用的元素存储方法。Map 集合类用于存储元素对（称作“键”和“值”），其中每个键映射到一个值。从概念上而言，您可以将 List 看作是具有数值键的 Map。</p>
-<p>|&ndash;Map 是映射接口，Map中存储的内容是键值对(key-value)。
-|&ndash;TreeMap 继承于AbstractMap，且实现了NavigableMap接口；因此，TreeMap中的内容是“有序的键值对”
-|&ndash;HashMap 继承于AbstractMap，但没实现NavigableMap接口；因此，HashMap的内容是“键值对，但不保证次序”
-|&ndash;Hashtable 虽然不是继承于AbstractMap，但它继承于Dictionary(Dictionary也是键值对的接口)，而且也实现Map接口；因此，Hashtable的内容也是“键值对，也不保证次序”。但和HashMap相比，Hashtable是线程安全的，而且它支持通过Enumeration去遍历。</p>
+<p>|&ndash;Map 是映射接口，Map中存储的内容是键值对(key-value)。</p>
+<p>​	|&ndash;TreeMap 继承于AbstractMap，且实现了NavigableMap接口；因此，TreeMap中的内容是“有序的键值对”</p>
+<p>​	|&ndash;HashMap 继承于AbstractMap，但没实现NavigableMap接口；因此，HashMap的内容是“键值对，但不保证次序”</p>
+<p>​	|&ndash;Hashtable 虽然不是继承于AbstractMap，但它继承于Dictionary(Dictionary也是键值对的接口)，而且也实现Map接口；因此，Hashtable的内容也是“键值对，也不保证次序”。但和HashMap相比，Hashtable是线程安全的，而且它支持通过Enumeration去遍历。</p>
 <h4 id="map通用方法">Map通用方法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

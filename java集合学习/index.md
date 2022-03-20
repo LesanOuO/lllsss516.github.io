@@ -31,10 +31,13 @@ List集合代表一个有序、可重复集合，集合中每个元素都有其�
 
 实现List接口的集合主要有：ArrayList、LinkedList、Vector、Stack。
 
-|--List:元素是有序的(怎么存的就怎么取出来，顺序不会乱)，元素可以重复（角标1上有个3，角标2上也可以有个3）因为该集合体系有索引，
- |-- ArrayList：底层的数据结构使用的是数组结构（数组长度是可变的百分之五十延长）（特点是查询很快，但增删较慢）线程不同步
- |-- LinkedList：底层的数据结构是链表结构（特点是查询较慢，增删较快） 线程不同步
- |-- Vector：底层是数组数据结构 线程同步（数组长度是可变的百分之百延长）（无论查询还是增删都很慢，被ArrayList替代了）
+|--List:元素是有序的(怎么存的就怎么取出来，顺序不会乱)，元素可以重复（角标1上有个3，角标2上也可以有个3）因为该集合体系有索引
+
+​	|-- ArrayList：底层的数据结构使用的是数组结构（数组长度是可变的百分之五十延长）（特点是查询很快，但增删较慢）线程不同步
+
+​	|-- LinkedList：底层的数据结构是链表结构（特点是查询较慢，增删较快） 线程不同步
+
+​	|-- Vector：底层是数组数据结构 线程同步（数组长度是可变的百分之百延长）（无论查询还是增删都很慢，被ArrayList替代了）
 
 #### List排序通用方法
 
@@ -208,9 +211,12 @@ public class Test {
 Set体系集合可以知道某物是否已近存在于集合中,不会存储重复的元素。加入Set的每个元素必须是唯一的，否则，Set是不会把它加进去的。要想加进Set，Object必须定义equals()，这样才能标明对象的唯一性。Set的接口和Collection的一摸一样。Set的接口不保证它会用哪种顺序来存储元素。
 
 |--Set
-	|--HashSet : 为快速查找设计的Set。存入HashSet的对象必须定义hashCode()。
-	|--TreeSet : 保存次序的Set, 底层为树结构。使用它可以从Set中提取有序的序列。
-	|--LinkedHashSet : 具有HashSet的查询速度，且内部使用链表维护元素的顺序(插入的次序)。于是在使用迭代器遍历Set时，结果会按元素插入的次序显示。
+
+​	|--HashSet : 为快速查找设计的Set。存入HashSet的对象必须定义hashCode()。
+
+​	|--TreeSet : 保存次序的Set, 底层为树结构。使用它可以从Set中提取有序的序列。
+
+​	|--LinkedHashSet : 具有HashSet的查询速度，且内部使用链表维护元素的顺序(插入的次序)。于是在使用迭代器遍历Set时，结果会按元素插入的次序显示。
 
 #### Set排序
 
@@ -269,7 +275,8 @@ list2.addAll(set);
 HashSet使用的是相当复杂的方式来存储元素的，使用HashSet能够最快的获取集合中的元素，效率非常高（以空间换时间）。它会根据hashcode和equals来判断是否是同一个对象，如果hashcode一样，并且equals返回true，则是同一个对象，不能重复存放。
 
 |--HashSet 底层是由HashMap实现的，通过对象的hashCode方法与equals方法来保证插入元素的唯一性，无序(存储顺序和取出顺序不一致)，。
-	|--**LinkedHashSet** 底层数据结构由哈希表和链表组成。哈希表保证元素的唯一性，链表保证元素有序。(存储和取出是一致)
+
+​	|--**LinkedHashSet** 底层数据结构由哈希表和链表组成。哈希表保证元素的唯一性，链表保证元素有序。(存储和取出是一致)
 
 #### LinkedHashSet类
 
@@ -320,9 +327,12 @@ TreeSet时SortedSet接口的实现类，TreeSet可以保证元素处于排序状
 Map 提供了一个更通用的元素存储方法。Map 集合类用于存储元素对（称作“键”和“值”），其中每个键映射到一个值。从概念上而言，您可以将 List 看作是具有数值键的 Map。
 
 |--Map 是映射接口，Map中存储的内容是键值对(key-value)。
-	|--TreeMap 继承于AbstractMap，且实现了NavigableMap接口；因此，TreeMap中的内容是“有序的键值对”
-	|--HashMap 继承于AbstractMap，但没实现NavigableMap接口；因此，HashMap的内容是“键值对，但不保证次序”
-	|--Hashtable 虽然不是继承于AbstractMap，但它继承于Dictionary(Dictionary也是键值对的接口)，而且也实现Map接口；因此，Hashtable的内容也是“键值对，也不保证次序”。但和HashMap相比，Hashtable是线程安全的，而且它支持通过Enumeration去遍历。
+
+​	|--TreeMap 继承于AbstractMap，且实现了NavigableMap接口；因此，TreeMap中的内容是“有序的键值对”	
+
+​	|--HashMap 继承于AbstractMap，但没实现NavigableMap接口；因此，HashMap的内容是“键值对，但不保证次序”
+
+​	|--Hashtable 虽然不是继承于AbstractMap，但它继承于Dictionary(Dictionary也是键值对的接口)，而且也实现Map接口；因此，Hashtable的内容也是“键值对，也不保证次序”。但和HashMap相比，Hashtable是线程安全的，而且它支持通过Enumeration去遍历。
 
 #### Map通用方法
 
