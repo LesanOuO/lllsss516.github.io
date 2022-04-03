@@ -3,9 +3,23 @@
         <title>Lesan&#39;s blog</title>
         <link>https://llssit.cn/</link>
         <description>这是我的全新 Hugo 网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 01 Apr 2022 18:48:10 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 03 Apr 2022 10:45:10 &#43;0800</lastBuildDate>
             <atom:link href="https://llssit.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>数据库Tip:行转列、列转行</title>
+    <link>https://llssit.cn/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C/</link>
+    <pubDate>Sun, 03 Apr 2022 10:45:10 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://llssit.cn/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C/</guid>
+    <description><![CDATA[SQL 行转列，列转行 行列转换在做报表分析时还是经常会遇到的，今天就说一下如何实现行列转换吧。 行列转换就是如下图所示两种展示形式的互相转换 行转列 假]]></description>
+</item><item>
+    <title>分享一个可以私有部署的接口管理系统Yapi</title>
+    <link>https://llssit.cn/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/</link>
+    <pubDate>Sun, 03 Apr 2022 10:13:10 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://llssit.cn/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/</guid>
+    <description><![CDATA[Yapi简介 Yapi 由 YMFE 开源，旨在为开发、产品、测试人员提供更优雅的接口管理服务，可以帮助开发者轻松创建、发布、维护 API 权限管理 YApi 成熟的团队管理扁平]]></description>
+</item><item>
     <title>记一次搭建gitlab&#43;jenkins实现CI&amp;CD</title>
     <link>https://llssit.cn/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/</link>
     <pubDate>Fri, 01 Apr 2022 18:48:10 &#43;0800</pubDate>
@@ -61,19 +75,5 @@
     <author>作者</author>
     <guid>https://llssit.cn/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0-%E9%93%BE%E8%A1%A8/</guid>
     <description><![CDATA[本篇文章是学习leetcode中链表相关算法总结的链表技巧 虚拟头节点 力扣第 21 题「合并两个有序链表」 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 ListNode]]></description>
-</item><item>
-    <title>Java集合(HashSet和HashMap)</title>
-    <link>https://llssit.cn/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/</link>
-    <pubDate>Wed, 13 Jan 2021 12:20:25 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://llssit.cn/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/</guid>
-    <description><![CDATA[API Collection 接口的接口 对象的集合（单列集合） ​ |&ndash;List 接口：元素按进入先后有序保存，可重复 ​ |&ndash;LinkedList 接口实现类， 链表， 插入删除， 没有同步， 线程不安全 ​ |&ndash;ArrayList 接口实现]]></description>
-</item><item>
-    <title>Java数据结构</title>
-    <link>https://llssit.cn/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
-    <pubDate>Wed, 13 Jan 2021 11:46:02 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://llssit.cn/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
-    <description><![CDATA[API Vector Vector 类实现了一个动态数组。和 ArrayList 很相似，但是两者是不同的： Vector 是同步访问的。 Vector 包含了许多传统的方法，这些方法不属于集合框架。 Vector 主要用在事先不知]]></description>
 </item></channel>
 </rss>
