@@ -8,10 +8,10 @@
         <title>Java集合学习 - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="Java集合学习" />
 <meta property="og:description" content="简介 Java集合框架为程序员提供了预先包装的数据结构和算法来操纵他们。这使得我们使用复杂的数据结构变得非常的方便，并且这些集合框架是高性能的" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://llssit.cn/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/" />
-<meta property="og:image" content="https://llssit.cn/logo.png"/>
+<meta property="og:url" content="https://llssit.cn/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/" /><meta property="og:image" content="https://llssit.cn/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-20T09:33:31+08:00" />
 <meta property="article:modified_time" content="2022-03-20T09:33:31+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://llssit.cn/logo.png"/>
 
@@ -215,7 +215,7 @@
 <h4 id="list排序通用方法">List排序通用方法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -234,29 +234,29 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="k">new</span> <span class="n">Comparator</span><span class="o">()</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Student</span> <span class="n">s1</span><span class="o">,</span> <span class="n">Student</span> <span class="n">s2</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">//先按成绩 降序 排序，如果成绩一样的话按id 升序 排序
-</span><span class="c1"></span> 		<span class="k">if</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">getScore</span><span class="o">()&gt;</span><span class="n">s2</span><span class="o">.</span><span class="na">getScore</span><span class="o">()){</span>	<span class="c1">//greater
-</span><span class="c1"></span>			<span class="k">return</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
-		<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">getScore</span><span class="o">()==</span><span class="n">s2</span><span class="o">.</span><span class="na">getScore</span><span class="o">()){</span>	<span class="c1">//equals
-</span><span class="c1"></span>			<span class="k">if</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">getId</span><span class="o">()&gt;</span><span class="n">s2</span><span class="o">.</span><span class="na">getId</span><span class="o">()){</span>
-				<span class="k">return</span> <span class="n">1</span><span class="o">;</span>
-			<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">getId</span><span class="o">()==</span><span class="n">s2</span><span class="o">.</span><span class="na">getId</span><span class="o">()){</span>
-				<span class="k">return</span> <span class="n">0</span><span class="o">;</span>
-			<span class="o">}</span><span class="k">else</span><span class="o">{</span>
-				<span class="k">return</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
-			<span class="o">}</span>
-		<span class="o">}</span><span class="k">else</span><span class="o">{</span>	<span class="c1">//less
-</span><span class="c1"></span>			<span class="k">return</span> <span class="n">1</span><span class="o">;</span>
-		<span class="o">}</span>　
-    <span class="o">}</span>
-<span class="o">});</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="k">new</span> <span class="n">Comparator</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Student</span> <span class="n">s1</span><span class="o">,</span> <span class="n">Student</span> <span class="n">s2</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">//先按成绩 降序 排序，如果成绩一样的话按id 升序 排序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> 		<span class="k">if</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">getScore</span><span class="o">()&gt;</span><span class="n">s2</span><span class="o">.</span><span class="na">getScore</span><span class="o">()){</span>	<span class="c1">//greater
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">return</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">getScore</span><span class="o">()==</span><span class="n">s2</span><span class="o">.</span><span class="na">getScore</span><span class="o">()){</span>	<span class="c1">//equals
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">if</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">getId</span><span class="o">()&gt;</span><span class="n">s2</span><span class="o">.</span><span class="na">getId</span><span class="o">()){</span>
+</span></span><span class="line"><span class="cl">				<span class="k">return</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">s1</span><span class="o">.</span><span class="na">getId</span><span class="o">()==</span><span class="n">s2</span><span class="o">.</span><span class="na">getId</span><span class="o">()){</span>
+</span></span><span class="line"><span class="cl">				<span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span><span class="k">else</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">return</span> <span class="o">-</span><span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">			<span class="o">}</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span><span class="k">else</span><span class="o">{</span>	<span class="c1">//less
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">return</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">		<span class="o">}</span>　
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">});</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="list通用方法">List通用方法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -299,53 +299,53 @@
 </span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
-<span class="c1">// 向列表的尾部追加指定的元素
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;lwc&#34;</span><span class="o">);</span>
-<span class="c1">// 在列表的指定位置插入指定元素
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;nxj&#34;</span><span class="o">);</span>
-<span class="c1">// 追加指定 collection 中的所有元素到此列表的结尾
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">());</span>
-<span class="c1">// 从列表中移除所有元素
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
-<span class="c1">// 如果列表包含指定的元素,则返回true
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;nxj&#34;</span><span class="o">);</span>
-<span class="c1">// 如果列表包含指定 collection 的所有元素,则返回 true
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">containsAll</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">());</span>
-<span class="c1">// 比较指定的对象与列表是否相等
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">());</span>
-<span class="c1">// 返回列表中指定位置的元素
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
-<span class="c1">// 返回列表的哈希码值
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
-<span class="c1">// 返回列表中首次出现指定元素的索引,如果列表不包含此元素,则返回 -1
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="s">&#34;lwc&#34;</span><span class="o">);</span>
-<span class="c1">// 返回列表中最后出现指定元素的索引,如果列表不包含此元素,则返回 -1
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">lastIndexOf</span><span class="o">(</span><span class="s">&#34;lwc&#34;</span><span class="o">);</span>
-<span class="c1">// 如果列表不包含元素,则返回 true
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">();</span>
-<span class="c1">// 移除列表中指定位置的元素
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
-<span class="c1">// 移除列表中出现的首个指定元素
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="s">&#34;lwc&#34;</span><span class="o">);</span>
-<span class="c1">// 从列表中移除指定 collection 中包含的所有元素
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">removeAll</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">());</span>
-<span class="c1">// 用指定元素替换列表中指定位置的元素
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="s">&#34;lp&#34;</span><span class="o">);</span>
-<span class="c1">// 返回列表中的元素数
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
-<span class="c1">// 返回列表中指定的fromIndex(包括)和toIndex(不包括)之间的部分视图
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">subList</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">);</span>
-<span class="c1">// 返回以正确顺序包含列表中的所有元素的数组
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">();</span>
-<span class="c1">// 返回以正确顺序包含列表中所有元素的数组
-</span><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span> <span class="s">&#34;a&#34;</span><span class="o">,</span> <span class="s">&#34;b&#34;</span> <span class="o">});</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 向列表的尾部追加指定的元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;lwc&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 在列表的指定位置插入指定元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;nxj&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 追加指定 collection 中的所有元素到此列表的结尾
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 从列表中移除所有元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 如果列表包含指定的元素,则返回true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;nxj&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 如果列表包含指定 collection 的所有元素,则返回 true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">containsAll</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 比较指定的对象与列表是否相等
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 返回列表中指定位置的元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 返回列表的哈希码值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 返回列表中首次出现指定元素的索引,如果列表不包含此元素,则返回 -1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="s">&#34;lwc&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 返回列表中最后出现指定元素的索引,如果列表不包含此元素,则返回 -1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">lastIndexOf</span><span class="o">(</span><span class="s">&#34;lwc&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 如果列表不包含元素,则返回 true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 移除列表中指定位置的元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 移除列表中出现的首个指定元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="s">&#34;lwc&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 从列表中移除指定 collection 中包含的所有元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">removeAll</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 用指定元素替换列表中指定位置的元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="s">&#34;lp&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 返回列表中的元素数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 返回列表中指定的fromIndex(包括)和toIndex(不包括)之间的部分视图
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">subList</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 返回以正确顺序包含列表中的所有元素的数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 返回以正确顺序包含列表中所有元素的数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span> <span class="s">&#34;a&#34;</span><span class="o">,</span> <span class="s">&#34;b&#34;</span> <span class="o">});</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="list通用遍历">List通用遍历</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -360,27 +360,27 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 迭代方式
-</span><span class="c1">// 第一种for-size循环
-</span><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sites</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sites</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-<span class="o">}</span>
-<span class="c1">// 第二种for-each循环
-</span><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">i</span> <span class="o">:</span> <span class="n">sites</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="c1">// 第三种Iterator循环
-</span><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();){</span>
-    <span class="n">String</span> <span class="n">value</span><span class="o">=</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 迭代方式
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 第一种for-size循环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sites</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sites</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 第二种for-each循环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">i</span> <span class="o">:</span> <span class="n">sites</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 第三种Iterator循环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">sites</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">value</span><span class="o">=</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="arraylist类">ArrayList类</h3>
 <p>ArrayList是一个动态数组，也是我们最常用的集合，是List类的典型实现。它允许任何符合规则的元素插入甚至包括null。每一个ArrayList都有一个初始容量（10），该容量代表了数组的大小。随着容器中的元素不断增加，容器的大小也会随着增加。在每次向容器中增加元素的同时都会进行容量检查，当快溢出时，就会进行扩容操作。所以如果我们明确所插入元素的多少，最好指定一个初始容量值，避免过多的进行扩容操作而浪费时间、效率。</p>
 <p><strong>示例：</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -403,28 +403,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sites</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>   <span class="c1">// 创建ArrayList
-</span><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Google&#34;</span><span class="o">);</span>  <span class="c1">// 添加元素
-</span><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Runoob&#34;</span><span class="o">);</span>
-        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Taobao&#34;</span><span class="o">);</span>
-        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Weibo&#34;</span><span class="o">);</span>
-        <span class="n">sites</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="s">&#34;Wiki&#34;</span><span class="o">);</span>  <span class="c1">// 修改元素
-</span><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>  <span class="c1">// 删除元素，下标为3的元素，就是第四个元素
-</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sites</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">1</span><span class="o">));</span>  <span class="c1">// 访问元素
-</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sites</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>  <span class="c1">// 获取大小
-</span><span class="c1"></span>        
-        <span class="c1">// 将 lambda 表达式传递给 forEach
-</span><span class="c1"></span>        <span class="n">numbers</span><span class="o">.</span><span class="na">forEach</span><span class="o">((</span><span class="n">e</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
-            <span class="n">e</span> <span class="o">=</span> <span class="n">e</span> <span class="o">*</span> <span class="n">10</span><span class="o">;</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">&#34; &#34;</span><span class="o">);</span>
-        <span class="o">});</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sites</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>   <span class="c1">// 创建ArrayList
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Google&#34;</span><span class="o">);</span>  <span class="c1">// 添加元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Runoob&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Taobao&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Weibo&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sites</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="s">&#34;Wiki&#34;</span><span class="o">);</span>  <span class="c1">// 修改元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>  <span class="c1">// 删除元素，下标为3的元素，就是第四个元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sites</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">1</span><span class="o">));</span>  <span class="c1">// 访问元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sites</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>  <span class="c1">// 获取大小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        
+</span></span><span class="line"><span class="cl">        <span class="c1">// 将 lambda 表达式传递给 forEach
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">numbers</span><span class="o">.</span><span class="na">forEach</span><span class="o">((</span><span class="n">e</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">e</span> <span class="o">=</span> <span class="n">e</span> <span class="o">*</span> <span class="n">10</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">&#34; &#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">});</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="linkedlist类">LinkedList类</h3>
 <p>链表（Linked list）是一种常见的基础数据结构，是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存到下一个节点的地址。链表可分为单向链表和双向链表。Java LinkedList（链表） 类似于 ArrayList，是一种常用的数据容器。与 ArrayList 相比，LinkedList 的增加和删除的操作效率更高，而查找和修改的操作效率较低。</p>
@@ -447,7 +447,7 @@
 <p><strong>示例：</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -465,23 +465,23 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sites</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>   <span class="c1">//创建LinkedList
-</span><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Google&#34;</span><span class="o">);</span>   <span class="c1">//添加元素
-</span><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Runoob&#34;</span><span class="o">);</span>
-        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Taobao&#34;</span><span class="o">);</span>
-        <span class="n">sites</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="s">&#34;Wiki&#34;</span><span class="o">);</span>  <span class="c1">//头部添加元素
-</span><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="s">&#34;Weibo&#34;</span><span class="o">);</span>  <span class="c1">//尾部添加元素
-</span><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">removeFirst</span><span class="o">();</span>  <span class="c1">//移除头部元素
-</span><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">removeLast</span><span class="o">();</span>  <span class="c1">//移除尾部元素
-</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sites</span><span class="o">.</span><span class="na">getFirst</span><span class="o">());</span>  <span class="c1">//获取头部元素
-</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sites</span><span class="o">.</span><span class="na">getLast</span><span class="o">());</span>  <span class="c1">//获取尾部元素
-</span><span class="c1"></span>    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sites</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>   <span class="c1">//创建LinkedList
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Google&#34;</span><span class="o">);</span>   <span class="c1">//添加元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Runoob&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Taobao&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sites</span><span class="o">.</span><span class="na">addFirst</span><span class="o">(</span><span class="s">&#34;Wiki&#34;</span><span class="o">);</span>  <span class="c1">//头部添加元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="s">&#34;Weibo&#34;</span><span class="o">);</span>  <span class="c1">//尾部添加元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">removeFirst</span><span class="o">();</span>  <span class="c1">//移除头部元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">sites</span><span class="o">.</span><span class="na">removeLast</span><span class="o">();</span>  <span class="c1">//移除尾部元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sites</span><span class="o">.</span><span class="na">getFirst</span><span class="o">());</span>  <span class="c1">//获取头部元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sites</span><span class="o">.</span><span class="na">getLast</span><span class="o">());</span>  <span class="c1">//获取尾部元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="set接口">Set接口</h2>
 <h3 id="简介-2">简介</h3>
@@ -493,7 +493,7 @@
 <h4 id="set排序">Set排序</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -512,29 +512,29 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//把HashSet保存在ArrayList里，再用Collections.sort()方法比较
-</span><span class="c1"></span><span class="kd">final</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">va</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>  
-<span class="n">va</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2007111315</span><span class="o">);</span>  
-<span class="n">va</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2007111314</span><span class="o">);</span>  
-<span class="n">va</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2007111318</span><span class="o">);</span>  
-<span class="n">va</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2007111313</span><span class="o">);</span>  
-<span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>  
-<span class="k">for</span><span class="o">(</span><span class="kd">final</span> <span class="n">Integer</span> <span class="n">value</span> <span class="o">:</span> <span class="n">va</span><span class="o">){</span>  
-    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>  
-<span class="o">}</span>  
-<span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>  
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>  
-
-<span class="c1">//把这个HashSet做为构造参数放到TreeSet中就可以排序了
-</span><span class="c1"></span><span class="kd">final</span> <span class="n">TreeSet</span> <span class="n">ts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeSet</span><span class="o">(</span><span class="n">va</span><span class="o">);</span>  
-<span class="n">ts</span><span class="o">.</span><span class="na">comparator</span><span class="o">();</span>  
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ts</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//把HashSet保存在ArrayList里，再用Collections.sort()方法比较
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">final</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">va</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>  
+</span></span><span class="line"><span class="cl"><span class="n">va</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2007111315</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl"><span class="n">va</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2007111314</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl"><span class="n">va</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2007111318</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl"><span class="n">va</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2007111313</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl"><span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>  
+</span></span><span class="line"><span class="cl"><span class="k">for</span><span class="o">(</span><span class="kd">final</span> <span class="n">Integer</span> <span class="n">value</span> <span class="o">:</span> <span class="n">va</span><span class="o">){</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl"><span class="o">}</span>  
+</span></span><span class="line"><span class="cl"><span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//把这个HashSet做为构造参数放到TreeSet中就可以排序了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">final</span> <span class="n">TreeSet</span> <span class="n">ts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeSet</span><span class="o">(</span><span class="n">va</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl"><span class="n">ts</span><span class="o">.</span><span class="na">comparator</span><span class="o">();</span>  
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ts</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="set遍历">Set遍历</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -548,24 +548,24 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//Iterator迭代遍历
-</span><span class="c1"></span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>  
-<span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">set</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>  
-<span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>  
-	<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>  
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>  
-<span class="o">}</span>
-
-<span class="c1">//for-each循环遍历
-</span><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">set</span><span class="o">)</span> <span class="o">{</span>  
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>  
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//Iterator迭代遍历
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>  
+</span></span><span class="line"><span class="cl"><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">set</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>  
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>  
+</span></span><span class="line"><span class="cl">	<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>  
+</span></span><span class="line"><span class="cl">	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//for-each循环遍历
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">set</span><span class="o">)</span> <span class="o">{</span>  
+</span></span><span class="line"><span class="cl">	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="set转list">Set转List</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -573,13 +573,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//通过ArrayList进行转换
-</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="n">set</span><span class="o">);</span>
-
-<span class="c1">//List实现类进行转换
-</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">();</span>  
-<span class="n">list2</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">set</span><span class="o">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//通过ArrayList进行转换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="n">set</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//List实现类进行转换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">();</span>  
+</span></span><span class="line"><span class="cl"><span class="n">list2</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">set</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="hashset类">HashSet类</h3>
 <p>HashSet使用的是相当复杂的方式来存储元素的，使用HashSet能够最快的获取集合中的元素，效率非常高（以空间换时间）。它会根据hashcode和equals来判断是否是同一个对象，如果hashcode一样，并且equals返回true，则是同一个对象，不能重复存放。</p>
@@ -616,7 +616,7 @@
 <h4 id="map通用方法">Map通用方法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -632,21 +632,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">abstract</span> <span class="kt">void</span>                 <span class="nf">clear</span><span class="o">()</span>
-<span class="kd">abstract</span> <span class="kt">boolean</span>              <span class="nf">containsKey</span><span class="o">(</span><span class="n">Object</span> <span class="n">key</span><span class="o">)</span>
-<span class="kd">abstract</span> <span class="kt">boolean</span>              <span class="nf">containsValue</span><span class="o">(</span><span class="n">Object</span> <span class="n">value</span><span class="o">)</span>
-<span class="kd">abstract</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span> <span class="n">V</span><span class="o">&gt;&gt;</span>     <span class="nf">entrySet</span><span class="o">()</span>
-<span class="kd">abstract</span> <span class="kt">boolean</span>              <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">object</span><span class="o">)</span>
-<span class="kd">abstract</span> <span class="n">V</span>                    <span class="nf">get</span><span class="o">(</span><span class="n">Object</span> <span class="n">key</span><span class="o">)</span>
-<span class="kd">abstract</span> <span class="kt">int</span>                  <span class="nf">hashCode</span><span class="o">()</span>
-<span class="kd">abstract</span> <span class="kt">boolean</span>              <span class="nf">isEmpty</span><span class="o">()</span>
-<span class="kd">abstract</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">K</span><span class="o">&gt;</span>               <span class="nf">keySet</span><span class="o">()</span>
-<span class="kd">abstract</span> <span class="n">V</span>                    <span class="nf">put</span><span class="o">(</span><span class="n">K</span> <span class="n">key</span><span class="o">,</span> <span class="n">V</span> <span class="n">value</span><span class="o">)</span>
-<span class="kd">abstract</span> <span class="kt">void</span>                 <span class="nf">putAll</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">K</span><span class="o">,</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">)</span>
-<span class="kd">abstract</span> <span class="n">V</span>                    <span class="nf">remove</span><span class="o">(</span><span class="n">Object</span> <span class="n">key</span><span class="o">)</span>
-<span class="kd">abstract</span> <span class="kt">int</span>                  <span class="nf">size</span><span class="o">()</span>
-<span class="kd">abstract</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span>        <span class="nf">values</span><span class="o">()</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="kt">void</span>                 <span class="nf">clear</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="kt">boolean</span>              <span class="nf">containsKey</span><span class="o">(</span><span class="n">Object</span> <span class="n">key</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="kt">boolean</span>              <span class="nf">containsValue</span><span class="o">(</span><span class="n">Object</span> <span class="n">value</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span> <span class="n">V</span><span class="o">&gt;&gt;</span>     <span class="nf">entrySet</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="kt">boolean</span>              <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">object</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="n">V</span>                    <span class="nf">get</span><span class="o">(</span><span class="n">Object</span> <span class="n">key</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="kt">int</span>                  <span class="nf">hashCode</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="kt">boolean</span>              <span class="nf">isEmpty</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">K</span><span class="o">&gt;</span>               <span class="nf">keySet</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="n">V</span>                    <span class="nf">put</span><span class="o">(</span><span class="n">K</span> <span class="n">key</span><span class="o">,</span> <span class="n">V</span> <span class="n">value</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="kt">void</span>                 <span class="nf">putAll</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">K</span><span class="o">,</span> <span class="o">?</span> <span class="kd">extends</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="n">V</span>                    <span class="nf">remove</span><span class="o">(</span><span class="n">Object</span> <span class="n">key</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="kt">int</span>                  <span class="nf">size</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="kd">abstract</span> <span class="n">Collection</span><span class="o">&lt;</span><span class="n">V</span><span class="o">&gt;</span>        <span class="nf">values</span><span class="o">()</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol>
 <li>Map提供接口分别用于返回 键集、值集或键-值映射关系集。entrySet()用于返回键-值集的Set集合;keySet()用于返回键集的Set集合;values()用户返回值集的Collection集合,因为Map中不能包含重复的键；每个键最多只能映射到一个值。所以，键-值集、键集都是Set，值集时Collection。</li>
@@ -655,7 +655,7 @@
 <h4 id="map遍历">Map遍历</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -679,29 +679,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//用for循环遍历
-</span><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span><span class="o">:</span><span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">()){</span>
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()+</span><span class="s">&#34;---&gt;&#34;</span><span class="o">+</span><span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
-<span class="o">}</span>
-
-<span class="c1">//用Iterator迭代遍历
-</span><span class="c1"></span><span class="n">Set</span> <span class="n">set</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">();</span>     
-<span class="n">Iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="n">set</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>     
-<span class="k">while</span><span class="o">(</span><span class="n">i</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()){</span>  
-    <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry1</span><span class="o">=(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;)</span><span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry1</span><span class="o">.</span><span class="na">getKey</span><span class="o">()+</span><span class="s">&#34;==&#34;</span><span class="o">+</span><span class="n">entry1</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
-<span class="o">}</span>
-
-<span class="c1">//用keySet()迭代遍历
-</span><span class="c1"></span><span class="n">Iterator</span> <span class="n">it</span><span class="o">=</span><span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
-<span class="k">while</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()){</span>
-    <span class="n">String</span> <span class="n">key</span><span class="o">;</span>
-    <span class="n">String</span> <span class="n">value</span><span class="o">;</span>
-    <span class="n">key</span><span class="o">=</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
-    <span class="n">value</span><span class="o">=</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span><span class="o">+</span><span class="s">&#34;--&#34;</span><span class="o">+</span><span class="n">value</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//用for循环遍历
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span><span class="o">:</span><span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">()){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()+</span><span class="s">&#34;---&gt;&#34;</span><span class="o">+</span><span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//用Iterator迭代遍历
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Set</span> <span class="n">set</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">();</span>     
+</span></span><span class="line"><span class="cl"><span class="n">Iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="n">set</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>     
+</span></span><span class="line"><span class="cl"><span class="k">while</span><span class="o">(</span><span class="n">i</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()){</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry1</span><span class="o">=(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;)</span><span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry1</span><span class="o">.</span><span class="na">getKey</span><span class="o">()+</span><span class="s">&#34;==&#34;</span><span class="o">+</span><span class="n">entry1</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//用keySet()迭代遍历
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Iterator</span> <span class="n">it</span><span class="o">=</span><span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">key</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">value</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">key</span><span class="o">=</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">value</span><span class="o">=</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span><span class="o">+</span><span class="s">&#34;--&#34;</span><span class="o">+</span><span class="n">value</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="hashmap类">HashMap类</h3>
 <p>HashMap是我们使用非常多的Collection，它是基于哈希表的 Map 接口的实现，以key-value的形式存在。
@@ -717,7 +717,7 @@ HashMap不是线程安全的，如果想要线程安全的HashMap，可以通过
 <p>HashMap本身就是升序排列,如果要获取集合数据，见如下代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -728,21 +728,21 @@ HashMap不是线程安全的，如果想要线程安全的HashMap，可以通过
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
-<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;d&#34;</span><span class="o">,</span> <span class="n">3</span><span class="o">);</span>
-<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;c&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span> 
-<span class="n">Set</span> <span class="n">keySet</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">();</span>
-<span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">keySet</span><span class="o">);</span>
-<span class="k">for</span><span class="o">(</span><span class="n">Iterator</span> <span class="n">ite</span> <span class="o">=</span> <span class="n">keySet</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">ite</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();)</span> <span class="o">{</span>
-	<span class="n">String</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">ite</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-  	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;key-value: &#34;</span><span class="o">+</span><span class="n">temp</span><span class="o">+</span><span class="s">&#34;,&#34;</span><span class="o">+</span><span class="n">map</span><span class="o">.</span><span class="na">getValue</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
-<span class="o">}</span> 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;d&#34;</span><span class="o">,</span> <span class="n">3</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;c&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span> 
+</span></span><span class="line"><span class="cl"><span class="n">Set</span> <span class="n">keySet</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">keySet</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span><span class="o">(</span><span class="n">Iterator</span> <span class="n">ite</span> <span class="o">=</span> <span class="n">keySet</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">ite</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">String</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">ite</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">  	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;key-value: &#34;</span><span class="o">+</span><span class="n">temp</span><span class="o">+</span><span class="s">&#34;,&#34;</span><span class="o">+</span><span class="n">map</span><span class="o">.</span><span class="na">getValue</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>但是如果想要通过key进行降序排列，则需要重写sort方法，见如下代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -751,20 +751,20 @@ HashMap不是线程安全的，如果想要线程安全的HashMap，可以通过
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">keySet</span><span class="o">,</span> <span class="k">new</span> <span class="n">Comparator</span><span class="o">()</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Object</span> <span class="n">o1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">//如果map里面是其他类型直接更改sort里面的比较方法。
-</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o1</span><span class="o">.</span><span class="na">toString</span><span class="o">())</span> <span class="o">&gt;</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o2</span><span class="o">.</span><span class="na">toString</span><span class="o">())</span> <span class="k">return</span> <span class="n">1</span><span class="o">;</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o1</span><span class="o">.</span><span class="na">toString</span><span class="o">())</span> <span class="o">==</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o2</span><span class="o">.</span><span class="na">toString</span><span class="o">())</span> <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
-        <span class="k">else</span> <span class="k">return</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">});</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">keySet</span><span class="o">,</span> <span class="k">new</span> <span class="n">Comparator</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Object</span> <span class="n">o1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">//如果map里面是其他类型直接更改sort里面的比较方法。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o1</span><span class="o">.</span><span class="na">toString</span><span class="o">())</span> <span class="o">&gt;</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o2</span><span class="o">.</span><span class="na">toString</span><span class="o">())</span> <span class="k">return</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o1</span><span class="o">.</span><span class="na">toString</span><span class="o">())</span> <span class="o">==</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">o2</span><span class="o">.</span><span class="na">toString</span><span class="o">())</span> <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">return</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">});</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="hashmap按照value值排序的方法">HashMap按照value值排序的方法</h4>
 <p>HashMap的value值没有排序功能，若要进行较轻松的排序，可改写Comparator接口方法compare进行排序，代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -789,30 +789,30 @@ HashMap不是线程安全的，如果想要线程安全的HashMap，可以通过
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
-<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;d&#34;</span><span class="o">,</span> <span class="n">2</span><span class="o">);</span>
-<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;c&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
-<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;b&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
-<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;a&#34;</span><span class="o">,</span> <span class="n">3</span><span class="o">);</span>
-<span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;&gt;</span> <span class="n">infoIds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;&gt;(</span><span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">());</span>
-<span class="c1">//排序前
-</span><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">infoIds</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">infoIds</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">toString</span><span class="o">();</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
-<span class="o">}</span>
-<span class="c1">//根据value排序
-</span><span class="c1"></span><span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">infoIds</span><span class="o">,</span> <span class="k">new</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>   
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">o1</span><span class="o">,</span> <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>      
-        <span class="k">return</span> <span class="o">(</span><span class="n">o2</span><span class="o">.</span><span class="na">getValue</span><span class="o">()</span> <span class="o">-</span> <span class="n">o1</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span> 
-        <span class="c1">//return (o1.getKey()).toString().compareTo(o2.getKey());
-</span><span class="c1"></span>    <span class="o">}</span>
-<span class="o">});</span> 
-<span class="c1">//排序后
-</span><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">infoIds</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-    <span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">infoIds</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">toString</span><span class="o">();</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;d&#34;</span><span class="o">,</span> <span class="n">2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;c&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;b&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;a&#34;</span><span class="o">,</span> <span class="n">3</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;&gt;</span> <span class="n">infoIds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;&gt;(</span><span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//排序前
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">infoIds</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">infoIds</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">toString</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//根据value排序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">infoIds</span><span class="o">,</span> <span class="k">new</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>   
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">o1</span><span class="o">,</span> <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>      
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">(</span><span class="n">o2</span><span class="o">.</span><span class="na">getValue</span><span class="o">()</span> <span class="o">-</span> <span class="n">o1</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span> 
+</span></span><span class="line"><span class="cl">        <span class="c1">//return (o1.getKey()).toString().compareTo(o2.getKey());
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">});</span> 
+</span></span><span class="line"><span class="cl"><span class="c1">//排序后
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">infoIds</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">infoIds</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">toString</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="treemap类">TreeMap类</h3>
 <p>TreeMap继承了NavigableMap，而NavigableMap继承自SortedMap，为SortedMap添加了搜索选项，NavigableMap有几种方法，分别是不同的比较要求：floorKey是小于等于，ceilingKey是大于等于，lowerKey是小于，higherKey是大于。TreeMap的本质是R-B Tree(红黑树)，它包含几个重要的成员变量： root, size, comparator。</p>
@@ -877,7 +877,7 @@ isEmpty()//判断队列是否为空，为空返回true,不空返回false</p>
 <p><strong>示例：</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -903,31 +903,31 @@ isEmpty()//判断队列是否为空，为空返回true,不空返回false</p>
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">//不用比较器，默认升序排列
-</span><span class="c1"></span>    <span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;();</span>
-    <span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
-    <span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
-    <span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>
-    <span class="k">while</span><span class="o">(!</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
-    <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">()+</span><span class="s">&#34; &#34;</span><span class="o">);</span> <span class="c1">//2 3 4 
-</span><span class="c1"></span>    <span class="o">}</span>
-    <span class="c1">//使用自定义比较器，降序排列
-</span><span class="c1"></span>    <span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">qq</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
-        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Integer</span> <span class="n">e1</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">e2</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="n">e2</span> <span class="o">-</span> <span class="n">e1</span><span class="o">;</span>  <span class="c1">//升序:e1-e2,降序:e2-e1
-</span><span class="c1"></span>        <span class="o">}</span>
-    <span class="o">});</span>
-    <span class="n">qq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
-    <span class="n">qq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
-    <span class="n">qq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>
-    <span class="k">while</span><span class="o">(!</span><span class="n">qq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
-    <span class="o">{</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">qq</span><span class="o">.</span><span class="na">poll</span><span class="o">()+</span><span class="s">&#34; &#34;</span><span class="o">);</span> <span class="c1">//4 3 2 
-</span><span class="c1"></span>    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//不用比较器，默认升序排列
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">q</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="o">(!</span><span class="n">q</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">q</span><span class="o">.</span><span class="na">poll</span><span class="o">()+</span><span class="s">&#34; &#34;</span><span class="o">);</span> <span class="c1">//2 3 4 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//使用自定义比较器，降序排列
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">qq</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">Integer</span> <span class="n">e1</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">e2</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">e2</span> <span class="o">-</span> <span class="n">e1</span><span class="o">;</span>  <span class="c1">//升序:e1-e2,降序:e2-e1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">});</span>
+</span></span><span class="line"><span class="cl">    <span class="n">qq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">qq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">qq</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="o">(!</span><span class="n">qq</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">qq</span><span class="o">.</span><span class="na">poll</span><span class="o">()+</span><span class="s">&#34; &#34;</span><span class="o">);</span> <span class="c1">//4 3 2 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>本文参考至，如需更多详情，请查阅以下网站</p>

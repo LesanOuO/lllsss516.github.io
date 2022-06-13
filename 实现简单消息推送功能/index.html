@@ -8,10 +8,10 @@
         <title>实现简单消息推送功能 - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="实现简单消息推送功能" />
 <meta property="og:description" content="消息推送是大部分系统都需要做到的功能，在.NET中我分别通过RabbitMQ、MQTT、SignalR实现消息推送功能，本篇文章将通过它们实" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://llssit.cn/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" />
-<meta property="og:image" content="https://llssit.cn/logo.png"/>
+<meta property="og:url" content="https://llssit.cn/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" /><meta property="og:image" content="https://llssit.cn/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-19T19:14:25+08:00" />
 <meta property="article:modified_time" content="2022-03-19T19:14:25+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://llssit.cn/logo.png"/>
 
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/llssit.cn\/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD\/"
-        },"genre": "posts","keywords": "消息推送","wordcount":  3136 ,
+        },"genre": "posts","keywords": "消息推送","wordcount":  3132 ,
         "url": "https:\/\/llssit.cn\/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD\/","datePublished": "2022-03-19T19:14:25+08:00","dateModified": "2022-03-19T19:14:25+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">实现简单消息推送功能</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>实践笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-19">2022-03-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3136 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-19">2022-03-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3132 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -148,7 +148,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -180,50 +180,48 @@
 </span><span class="lnt">30
 </span><span class="lnt">31
 </span><span class="lnt">32
-</span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.SignalR</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">KBEAM.Hubs</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">ChatHub</span> <span class="p">:</span> <span class="n">Hub</span>    <span class="c1">// 继承自SignalR Hub库
-</span><span class="c1"></span>    <span class="p">{</span>
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">SendMessage</span><span class="p">(</span><span class="kt">string</span> <span class="n">user</span><span class="p">,</span> <span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">await</span> <span class="n">Clients</span><span class="p">.</span><span class="n">All</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="s">&#34;ReceiveMessage&#34;</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">SendMessageToGroup</span><span class="p">(</span><span class="kt">string</span> <span class="k">group</span><span class="p">,</span> <span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">await</span> <span class="n">Clients</span><span class="p">.</span><span class="n">Group</span><span class="p">(</span><span class="k">group</span><span class="p">).</span><span class="n">SendAsync</span><span class="p">(</span><span class="s">&#34;ReceiveMessageFromGroup&#34;</span><span class="p">,</span> <span class="k">group</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">AddToGroup</span><span class="p">(</span><span class="kt">string</span> <span class="n">groupName</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">await</span> <span class="n">Groups</span><span class="p">.</span><span class="n">AddToGroupAsync</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="n">ConnectionId</span><span class="p">,</span> <span class="n">groupName</span><span class="p">);</span>
-
-            <span class="k">await</span> <span class="n">Clients</span><span class="p">.</span><span class="n">Group</span><span class="p">(</span><span class="n">groupName</span><span class="p">).</span><span class="n">SendAsync</span><span class="p">(</span><span class="s">&#34;ReceiveMessage&#34;</span><span class="p">,</span> <span class="s">$&#34;{Context.ConnectionId} has joined the group {groupName}.&#34;</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">RemoveFromGroup</span><span class="p">(</span><span class="kt">string</span> <span class="n">groupName</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">await</span> <span class="n">Groups</span><span class="p">.</span><span class="n">RemoveFromGroupAsync</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="n">ConnectionId</span><span class="p">,</span> <span class="n">groupName</span><span class="p">);</span>
-
-            <span class="c1">//await Clients.Group(groupName).SendAsync(&#34;ReceiveMessage&#34;, $&#34;{Context.ConnectionId} has left the group {groupName}.&#34;);
-</span><span class="c1"></span>        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.SignalR</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">KBEAM.Hubs</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">class</span> <span class="nc">ChatHub</span> <span class="p">:</span> <span class="n">Hub</span>    <span class="c1">// 继承自SignalR Hub库</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">SendMessage</span><span class="p">(</span><span class="kt">string</span> <span class="n">user</span><span class="p">,</span> <span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">Clients</span><span class="p">.</span><span class="n">All</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="s">&#34;ReceiveMessage&#34;</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">SendMessageToGroup</span><span class="p">(</span><span class="kt">string</span> <span class="k">group</span><span class="p">,</span> <span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">Clients</span><span class="p">.</span><span class="n">Group</span><span class="p">(</span><span class="k">group</span><span class="p">).</span><span class="n">SendAsync</span><span class="p">(</span><span class="s">&#34;ReceiveMessageFromGroup&#34;</span><span class="p">,</span> <span class="k">group</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">AddToGroup</span><span class="p">(</span><span class="kt">string</span> <span class="n">groupName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">Groups</span><span class="p">.</span><span class="n">AddToGroupAsync</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="n">ConnectionId</span><span class="p">,</span> <span class="n">groupName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">Clients</span><span class="p">.</span><span class="n">Group</span><span class="p">(</span><span class="n">groupName</span><span class="p">).</span><span class="n">SendAsync</span><span class="p">(</span><span class="s">&#34;ReceiveMessage&#34;</span><span class="p">,</span> <span class="s">$&#34;{Context.ConnectionId} has joined the group {groupName}.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">RemoveFromGroup</span><span class="p">(</span><span class="kt">string</span> <span class="n">groupName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">Groups</span><span class="p">.</span><span class="n">RemoveFromGroupAsync</span><span class="p">(</span><span class="n">Context</span><span class="p">.</span><span class="n">ConnectionId</span><span class="p">,</span> <span class="n">groupName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">//await Clients.Group(groupName).SendAsync(&#34;ReceiveMessage&#34;, $&#34;{Context.ConnectionId} has left the group {groupName}.&#34;);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>在Startup.cs文件中注册相关服务及管道</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -234,45 +232,43 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 1.在ConfigureServices函数中添加以下语句，注册相关服务
-</span><span class="c1"></span><span class="n">services</span><span class="p">.</span><span class="n">AddSignalR</span><span class="p">();</span>
-<span class="c1">// 2.在Configure函数中添加以下语句，配置管道终结点
-</span><span class="c1"></span><span class="n">app</span><span class="p">.</span><span class="n">UseEndpoints</span><span class="p">(</span><span class="n">endpoints</span> <span class="p">=&gt;</span>
-<span class="p">{</span>
-    <span class="c1">// ...
-</span><span class="c1"></span>    <span class="n">endpoints</span><span class="p">.</span><span class="n">MapHub</span><span class="p">&lt;</span><span class="n">ChatHub</span><span class="p">&gt;(</span><span class="s">&#34;/chatHub&#34;</span><span class="p">);</span>
-    <span class="c1">// ...
-</span><span class="c1"></span><span class="p">});</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="c1">// 1.在ConfigureServices函数中添加以下语句，注册相关服务</span>
+</span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddSignalR</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 2.在Configure函数中添加以下语句，配置管道终结点</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="p">.</span><span class="n">UseEndpoints</span><span class="p">(</span><span class="n">endpoints</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">    <span class="n">endpoints</span><span class="p">.</span><span class="n">MapHub</span><span class="p">&lt;</span><span class="n">ChatHub</span><span class="p">&gt;(</span><span class="s">&#34;/chatHub&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>编写服务端业务，推送消息</li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 定义一个上下文
-</span><span class="c1"></span><span class="k">private</span> <span class="k">readonly</span> <span class="n">IHubContext</span><span class="p">&lt;</span><span class="n">ChatHub</span><span class="p">&gt;</span> <span class="n">hubContext</span><span class="p">;</span>
-<span class="c1">// 通过构造函数注入依赖
-</span><span class="c1"></span><span class="k">public</span> <span class="n">MonitorService</span><span class="p">(</span><span class="n">IHubContext</span><span class="p">&lt;</span><span class="n">ChatHub</span><span class="p">&gt;</span> <span class="n">hub</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">hubContext</span> <span class="p">=</span> <span class="n">hub</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="c1">//在需要的地方调用方法，进行消息推送
-</span><span class="c1"></span><span class="k">await</span> <span class="n">hubContext</span><span class="p">.</span><span class="n">Clients</span><span class="p">.</span><span class="n">Group</span><span class="p">(</span><span class="k">group</span><span class="p">).</span><span class="n">SendAsync</span><span class="p">(</span><span class="s">&#34;ReceiveMessageFromGroup&#34;</span><span class="p">,</span><span class="k">group</span><span class="p">,</span> <span class="s">&#34;需要发送的消息&#34;</span><span class="p">);</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="c1">// 定义一个上下文</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">readonly</span> <span class="n">IHubContext</span><span class="p">&lt;</span><span class="n">ChatHub</span><span class="p">&gt;</span> <span class="n">hubContext</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 通过构造函数注入依赖</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">MonitorService</span><span class="p">(</span><span class="n">IHubContext</span><span class="p">&lt;</span><span class="n">ChatHub</span><span class="p">&gt;</span> <span class="n">hub</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hubContext</span> <span class="p">=</span> <span class="n">hub</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//在需要的地方调用方法，进行消息推送</span>
+</span></span><span class="line"><span class="cl"><span class="k">await</span> <span class="n">hubContext</span><span class="p">.</span><span class="n">Clients</span><span class="p">.</span><span class="n">Group</span><span class="p">(</span><span class="k">group</span><span class="p">).</span><span class="n">SendAsync</span><span class="p">(</span><span class="s">&#34;ReceiveMessageFromGroup&#34;</span><span class="p">,</span><span class="k">group</span><span class="p">,</span> <span class="s">&#34;需要发送的消息&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>JS客户端程序编写</li>
@@ -280,7 +276,7 @@
 <p>首先，需要通过npm来安装SignalR封装好的JS文件，<code>npm install @microsoft/signalr</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -304,29 +300,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 1.首先进行SignalR客户端连接
-</span><span class="c1"></span><span class="kr">const</span> <span class="nx">signalR</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;@microsoft/signalr&#34;</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nx">conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">signalR</span><span class="p">.</span><span class="nx">HubConnectionBuilder</span><span class="p">()</span>
-    <span class="p">.</span><span class="nx">withUrl</span><span class="p">(</span><span class="s2">&#34;http://localhost:8988/chatHub&#34;</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">withAutomaticReconnect</span><span class="p">()</span>
-    <span class="p">.</span><span class="nx">configureLogging</span><span class="p">(</span><span class="nx">signalR</span><span class="p">.</span><span class="nx">LogLevel</span><span class="p">.</span><span class="nb">Error</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">build</span><span class="p">()</span>
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">conn</span>
-    
-<span class="kr">import</span> <span class="nx">signalR</span> <span class="nx">from</span> <span class="s2">&#34;@/utils/signalR&#34;</span><span class="p">;</span>
-<span class="c1">// 2.客户端调用服务端方法（RPC）
-</span><span class="c1"></span><span class="nx">signalR</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&#34;AddToGroup&#34;</span><span class="p">,</span> <span class="s2">&#34;groupName&#34;</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// 加入用户组
-</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-<span class="p">});</span>
-<span class="nx">signalR</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&#34;RemoveFromGroup&#34;</span><span class="p">,</span> <span class="s2">&#34;大屏&#34;</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// 移除用户组
-</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-<span class="p">});</span>
-<span class="c1">// 3.客户端监听服务器消息
-</span><span class="c1"></span><span class="nx">signalR</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;ReceiveMessageFromGroup&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">group</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">group</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="nx">message</span><span class="p">);</span>
-    <span class="nx">that</span><span class="p">.</span><span class="nx">lineChartData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="c1">// 1.首先进行SignalR客户端连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">signalR</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;@microsoft/signalr&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">signalR</span><span class="p">.</span><span class="nx">HubConnectionBuilder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">withUrl</span><span class="p">(</span><span class="s2">&#34;http://localhost:8988/chatHub&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">withAutomaticReconnect</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">configureLogging</span><span class="p">(</span><span class="nx">signalR</span><span class="p">.</span><span class="nx">LogLevel</span><span class="p">.</span><span class="nb">Error</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">conn</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">signalR</span> <span class="nx">from</span> <span class="s2">&#34;@/utils/signalR&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 2.客户端调用服务端方法（RPC）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">signalR</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&#34;AddToGroup&#34;</span><span class="p">,</span> <span class="s2">&#34;groupName&#34;</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// 加入用户组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="nx">signalR</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&#34;RemoveFromGroup&#34;</span><span class="p">,</span> <span class="s2">&#34;大屏&#34;</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// 移除用户组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 3.客户端监听服务器消息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">signalR</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;ReceiveMessageFromGroup&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">group</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">group</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="nx">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">that</span><span class="p">.</span><span class="nx">lineChartData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="rabbitmq实现">RabbitMQ实现</h2>
 <h3 id="简介-1">简介</h3>
@@ -339,15 +335,15 @@
 <p>首先开启Stomp插件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">rabbitmq-plugins <span class="nb">enable</span> rabbitmq_management  <span class="c1"># 开启此插件后有管理界面http://localhost:15672/</span>
-rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp
-rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rabbitmq-plugins <span class="nb">enable</span> rabbitmq_management  <span class="c1"># 开启此插件后有管理界面http://localhost:15672/</span>
+</span></span><span class="line"><span class="cl">rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp
+</span></span><span class="line"><span class="cl">rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>服务端发送消息</li>
@@ -355,7 +351,7 @@ rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
 <p>所需Nuget包：<code>&lt;PackageReference Include=&quot;RabbitMQ.Client&quot; Version=&quot;6.2.4&quot; /&gt;</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -381,31 +377,31 @@ rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 建立RabbitMQ连接
-</span><span class="c1"></span><span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">ConnectionFactory</span> <span class="n">rabbitMqFactory</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConnectionFactory</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">HostName</span> <span class="p">=</span> <span class="s">&#34;localhost&#34;</span><span class="p">,</span>
-    <span class="n">UserName</span> <span class="p">=</span> <span class="s">&#34;用户名&#34;</span><span class="p">,</span>
-    <span class="n">Password</span> <span class="p">=</span> <span class="s">&#34;密码&#34;</span><span class="p">,</span>
-    <span class="n">Port</span> <span class="p">=</span> <span class="m">5672</span><span class="p">,</span>
-    <span class="n">VirtualHost</span> <span class="p">=</span> <span class="s">&#34;虚拟主机配置&#34;</span>
-<span class="p">};</span>
-
-<span class="c1">// 发送消息
-</span><span class="c1"></span><span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
-<span class="p">{</span>
-    <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
-    <span class="p">{</span>
-        <span class="n">channel</span><span class="p">.</span><span class="n">ExchangeDeclare</span><span class="p">(</span><span class="s">&#34;monitor&#34;</span><span class="p">,</span> <span class="n">ExchangeType</span><span class="p">.</span><span class="n">Direct</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-        <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="s">&#34;message&#34;</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-        <span class="n">channel</span><span class="p">.</span><span class="n">QueueBind</span><span class="p">(</span><span class="s">&#34;message&#34;</span><span class="p">,</span> <span class="s">&#34;monitor&#34;</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="s">&#34;message&#34;</span><span class="p">);</span>
-
-        <span class="kt">var</span> <span class="n">props</span> <span class="p">=</span> <span class="n">channel</span><span class="p">.</span><span class="n">CreateBasicProperties</span><span class="p">();</span>
-        <span class="n">props</span><span class="p">.</span><span class="n">Persistent</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
-        <span class="n">channel</span><span class="p">.</span><span class="n">BasicPublish</span><span class="p">(</span><span class="n">exchange</span><span class="p">:</span> <span class="s">&#34;monitor&#34;</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="s">&#34;message&#34;</span><span class="p">,</span> <span class="n">basicProperties</span><span class="p">:</span> <span class="n">props</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">JsonConvert</span><span class="p">.</span><span class="n">SerializeObject</span><span class="p">(</span><span class="k">new</span> <span class="p">{</span> <span class="n">expectedData</span><span class="p">,</span> <span class="n">actualData</span> <span class="p">})));</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="c1">// 建立RabbitMQ连接</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">ConnectionFactory</span> <span class="n">rabbitMqFactory</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConnectionFactory</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">HostName</span> <span class="p">=</span> <span class="s">&#34;localhost&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">UserName</span> <span class="p">=</span> <span class="s">&#34;用户名&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Password</span> <span class="p">=</span> <span class="s">&#34;密码&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Port</span> <span class="p">=</span> <span class="m">5672</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">VirtualHost</span> <span class="p">=</span> <span class="s">&#34;虚拟主机配置&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 发送消息</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">channel</span><span class="p">.</span><span class="n">ExchangeDeclare</span><span class="p">(</span><span class="s">&#34;monitor&#34;</span><span class="p">,</span> <span class="n">ExchangeType</span><span class="p">.</span><span class="n">Direct</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="s">&#34;message&#34;</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">channel</span><span class="p">.</span><span class="n">QueueBind</span><span class="p">(</span><span class="s">&#34;message&#34;</span><span class="p">,</span> <span class="s">&#34;monitor&#34;</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="s">&#34;message&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">props</span> <span class="p">=</span> <span class="n">channel</span><span class="p">.</span><span class="n">CreateBasicProperties</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">props</span><span class="p">.</span><span class="n">Persistent</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">channel</span><span class="p">.</span><span class="n">BasicPublish</span><span class="p">(</span><span class="n">exchange</span><span class="p">:</span> <span class="s">&#34;monitor&#34;</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="s">&#34;message&#34;</span><span class="p">,</span> <span class="n">basicProperties</span><span class="p">:</span> <span class="n">props</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">JsonConvert</span><span class="p">.</span><span class="n">SerializeObject</span><span class="p">(</span><span class="k">new</span> <span class="p">{</span> <span class="n">expectedData</span><span class="p">,</span> <span class="n">actualData</span> <span class="p">})));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>具体RabbitMQ使用可以看我的RabbitMQ学习笔记</p>
 <ul>
@@ -414,7 +410,7 @@ rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
 <p>首先需要安装npm库文件，<code>npm install stompjs</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -463,54 +459,54 @@ rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="nx">Stomp</span> <span class="nx">from</span> <span class="s2">&#34;stompjs&#34;</span><span class="p">;</span>
-
-<span class="c1">// 定义一个RabbitMQ客户端
-</span><span class="c1"></span><span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="nx">client</span><span class="o">:</span> <span class="nx">Stomp</span><span class="p">.</span><span class="nx">client</span><span class="p">(</span><span class="s2">&#34;ws://localhost:15674/ws&#34;</span><span class="p">),</span>
-    <span class="p">};</span>
-<span class="p">},</span>
-    
-<span class="c1">// 初始化连接操作
-</span><span class="c1"></span><span class="nx">created</span><span class="p">()</span> <span class="p">{</span>
-     <span class="k">this</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span>
-       <span class="s2">&#34;用户名&#34;</span><span class="p">,</span>
-       <span class="s2">&#34;密码&#34;</span><span class="p">,</span>
-       <span class="k">this</span><span class="p">.</span><span class="nx">onConnected</span><span class="p">,</span>
-       <span class="k">this</span><span class="p">.</span><span class="nx">onFailed</span><span class="p">,</span>
-       <span class="s2">&#34;虚拟主机名称&#34;</span>
-     <span class="p">);</span>
-<span class="p">}</span>
-<span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
-  <span class="nx">onConnected</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="c1">//订阅频道
-</span><span class="c1"></span>    <span class="c1">// const topic = localStorage.getItem(&#34;Lesan&#34;);
-</span><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;连接成功&#34;</span><span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
-      <span class="s2">&#34;/exchange/monitor/message&#34;</span><span class="p">,</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">responseCallback</span><span class="p">,</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">onFailed</span>
-    <span class="p">);</span>
-  <span class="p">},</span>
-  <span class="nx">onFailed</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;MQ Failed: &#34;</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">$message</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&#34;连接失败&#34;</span><span class="p">);</span>
-  <span class="p">},</span>
-  <span class="c1">// 回传消息
-</span><span class="c1"></span>  <span class="nx">responseCallback</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;MQ msg=&gt;&#34;</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">lineChartData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-    <span class="c1">//接收消息处理
-</span><span class="c1"></span>  <span class="p">},</span>
-  <span class="c1">// 断开相应的连接
-</span><span class="c1"></span>  <span class="nx">close</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;已退出账号&#34;</span><span class="p">);</span>
-    <span class="p">});</span>
-  <span class="p">},</span>
-<span class="p">},</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">Stomp</span> <span class="nx">from</span> <span class="s2">&#34;stompjs&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 定义一个RabbitMQ客户端
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">client</span><span class="o">:</span> <span class="nx">Stomp</span><span class="p">.</span><span class="nx">client</span><span class="p">(</span><span class="s2">&#34;ws://localhost:15674/ws&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="c1">// 初始化连接操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">created</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="k">this</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">       <span class="s2">&#34;用户名&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="s2">&#34;密码&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="k">this</span><span class="p">.</span><span class="nx">onConnected</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="k">this</span><span class="p">.</span><span class="nx">onFailed</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="s2">&#34;虚拟主机名称&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">onConnected</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//订阅频道
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// const topic = localStorage.getItem(&#34;Lesan&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;连接成功&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;/exchange/monitor/message&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">responseCallback</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">onFailed</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">onFailed</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;MQ Failed: &#34;</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">$message</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&#34;连接失败&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 回传消息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">responseCallback</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;MQ msg=&gt;&#34;</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">lineChartData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//接收消息处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 断开相应的连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">close</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;已退出账号&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="mqtt实现">MQTT实现</h2>
 <h3 id="简介-2">简介</h3>
@@ -531,7 +527,7 @@ rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
 <p>对Program.cs修改：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -545,24 +541,24 @@ rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="n">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
-    <span class="n">Host</span><span class="p">.</span><span class="n">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
-        <span class="p">{</span>
-            <span class="n">webBuilder</span><span class="p">.</span><span class="n">UseKestrel</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span>
-            <span class="p">{</span>
-                <span class="n">o</span><span class="p">.</span><span class="n">ListenAnyIP</span><span class="p">(</span><span class="m">8988</span><span class="p">);</span>
-                <span class="n">o</span><span class="p">.</span><span class="n">ListenAnyIP</span><span class="p">(</span><span class="m">1884</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">UseMqtt</span><span class="p">());</span>
-            <span class="p">});</span>
-            <span class="n">webBuilder</span><span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
-            <span class="c1">//webBuilder.UseUrls(&#34;http://0.0.0.0:8988&#34;);
-</span><span class="c1"></span>        <span class="p">});</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="n">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Host</span><span class="p">.</span><span class="n">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">webBuilder</span><span class="p">.</span><span class="n">UseKestrel</span><span class="p">(</span><span class="n">o</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">o</span><span class="p">.</span><span class="n">ListenAnyIP</span><span class="p">(</span><span class="m">8988</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">o</span><span class="p">.</span><span class="n">ListenAnyIP</span><span class="p">(</span><span class="m">1884</span><span class="p">,</span> <span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">UseMqtt</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="n">webBuilder</span><span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//webBuilder.UseUrls(&#34;http://0.0.0.0:8988&#34;);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>对Startup.cs修改：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -607,55 +603,55 @@ rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
 </span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">// 在ConfigureServices函数中添加
-</span><span class="c1"></span><span class="n">services</span><span class="p">.</span><span class="n">AddHostedMqttServer</span><span class="p">(</span><span class="n">mqttServer</span> <span class="p">=&gt;</span> <span class="n">mqttServer</span><span class="p">.</span><span class="n">WithoutDefaultEndpoint</span><span class="p">().</span><span class="n">WithConnectionValidator</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">Username</span> <span class="p">!=</span> <span class="s">&#34;admin&#34;</span> <span class="p">||</span> <span class="n">c</span><span class="p">.</span><span class="n">Password</span> <span class="p">!=</span> <span class="s">&#34;123456&#34;</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">c</span><span class="p">.</span><span class="n">ReasonCode</span> <span class="p">=</span> <span class="n">MqttConnectReasonCode</span><span class="p">.</span><span class="n">BadUserNameOrPassword</span><span class="p">;</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">c</span><span class="p">.</span><span class="n">ReasonCode</span> <span class="p">=</span> <span class="n">MqttConnectReasonCode</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>
-
-<span class="p">}))</span>
-    <span class="p">.</span><span class="n">AddMqttConnectionHandler</span><span class="p">()</span>
-    <span class="p">.</span><span class="n">AddConnections</span><span class="p">();</span>
-
-<span class="c1">// 在Configure函数中添加
-</span><span class="c1"></span><span class="n">app</span><span class="p">.</span><span class="n">UseEndpoints</span><span class="p">(</span><span class="n">endpoints</span> <span class="p">=&gt;</span>
-<span class="p">{</span>
-    <span class="n">endpoints</span><span class="p">.</span><span class="n">MapConnectionHandler</span><span class="p">&lt;</span><span class="n">MqttConnectionHandler</span><span class="p">&gt;(</span>
-    <span class="s">&#34;/mqtt&#34;</span><span class="p">,</span>
-    <span class="n">httpConnectionDispatcherOptions</span> <span class="p">=&gt;</span> <span class="n">httpConnectionDispatcherOptions</span><span class="p">.</span><span class="n">WebSockets</span><span class="p">.</span><span class="n">SubProtocolSelector</span> <span class="p">=</span>
-                                        <span class="n">protocolList</span> <span class="p">=&gt;</span>
-                                            <span class="n">protocolList</span><span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">()</span> <span class="p">??</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">);</span>
-<span class="p">});</span>
-<span class="n">app</span><span class="p">.</span><span class="n">UseMqttServer</span><span class="p">(</span><span class="n">S</span> <span class="p">=&gt;</span>
-<span class="p">{</span>
-    <span class="n">MqttHelper</span><span class="p">.</span><span class="n">Server</span> <span class="p">=</span> <span class="n">S</span><span class="p">;</span>
-    <span class="n">S</span><span class="p">.</span><span class="n">ClientConnectedHandler</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MqttServerClientConnectedHandlerDelegate</span><span class="p">(</span><span class="n">OnConnected</span><span class="p">);</span>
-    <span class="n">S</span><span class="p">.</span><span class="n">StartedHandler</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MqttServerStartedHandlerDelegate</span><span class="p">(</span><span class="n">OnStarted</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="c1">// 添加事件处理函数
-</span><span class="c1"></span><span class="k">private</span> <span class="k">void</span> <span class="n">OnStarted</span><span class="p">(</span><span class="n">EventArgs</span> <span class="n">obj</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">RecurringJob</span><span class="p">.</span><span class="n">AddOrUpdate</span><span class="p">&lt;</span><span class="n">MonitorService</span><span class="p">&gt;(</span><span class="s">&#34;MonitorData&#34;</span><span class="p">,</span> <span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">UpdateDataAsync</span><span class="p">(</span><span class="s">&#34;大屏&#34;</span><span class="p">),</span> <span class="s">&#34;0/15 * * * * *&#34;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">private</span> <span class="k">void</span> <span class="n">OnConnected</span><span class="p">(</span><span class="n">MqttServerClientConnectedEventArgs</span> <span class="n">args</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">ClientId</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">// 消息推送方法
-</span><span class="c1"></span><span class="n">MqttHelper</span><span class="p">.</span><span class="n">PublishAsync</span><span class="p">(</span><span class="s">&#34;monitor&#34;</span><span class="p">,</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="n">SerializeObject</span><span class="p">(</span><span class="k">new</span> <span class="p">{</span> <span class="n">expectedData</span><span class="p">,</span> <span class="n">actualData</span> <span class="p">}));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="c1">// 在ConfigureServices函数中添加</span>
+</span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddHostedMqttServer</span><span class="p">(</span><span class="n">mqttServer</span> <span class="p">=&gt;</span> <span class="n">mqttServer</span><span class="p">.</span><span class="n">WithoutDefaultEndpoint</span><span class="p">().</span><span class="n">WithConnectionValidator</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">Username</span> <span class="p">!=</span> <span class="s">&#34;admin&#34;</span> <span class="p">||</span> <span class="n">c</span><span class="p">.</span><span class="n">Password</span> <span class="p">!=</span> <span class="s">&#34;123456&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">c</span><span class="p">.</span><span class="n">ReasonCode</span> <span class="p">=</span> <span class="n">MqttConnectReasonCode</span><span class="p">.</span><span class="n">BadUserNameOrPassword</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span><span class="p">.</span><span class="n">ReasonCode</span> <span class="p">=</span> <span class="n">MqttConnectReasonCode</span><span class="p">.</span><span class="n">Success</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">AddMqttConnectionHandler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="n">AddConnections</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 在Configure函数中添加</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="p">.</span><span class="n">UseEndpoints</span><span class="p">(</span><span class="n">endpoints</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">endpoints</span><span class="p">.</span><span class="n">MapConnectionHandler</span><span class="p">&lt;</span><span class="n">MqttConnectionHandler</span><span class="p">&gt;(</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;/mqtt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">httpConnectionDispatcherOptions</span> <span class="p">=&gt;</span> <span class="n">httpConnectionDispatcherOptions</span><span class="p">.</span><span class="n">WebSockets</span><span class="p">.</span><span class="n">SubProtocolSelector</span> <span class="p">=</span>
+</span></span><span class="line"><span class="cl">                                        <span class="n">protocolList</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">                                            <span class="n">protocolList</span><span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">()</span> <span class="p">??</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="p">.</span><span class="n">UseMqttServer</span><span class="p">(</span><span class="n">S</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MqttHelper</span><span class="p">.</span><span class="n">Server</span> <span class="p">=</span> <span class="n">S</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">S</span><span class="p">.</span><span class="n">ClientConnectedHandler</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MqttServerClientConnectedHandlerDelegate</span><span class="p">(</span><span class="n">OnConnected</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">S</span><span class="p">.</span><span class="n">StartedHandler</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MqttServerStartedHandlerDelegate</span><span class="p">(</span><span class="n">OnStarted</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 添加事件处理函数</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">void</span> <span class="n">OnStarted</span><span class="p">(</span><span class="n">EventArgs</span> <span class="n">obj</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">RecurringJob</span><span class="p">.</span><span class="n">AddOrUpdate</span><span class="p">&lt;</span><span class="n">MonitorService</span><span class="p">&gt;(</span><span class="s">&#34;MonitorData&#34;</span><span class="p">,</span> <span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">UpdateDataAsync</span><span class="p">(</span><span class="s">&#34;大屏&#34;</span><span class="p">),</span> <span class="s">&#34;0/15 * * * * *&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">void</span> <span class="n">OnConnected</span><span class="p">(</span><span class="n">MqttServerClientConnectedEventArgs</span> <span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">ClientId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 消息推送方法</span>
+</span></span><span class="line"><span class="cl"><span class="n">MqttHelper</span><span class="p">.</span><span class="n">PublishAsync</span><span class="p">(</span><span class="s">&#34;monitor&#34;</span><span class="p">,</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="n">SerializeObject</span><span class="p">(</span><span class="k">new</span> <span class="p">{</span> <span class="n">expectedData</span><span class="p">,</span> <span class="n">actualData</span> <span class="p">}));</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>添加MqttHelper类：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -688,44 +684,42 @@ rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
 </span><span class="lnt">31
 </span><span class="lnt">32
 </span><span class="lnt">33
-</span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">MQTTnet.Server</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">Common</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">MqttHelper</span>
-    <span class="p">{</span>
-        <span class="k">public</span> <span class="k">static</span> <span class="n">IMqttServer</span> <span class="n">Server</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">PublishAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">byte</span><span class="p">[]</span> <span class="n">payload</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">Server</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">Server</span><span class="p">.</span><span class="n">PublishAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">MQTTnet</span><span class="p">.</span><span class="n">MqttApplicationMessage</span><span class="p">()</span>
-                <span class="p">{</span>
-                    <span class="n">Topic</span> <span class="p">=</span> <span class="n">topic</span><span class="p">,</span>
-                    <span class="n">Payload</span> <span class="p">=</span> <span class="n">payload</span>
-                <span class="p">},</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">CancellationToken</span><span class="p">(</span><span class="k">false</span><span class="p">));</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">PublishAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">string</span> <span class="n">payload</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">Server</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">Server</span><span class="p">.</span><span class="n">PublishAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">MQTTnet</span><span class="p">.</span><span class="n">MqttApplicationMessage</span><span class="p">()</span>
-                <span class="p">{</span>
-                    <span class="n">Topic</span> <span class="p">=</span> <span class="n">topic</span><span class="p">,</span>
-                    <span class="n">Payload</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-                <span class="p">},</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">CancellationToken</span><span class="p">(</span><span class="k">false</span><span class="p">));</span> <span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MQTTnet.Server</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">Common</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">class</span> <span class="nc">MqttHelper</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">static</span> <span class="n">IMqttServer</span> <span class="n">Server</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">PublishAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">byte</span><span class="p">[]</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">Server</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Server</span><span class="p">.</span><span class="n">PublishAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">MQTTnet</span><span class="p">.</span><span class="n">MqttApplicationMessage</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Topic</span> <span class="p">=</span> <span class="n">topic</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Payload</span> <span class="p">=</span> <span class="n">payload</span>
+</span></span><span class="line"><span class="cl">                <span class="p">},</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">CancellationToken</span><span class="p">(</span><span class="k">false</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">PublishAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">string</span> <span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">Server</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Server</span><span class="p">.</span><span class="n">PublishAsync</span><span class="p">(</span><span class="k">new</span> <span class="n">MQTTnet</span><span class="p">.</span><span class="n">MqttApplicationMessage</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Topic</span> <span class="p">=</span> <span class="n">topic</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Payload</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="p">},</span> <span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">CancellationToken</span><span class="p">(</span><span class="k">false</span><span class="p">));</span> <span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>客服端开发</li>
@@ -733,7 +727,7 @@ rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
 <p>首先需要引入npm包：<code>npm install mqtt</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -758,36 +752,36 @@ rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="nx">mqtt</span> <span class="nx">from</span> <span class="s2">&#34;mqtt&#34;</span><span class="p">;</span>
-
-<span class="c1">// 连接Mqtt服务器，并订阅消息
-</span><span class="c1"></span>  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-    <span class="kd">let</span> <span class="nx">mqttClient</span> <span class="o">=</span> <span class="nx">mqtt</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s2">&#34;ws://localhost:8988/mqtt&#34;</span><span class="p">,</span> <span class="p">{</span>
-      <span class="nx">username</span><span class="o">:</span> <span class="s2">&#34;用户名&#34;</span><span class="p">,</span>
-      <span class="nx">password</span><span class="o">:</span> <span class="s2">&#34;密码&#34;</span><span class="p">,</span>
-      <span class="nx">clientId</span><span class="o">:</span> <span class="s2">&#34;客户端ID&#34;</span><span class="p">,</span>
-    <span class="p">});</span>
-    <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;connect&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;connected&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
-      <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&#34;monitor&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">qos</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;subscribed&#34;</span><span class="p">);</span>
-        <span class="p">}</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-    <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;message&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-      <span class="nx">that</span><span class="p">.</span><span class="nx">lineChartData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="p">});</span>
-  <span class="p">},</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">mqtt</span> <span class="nx">from</span> <span class="s2">&#34;mqtt&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 连接Mqtt服务器，并订阅消息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">mqttClient</span> <span class="o">=</span> <span class="nx">mqtt</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s2">&#34;ws://localhost:8988/mqtt&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">username</span><span class="o">:</span> <span class="s2">&#34;用户名&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">password</span><span class="o">:</span> <span class="s2">&#34;密码&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">clientId</span><span class="o">:</span> <span class="s2">&#34;客户端ID&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;connect&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;connected&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&#34;monitor&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">qos</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;subscribed&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;message&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">that</span><span class="p">.</span><span class="nx">lineChartData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="其他">其他</h2>
 <p>Vue前端测试客户端全部代码，通过Vue-cli搭建的项目，修改App.vue即可</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -906,130 +900,128 @@ rabbitmq-plugins <span class="nb">enable</span> rabbitmq_web_stomp_examples
 </span><span class="lnt">117
 </span><span class="lnt">118
 </span><span class="lnt">119
-</span><span class="lnt">120
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-vue" data-lang="vue"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;app&#34;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;Vue logo&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;./assets/logo.png&#34;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">HelloWorld</span> <span class="na">msg</span><span class="o">=</span><span class="s">&#34;Welcome to Your Vue.js App&#34;</span> <span class="p">/&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="kr">import</span> <span class="nx">HelloWorld</span> <span class="nx">from</span> <span class="s2">&#34;./components/HelloWorld.vue&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">mqtt</span> <span class="nx">from</span> <span class="s2">&#34;mqtt&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">Stomp</span> <span class="nx">from</span> <span class="s2">&#34;stompjs&#34;</span><span class="p">;</span>
-
-<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;App&#34;</span><span class="p">,</span>
-  <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">HelloWorld</span><span class="p">,</span>
-  <span class="p">},</span>
-  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">{</span>
-      <span class="nx">rabbitClient</span><span class="o">:</span> <span class="nx">Stomp</span><span class="p">.</span><span class="nx">client</span><span class="p">(</span><span class="s2">&#34;ws://172.21.30.233:15674/ws&#34;</span><span class="p">),</span>
-    <span class="p">};</span>
-  <span class="p">},</span>
-  <span class="nx">created</span><span class="p">()</span> <span class="p">{},</span>
-  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// this.useMqtt();
-</span><span class="c1"></span>    <span class="c1">// this.useRabbitMQ();
-</span><span class="c1"></span>    <span class="k">this</span><span class="p">.</span><span class="nx">useSignalR</span><span class="p">();</span>
-  <span class="p">},</span>
-  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">useSignalR</span><span class="p">()</span> <span class="p">{</span>
-      <span class="kr">const</span> <span class="nx">signalR</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;@microsoft/signalr&#34;</span><span class="p">);</span>
-      <span class="kr">const</span> <span class="nx">conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">signalR</span><span class="p">.</span><span class="nx">HubConnectionBuilder</span><span class="p">()</span>
-        <span class="p">.</span><span class="nx">withUrl</span><span class="p">(</span><span class="s2">&#34;http://172.21.30.233:8988/chatHub&#34;</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">withAutomaticReconnect</span><span class="p">()</span>
-        <span class="p">.</span><span class="nx">configureLogging</span><span class="p">(</span><span class="nx">signalR</span><span class="p">.</span><span class="nx">LogLevel</span><span class="p">.</span><span class="nb">Error</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
-      <span class="nx">conn</span>
-        <span class="p">.</span><span class="nx">start</span><span class="p">()</span>
-        <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;conneted&#34;</span><span class="p">);</span>
-          <span class="nx">conn</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&#34;AddToGroup&#34;</span><span class="p">,</span> <span class="s2">&#34;大屏&#34;</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-          <span class="p">});</span>
-          <span class="nx">conn</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;ReceiveMessageFromGroup&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">group</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">group</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="nx">message</span><span class="p">);</span>
-          <span class="p">});</span>
-        <span class="p">})</span>
-        <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-        <span class="p">});</span>
-    <span class="p">},</span>
-    <span class="nx">useMqtt</span><span class="p">()</span> <span class="p">{</span>
-      <span class="kd">let</span> <span class="nx">mqttClient</span> <span class="o">=</span> <span class="nx">mqtt</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s2">&#34;ws://172.21.30.233:8988/mqtt&#34;</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">username</span><span class="o">:</span> <span class="s2">&#34;admin&#34;</span><span class="p">,</span>
-        <span class="nx">password</span><span class="o">:</span> <span class="s2">&#34;123456&#34;</span><span class="p">,</span>
-        <span class="c1">// clientId: &#34;Lesan&#34;,
-</span><span class="c1"></span>      <span class="p">});</span>
-      <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;connect&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;connected&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
-        <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&#34;monitor&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">qos</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;subscribed&#34;</span><span class="p">);</span>
-          <span class="p">}</span>
-        <span class="p">});</span>
-      <span class="p">});</span>
-      <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;message&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-      <span class="p">});</span>
-    <span class="p">},</span>
-    <span class="nx">useRabbitMQ</span><span class="p">()</span> <span class="p">{</span>
-      <span class="c1">// this.rabbitClient.heartbeat.outgoing = 0;
-</span><span class="c1"></span>      <span class="c1">// this.rabbitClient.heartbeat.incoming = 0;
-</span><span class="c1"></span>      <span class="k">this</span><span class="p">.</span><span class="nx">rabbitClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span>
-        <span class="s2">&#34;KB&#34;</span><span class="p">,</span>
-        <span class="s2">&#34;KB&#34;</span><span class="p">,</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">onConnected</span><span class="p">,</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">onFailed</span><span class="p">,</span>
-        <span class="s2">&#34;kb_monitor&#34;</span>
-      <span class="p">);</span>
-    <span class="p">},</span>
-    <span class="nx">onConnected</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="c1">//订阅频道
-</span><span class="c1"></span>      <span class="c1">// const topic = localStorage.getItem(&#34;Lesan&#34;);
-</span><span class="c1"></span>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;连接成功&#34;</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">rabbitClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
-        <span class="s2">&#34;/exchange/monitor/message&#34;</span><span class="p">,</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">responseCallback</span><span class="p">,</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">onFailed</span>
-      <span class="p">);</span>
-    <span class="p">},</span>
-    <span class="nx">onFailed</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;MQ Failed: &#34;</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">$message</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&#34;连接失败&#34;</span><span class="p">);</span>
-    <span class="p">},</span>
-    <span class="c1">// 回传消息
-</span><span class="c1"></span>    <span class="nx">responseCallback</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;MQ msg=&gt;&#34;</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-      <span class="c1">//接收消息处理
-</span><span class="c1"></span>    <span class="p">},</span>
-    <span class="c1">// 断开相应的连接
-</span><span class="c1"></span>    <span class="nx">close</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">rabbitClient</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;已退出账号&#34;</span><span class="p">);</span>
-      <span class="p">});</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-<span class="p">};</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="err">#</span><span class="nx">app</span> <span class="p">{</span>
-  <span class="nx">font</span><span class="o">-</span><span class="nx">family</span><span class="o">:</span> <span class="nx">Avenir</span><span class="p">,</span> <span class="nx">Helvetica</span><span class="p">,</span> <span class="nx">Arial</span><span class="p">,</span> <span class="nx">sans</span><span class="o">-</span><span class="nx">serif</span><span class="p">;</span>
-  <span class="o">-</span><span class="nx">webkit</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">smoothing</span><span class="o">:</span> <span class="nx">antialiased</span><span class="p">;</span>
-  <span class="o">-</span><span class="nx">moz</span><span class="o">-</span><span class="nx">osx</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">smoothing</span><span class="o">:</span> <span class="nx">grayscale</span><span class="p">;</span>
-  <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="o">:</span> <span class="nx">center</span><span class="p">;</span>
-  <span class="nx">color</span><span class="o">:</span> <span class="err">#</span><span class="mi">2</span><span class="nx">c3e50</span><span class="p">;</span>
-  <span class="nx">margin</span><span class="o">-</span><span class="nx">top</span><span class="o">:</span> <span class="mi">60</span><span class="nx">px</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;app&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;Vue logo&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;./assets/logo.png&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">HelloWorld</span> <span class="na">msg</span><span class="o">=</span><span class="s">&#34;Welcome to Your Vue.js App&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">HelloWorld</span> <span class="nx">from</span> <span class="s2">&#34;./components/HelloWorld.vue&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">mqtt</span> <span class="nx">from</span> <span class="s2">&#34;mqtt&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">Stomp</span> <span class="nx">from</span> <span class="s2">&#34;stompjs&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;App&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">HelloWorld</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">rabbitClient</span><span class="o">:</span> <span class="nx">Stomp</span><span class="p">.</span><span class="nx">client</span><span class="p">(</span><span class="s2">&#34;ws://172.21.30.233:15674/ws&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">created</span><span class="p">()</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// this.useMqtt();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// this.useRabbitMQ();
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="p">.</span><span class="nx">useSignalR</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">useSignalR</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">signalR</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;@microsoft/signalr&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">signalR</span><span class="p">.</span><span class="nx">HubConnectionBuilder</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="nx">withUrl</span><span class="p">(</span><span class="s2">&#34;http://172.21.30.233:8988/chatHub&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="nx">withAutomaticReconnect</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="nx">configureLogging</span><span class="p">(</span><span class="nx">signalR</span><span class="p">.</span><span class="nx">LogLevel</span><span class="p">.</span><span class="nb">Error</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="nx">build</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">conn</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;conneted&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">conn</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&#34;AddToGroup&#34;</span><span class="p">,</span> <span class="s2">&#34;大屏&#34;</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">          <span class="p">});</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">conn</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;ReceiveMessageFromGroup&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">group</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">group</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="nx">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="p">})</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">useMqtt</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kd">let</span> <span class="nx">mqttClient</span> <span class="o">=</span> <span class="nx">mqtt</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s2">&#34;ws://172.21.30.233:8988/mqtt&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">username</span><span class="o">:</span> <span class="s2">&#34;admin&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">password</span><span class="o">:</span> <span class="s2">&#34;123456&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// clientId: &#34;Lesan&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;connect&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;connected&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">&#34;monitor&#34;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">qos</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;subscribed&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">mqttClient</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;message&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">useRabbitMQ</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// this.rabbitClient.heartbeat.outgoing = 0;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">// this.rabbitClient.heartbeat.incoming = 0;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">this</span><span class="p">.</span><span class="nx">rabbitClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;KB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;KB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">onConnected</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">onFailed</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;kb_monitor&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onConnected</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//订阅频道
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">// const topic = localStorage.getItem(&#34;Lesan&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;连接成功&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">rabbitClient</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;/exchange/monitor/message&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">responseCallback</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="nx">onFailed</span>
+</span></span><span class="line"><span class="cl">      <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">onFailed</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;MQ Failed: &#34;</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">$message</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&#34;连接失败&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 回传消息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">responseCallback</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">frame</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;MQ msg=&gt;&#34;</span> <span class="o">+</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//接收消息处理
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 断开相应的连接
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">close</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">rabbitClient</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;已退出账号&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="err">#</span><span class="nx">app</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">font</span><span class="o">-</span><span class="nx">family</span><span class="o">:</span> <span class="nx">Avenir</span><span class="p">,</span> <span class="nx">Helvetica</span><span class="p">,</span> <span class="nx">Arial</span><span class="p">,</span> <span class="nx">sans</span><span class="o">-</span><span class="nx">serif</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span><span class="nx">webkit</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">smoothing</span><span class="o">:</span> <span class="nx">antialiased</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span><span class="nx">moz</span><span class="o">-</span><span class="nx">osx</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">smoothing</span><span class="o">:</span> <span class="nx">grayscale</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="o">:</span> <span class="nx">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">color</span><span class="o">:</span> <span class="err">#</span><span class="mi">2</span><span class="nx">c3e50</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">margin</span><span class="o">-</span><span class="nx">top</span><span class="o">:</span> <span class="mi">60</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">

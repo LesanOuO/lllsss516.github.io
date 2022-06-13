@@ -8,10 +8,10 @@
         <title>构建一个带libgdiplus的DotNetCore基础Docker镜像 - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="构建一个带libgdiplus的DotNetCore基础Docker镜像" />
 <meta property="og:description" content="Docker 简介 Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从 Apache2.0 协议开源。Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://llssit.cn/%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B8%A6libgdiplus%E7%9A%84dotnetcore%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/" />
-<meta property="og:image" content="https://llssit.cn/logo.png"/>
+<meta property="og:url" content="https://llssit.cn/%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B8%A6libgdiplus%E7%9A%84dotnetcore%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/" /><meta property="og:image" content="https://llssit.cn/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-27T10:50:10+08:00" />
 <meta property="article:modified_time" content="2022-03-27T10:50:10+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://llssit.cn/logo.png"/>
 
@@ -147,7 +147,7 @@
 <h3 id="常用镜像命令">常用镜像命令</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -164,27 +164,27 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">1. 查看服务器中 Docker 镜像列表
-docker images
-2. 搜索镜像
-docker search 镜像名
-3. 拉取镜像（不加tag<span class="o">(</span>版本号<span class="o">)</span>就默认拉取Docker仓库中该镜像的最新版本latest<span class="p">;</span> 加:tag则是拉取指定版本）
-docker pull 镜像名
-docker pull 镜像名:v1
-4. 运行镜像
-docker run -itd --name<span class="o">=</span><span class="s2">&#34;nginx&#34;</span> --restart<span class="o">=</span>always -p 80:80 -v /data:/data nginx:latest
-5. 删除镜像
-docker rmi -f 镜像名/镜像ID
-6. 保存镜像
-docker save nginx -o /nginx.tar
-7. 加载镜像
-docker load -i 镜像文件位置
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">1. 查看服务器中 Docker 镜像列表
+</span></span><span class="line"><span class="cl">docker images
+</span></span><span class="line"><span class="cl">2. 搜索镜像
+</span></span><span class="line"><span class="cl">docker search 镜像名
+</span></span><span class="line"><span class="cl">3. 拉取镜像（不加tag<span class="o">(</span>版本号<span class="o">)</span>就默认拉取Docker仓库中该镜像的最新版本latest<span class="p">;</span> 加:tag则是拉取指定版本）
+</span></span><span class="line"><span class="cl">docker pull 镜像名
+</span></span><span class="line"><span class="cl">docker pull 镜像名:v1
+</span></span><span class="line"><span class="cl">4. 运行镜像
+</span></span><span class="line"><span class="cl">docker run -itd --name<span class="o">=</span><span class="s2">&#34;nginx&#34;</span> --restart<span class="o">=</span>always -p 80:80 -v /data:/data nginx:latest
+</span></span><span class="line"><span class="cl">5. 删除镜像
+</span></span><span class="line"><span class="cl">docker rmi -f 镜像名/镜像ID
+</span></span><span class="line"><span class="cl">6. 保存镜像
+</span></span><span class="line"><span class="cl">docker save nginx -o /nginx.tar
+</span></span><span class="line"><span class="cl">7. 加载镜像
+</span></span><span class="line"><span class="cl">docker load -i 镜像文件位置
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="常用容器命令">常用容器命令</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -214,40 +214,40 @@ docker load -i 镜像文件位置
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">1. 查看正在运行容器列表
-docker ps
-2. 查看所有容器
-docker ps -a
-3. 停止容器
-docker stop 容器名/容器ID
-4. 删除容器
-docker rm -f 容器名/容器ID
-5. 进入容器方式
-docker <span class="nb">exec</span> -it 容器名/容器ID /bin/bash
-exit/ctl+p+q <span class="c1">#退出</span>
-6. 重启容器
-docker restart 容器名/容器ID
-7. 启动容器
-docker start 容器名/容器ID
-8. <span class="nb">kill</span> 容器
-docker <span class="nb">kill</span> 容器名/容器ID
-9. 容器文件拷贝
-docker cp 容器名/ID:容器内路径 容器外路径 <span class="c1">#容器内拷出</span>
-docker cp 容器外路径 容器名/ID:容器内路径 <span class="c1">#容器外拷入</span>
-10. 查看容器日志
-docker logs -f --tail<span class="o">=</span><span class="m">100</span> 容器 <span class="c1">#tail查看末尾多少行 默认all</span>
-11. 修改存在容器的启动配置
-docker update --restart<span class="o">=</span>always 容器
-12. 更换容器名
-docker rename 容器 容器新名字
-13. 通过容器提交镜像！！！###
-docker commit -a<span class="o">=</span><span class="s2">&#34;提交作者&#34;</span> -m<span class="o">=</span><span class="s2">&#34;提交信息&#34;</span> 容器 提交镜像:tag
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">1. 查看正在运行容器列表
+</span></span><span class="line"><span class="cl">docker ps
+</span></span><span class="line"><span class="cl">2. 查看所有容器
+</span></span><span class="line"><span class="cl">docker ps -a
+</span></span><span class="line"><span class="cl">3. 停止容器
+</span></span><span class="line"><span class="cl">docker stop 容器名/容器ID
+</span></span><span class="line"><span class="cl">4. 删除容器
+</span></span><span class="line"><span class="cl">docker rm -f 容器名/容器ID
+</span></span><span class="line"><span class="cl">5. 进入容器方式
+</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -it 容器名/容器ID /bin/bash
+</span></span><span class="line"><span class="cl">exit/ctl+p+q <span class="c1">#退出</span>
+</span></span><span class="line"><span class="cl">6. 重启容器
+</span></span><span class="line"><span class="cl">docker restart 容器名/容器ID
+</span></span><span class="line"><span class="cl">7. 启动容器
+</span></span><span class="line"><span class="cl">docker start 容器名/容器ID
+</span></span><span class="line"><span class="cl">8. <span class="nb">kill</span> 容器
+</span></span><span class="line"><span class="cl">docker <span class="nb">kill</span> 容器名/容器ID
+</span></span><span class="line"><span class="cl">9. 容器文件拷贝
+</span></span><span class="line"><span class="cl">docker cp 容器名/ID:容器内路径 容器外路径 <span class="c1">#容器内拷出</span>
+</span></span><span class="line"><span class="cl">docker cp 容器外路径 容器名/ID:容器内路径 <span class="c1">#容器外拷入</span>
+</span></span><span class="line"><span class="cl">10. 查看容器日志
+</span></span><span class="line"><span class="cl">docker logs -f --tail<span class="o">=</span><span class="m">100</span> 容器 <span class="c1">#tail查看末尾多少行 默认all</span>
+</span></span><span class="line"><span class="cl">11. 修改存在容器的启动配置
+</span></span><span class="line"><span class="cl">docker update --restart<span class="o">=</span>always 容器
+</span></span><span class="line"><span class="cl">12. 更换容器名
+</span></span><span class="line"><span class="cl">docker rename 容器 容器新名字
+</span></span><span class="line"><span class="cl">13. 通过容器提交镜像！！！###
+</span></span><span class="line"><span class="cl">docker commit -a<span class="o">=</span><span class="s2">&#34;提交作者&#34;</span> -m<span class="o">=</span><span class="s2">&#34;提交信息&#34;</span> 容器 提交镜像:tag
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="docker-运维命令">Docker 运维命令</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -264,22 +264,22 @@ docker commit -a<span class="o">=</span><span class="s2">&#34;提交作者&#34;<
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">1. 查看Docker工作目录
-sudo docker info <span class="p">|</span> grep <span class="s2">&#34;Docker Root Dir&#34;</span>
-2. 查看Docker磁盘占用总体情况
-du -hs /var/lib/docker/
-3. 查看Docker的磁盘使用具体情况
-docker system df
-4. 删除无用的容器和镜像
-docker rm <span class="sb">`</span>docker ps -a <span class="p">|</span> grep Exited <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="sb">`</span>
-docker rmi -f <span class="sb">`</span>docker images <span class="p">|</span> grep <span class="s1">&#39;&lt;none&gt;&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $3}&#39;</span><span class="sb">`</span>
-5. 清除所有无容器使用的镜像
-docker system prune -a
-6. 查找大文件
-find / -type f -size +100M -print0 <span class="p">|</span> xargs -0 du -h <span class="p">|</span> sort -nr
-7. 查找指定Docker使用目录下大于指定大小文件
-find / -type f -size +100M -print0 <span class="p">|</span> xargs -0 du -h <span class="p">|</span> sort -nr <span class="p">|</span> grep <span class="s1">&#39;/var/lib/docker/overlap2/*&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">1. 查看Docker工作目录
+</span></span><span class="line"><span class="cl">sudo docker info <span class="p">|</span> grep <span class="s2">&#34;Docker Root Dir&#34;</span>
+</span></span><span class="line"><span class="cl">2. 查看Docker磁盘占用总体情况
+</span></span><span class="line"><span class="cl">du -hs /var/lib/docker/
+</span></span><span class="line"><span class="cl">3. 查看Docker的磁盘使用具体情况
+</span></span><span class="line"><span class="cl">docker system df
+</span></span><span class="line"><span class="cl">4. 删除无用的容器和镜像
+</span></span><span class="line"><span class="cl">docker rm <span class="sb">`</span>docker ps -a <span class="p">|</span> grep Exited <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">docker rmi -f <span class="sb">`</span>docker images <span class="p">|</span> grep <span class="s1">&#39;&lt;none&gt;&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $3}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">5. 清除所有无容器使用的镜像
+</span></span><span class="line"><span class="cl">docker system prune -a
+</span></span><span class="line"><span class="cl">6. 查找大文件
+</span></span><span class="line"><span class="cl">find / -type f -size +100M -print0 <span class="p">|</span> xargs -0 du -h <span class="p">|</span> sort -nr
+</span></span><span class="line"><span class="cl">7. 查找指定Docker使用目录下大于指定大小文件
+</span></span><span class="line"><span class="cl">find / -type f -size +100M -print0 <span class="p">|</span> xargs -0 du -h <span class="p">|</span> sort -nr <span class="p">|</span> grep <span class="s1">&#39;/var/lib/docker/overlap2/*&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="构建一个带libgdiplus的dotnetcore基础镜像">构建一个带libgdiplus的DotNetCore基础镜像</h2>
 <p>通过Docker拉取一个.netcore3.1基础镜像：<code>docker pull mcr.microsoft.com/dotnet/aspnet:3.1</code></p>
@@ -287,25 +287,25 @@ find / -type f -size +100M -print0 <span class="p">|</span> xargs -0 du -h <span
 <p>安装libgdiplus：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">apt-get update -y
-apt-get install -y libgdiplus
-apt-get clean
-ln -s /usr/lib/libgdiplus.so /usr/lib/gdiplus.dll
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt-get update -y
+</span></span><span class="line"><span class="cl">apt-get install -y libgdiplus
+</span></span><span class="line"><span class="cl">apt-get clean
+</span></span><span class="line"><span class="cl">ln -s /usr/lib/libgdiplus.so /usr/lib/gdiplus.dll
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>提交为新镜像：<code>docker commit -a=&quot;Lesan&quot; -m=&quot;added libgdiplus based on .netcore3.1&quot; 28a66ebccd55 dotnetcore-with-libgdiplus:v3.1</code></p>
 <p>修改项目Dockerfile基础镜像为刚刚构建的自定义镜像<code>dotnetcore-with-libgdiplus:v3.1</code></p>
 <blockquote>
 <p>借鉴参考以下文章：</p>
-<p><a href="https://blog.csdn.net/leilei1366615/article/details/106267225">https://blog.csdn.net/leilei1366615/article/details/106267225</a></p>
-<p><a href="https://www.runoob.com/docker/docker-command-manual.html">https://www.runoob.com/docker/docker-command-manual.html</a></p>
-<p><a href="https://blog.csdn.net/u014374975/article/details/115436174">https://blog.csdn.net/u014374975/article/details/115436174</a></p>
+<p><a href="https://blog.csdn.net/leilei1366615/article/details/106267225" target="_blank" rel="noopener noreffer">https://blog.csdn.net/leilei1366615/article/details/106267225</a></p>
+<p><a href="https://www.runoob.com/docker/docker-command-manual.html" target="_blank" rel="noopener noreffer">https://www.runoob.com/docker/docker-command-manual.html</a></p>
+<p><a href="https://blog.csdn.net/u014374975/article/details/115436174" target="_blank" rel="noopener noreffer">https://blog.csdn.net/u014374975/article/details/115436174</a></p>
 </blockquote>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">

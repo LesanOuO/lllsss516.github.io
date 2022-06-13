@@ -8,10 +8,10 @@
         <title>RabbitMQ学习 - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="RabbitMQ学习" />
 <meta property="og:description" content="RabbitMQ简述 MQ全称为Message Queue, 消息队列（MQ）是一种应用程序对应用程序的通信方法。RabbitMQ是一个在AMQP基础上完整" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://llssit.cn/rabbitmq%E5%AD%A6%E4%B9%A0/" />
-<meta property="og:image" content="https://llssit.cn/logo.png"/>
+<meta property="og:url" content="https://llssit.cn/rabbitmq%E5%AD%A6%E4%B9%A0/" /><meta property="og:image" content="https://llssit.cn/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-02-17T18:50:48+08:00" />
 <meta property="article:modified_time" content="2022-02-17T18:50:48+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://llssit.cn/logo.png"/>
 
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/llssit.cn\/rabbitmq%E5%AD%A6%E4%B9%A0\/"
-        },"genre": "posts","keywords": "RabbitMQ, .NET","wordcount":  3854 ,
+        },"genre": "posts","keywords": "RabbitMQ, .NET","wordcount":  3852 ,
         "url": "https:\/\/llssit.cn\/rabbitmq%E5%AD%A6%E4%B9%A0\/","datePublished": "2022-02-17T18:50:48+08:00","dateModified": "2022-02-17T18:50:48+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">RabbitMQ学习</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-17">2022-02-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3854 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-17">2022-02-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3852 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -233,7 +233,7 @@
 <h3 id="生产者">生产者</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -336,119 +336,117 @@
 </span><span class="lnt">101
 </span><span class="lnt">102
 </span><span class="lnt">103
-</span><span class="lnt">104
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">using</span> <span class="nn">RabbitMQ.Client</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">RabbitMQProduct</span>
-<span class="p">{</span>
-    <span class="k">internal</span> <span class="k">class</span> <span class="nc">Program</span>
-    <span class="p">{</span>
-        <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Welcome to RabbitMQ Product!&#34;</span><span class="p">);</span>
-            <span class="n">DirectExchangeSendMsg</span><span class="p">();</span>
-            <span class="c1">// TopicExchangeSendMsg();
-</span><span class="c1"></span>            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;按任意值，退出程序&#34;</span><span class="p">);</span>
-            <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
-        <span class="p">}</span>
-
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// 连接配置
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">ConnectionFactory</span> <span class="n">rabbitMqFactory</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConnectionFactory</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">UserName</span> <span class="p">=</span> <span class="s">&#34;guest&#34;</span><span class="p">,</span>
-            <span class="n">Password</span> <span class="p">=</span> <span class="s">&#34;guest&#34;</span><span class="p">,</span>
-            <span class="n">Port</span> <span class="p">=</span> <span class="m">5672</span><span class="p">,</span>
-            <span class="c1">//VirtualHost = &#34;LesanVirtualHost&#34;
-</span><span class="c1"></span>        <span class="p">};</span>
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// 路由名称
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">const</span> <span class="kt">string</span> <span class="n">ExchangeName</span> <span class="p">=</span> <span class="s">&#34;Lesan.exchange&#34;</span><span class="p">;</span>
-
-        <span class="c1">//队列名称
-</span><span class="c1"></span>        <span class="k">const</span> <span class="kt">string</span> <span class="n">QueueName</span> <span class="p">=</span> <span class="s">&#34;Lesan.queue&#34;</span><span class="p">;</span>
-
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// 路由名称
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">const</span> <span class="kt">string</span> <span class="n">TopExchangeName</span> <span class="p">=</span> <span class="s">&#34;topic.Lesan.exchange&#34;</span><span class="p">;</span>
-
-        <span class="c1">//队列名称
-</span><span class="c1"></span>        <span class="k">const</span> <span class="kt">string</span> <span class="n">TopQueueName</span> <span class="p">=</span> <span class="s">&#34;topic.Lesan.queue&#34;</span><span class="p">;</span>
-
-
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">///  单点精确路由模式
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">DirectExchangeSendMsg</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
-            <span class="p">{</span>
-                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
-                <span class="p">{</span>
-                    <span class="c1">//设置交换器的类型
-</span><span class="c1"></span>                    <span class="n">channel</span><span class="p">.</span><span class="n">ExchangeDeclare</span><span class="p">(</span><span class="n">ExchangeName</span><span class="p">,</span> <span class="n">ExchangeType</span><span class="p">.</span><span class="n">Direct</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-                    <span class="c1">//声明一个队列，设置队列是否持久化，排他性，与自动删除
-</span><span class="c1"></span>                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-                    <span class="c1">//绑定消息队列，交换器，routingkey
-</span><span class="c1"></span>                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueBind</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">ExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">QueueName</span><span class="p">);</span>
-
-                    <span class="kt">var</span> <span class="n">props</span> <span class="p">=</span> <span class="n">channel</span><span class="p">.</span><span class="n">CreateBasicProperties</span><span class="p">();</span>
-                    <span class="c1">//队列持久化
-</span><span class="c1"></span>                    <span class="n">props</span><span class="p">.</span><span class="n">Persistent</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
-                    <span class="kt">string</span> <span class="n">vadata</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
-                    <span class="k">while</span> <span class="p">(</span><span class="n">vadata</span> <span class="p">!=</span> <span class="s">&#34;exit&#34;</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">vadata</span><span class="p">);</span>
-                        <span class="c1">//发送信息
-</span><span class="c1"></span>                        <span class="n">channel</span><span class="p">.</span><span class="n">BasicPublish</span><span class="p">(</span><span class="n">exchange</span><span class="p">:</span> <span class="n">ExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">QueueName</span><span class="p">,</span> <span class="n">basicProperties</span><span class="p">:</span> <span class="n">props</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="n">msgBody</span><span class="p">);</span>
-                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***发送时间:{0}，发送完成，输入exit退出消息发送&#34;</span><span class="p">,</span>
-                            <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">)));</span>
-                        <span class="n">vadata</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// topic 模糊匹配模式，符号“#”匹配一个或多个词，符号“*”匹配不多不少一个词。因此“log.#”能够匹配到“log.info.oa”，但是“log.*” 只会匹配到“log.error”
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">TopicExchangeSendMsg</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
-            <span class="p">{</span>
-                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
-                <span class="p">{</span>
-                    <span class="n">channel</span><span class="p">.</span><span class="n">ExchangeDeclare</span><span class="p">(</span><span class="n">TopExchangeName</span><span class="p">,</span> <span class="n">ExchangeType</span><span class="p">.</span><span class="n">Topic</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">TopQueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueBind</span><span class="p">(</span><span class="n">TopQueueName</span><span class="p">,</span> <span class="n">TopExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">TopQueueName</span><span class="p">);</span>
-                    <span class="c1">//var props = channel.CreateBasicProperties();
-</span><span class="c1"></span>                    <span class="c1">//props.Persistent = true;
-</span><span class="c1"></span>                    <span class="kt">string</span> <span class="n">vadata</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
-                    <span class="k">while</span> <span class="p">(</span><span class="n">vadata</span> <span class="p">!=</span> <span class="s">&#34;exit&#34;</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">vadata</span><span class="p">);</span>
-                        <span class="n">channel</span><span class="p">.</span><span class="n">BasicPublish</span><span class="p">(</span><span class="n">exchange</span><span class="p">:</span> <span class="n">TopExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">TopQueueName</span><span class="p">,</span> <span class="n">basicProperties</span><span class="p">:</span> <span class="k">null</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="n">msgBody</span><span class="p">);</span>
-                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***发送时间:{0}，发送完成，输入exit退出消息发送&#34;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">)));</span>
-                        <span class="n">vadata</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">RabbitMQ.Client</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">RabbitMQProduct</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">internal</span> <span class="k">class</span> <span class="nc">Program</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Welcome to RabbitMQ Product!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">DirectExchangeSendMsg</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// TopicExchangeSendMsg();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;按任意值，退出程序&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// 连接配置</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">ConnectionFactory</span> <span class="n">rabbitMqFactory</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConnectionFactory</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">UserName</span> <span class="p">=</span> <span class="s">&#34;guest&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Password</span> <span class="p">=</span> <span class="s">&#34;guest&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Port</span> <span class="p">=</span> <span class="m">5672</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//VirtualHost = &#34;LesanVirtualHost&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// 路由名称</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="kt">string</span> <span class="n">ExchangeName</span> <span class="p">=</span> <span class="s">&#34;Lesan.exchange&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//队列名称</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="kt">string</span> <span class="n">QueueName</span> <span class="p">=</span> <span class="s">&#34;Lesan.queue&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// 路由名称</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="kt">string</span> <span class="n">TopExchangeName</span> <span class="p">=</span> <span class="s">&#34;topic.Lesan.exchange&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//队列名称</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="kt">string</span> <span class="n">TopQueueName</span> <span class="p">=</span> <span class="s">&#34;topic.Lesan.queue&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">///  单点精确路由模式</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">DirectExchangeSendMsg</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//设置交换器的类型</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">ExchangeDeclare</span><span class="p">(</span><span class="n">ExchangeName</span><span class="p">,</span> <span class="n">ExchangeType</span><span class="p">.</span><span class="n">Direct</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//声明一个队列，设置队列是否持久化，排他性，与自动删除</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//绑定消息队列，交换器，routingkey</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueBind</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">ExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">QueueName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="kt">var</span> <span class="n">props</span> <span class="p">=</span> <span class="n">channel</span><span class="p">.</span><span class="n">CreateBasicProperties</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//队列持久化</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">props</span><span class="p">.</span><span class="n">Persistent</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">string</span> <span class="n">vadata</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">while</span> <span class="p">(</span><span class="n">vadata</span> <span class="p">!=</span> <span class="s">&#34;exit&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">vadata</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="c1">//发送信息</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">channel</span><span class="p">.</span><span class="n">BasicPublish</span><span class="p">(</span><span class="n">exchange</span><span class="p">:</span> <span class="n">ExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">QueueName</span><span class="p">,</span> <span class="n">basicProperties</span><span class="p">:</span> <span class="n">props</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="n">msgBody</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***发送时间:{0}，发送完成，输入exit退出消息发送&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">vadata</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// topic 模糊匹配模式，符号“#”匹配一个或多个词，符号“*”匹配不多不少一个词。因此“log.#”能够匹配到“log.info.oa”，但是“log.*” 只会匹配到“log.error”</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">TopicExchangeSendMsg</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">ExchangeDeclare</span><span class="p">(</span><span class="n">TopExchangeName</span><span class="p">,</span> <span class="n">ExchangeType</span><span class="p">.</span><span class="n">Topic</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">TopQueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueBind</span><span class="p">(</span><span class="n">TopQueueName</span><span class="p">,</span> <span class="n">TopExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">TopQueueName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//var props = channel.CreateBasicProperties();</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//props.Persistent = true;</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">string</span> <span class="n">vadata</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">while</span> <span class="p">(</span><span class="n">vadata</span> <span class="p">!=</span> <span class="s">&#34;exit&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">vadata</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">channel</span><span class="p">.</span><span class="n">BasicPublish</span><span class="p">(</span><span class="n">exchange</span><span class="p">:</span> <span class="n">TopExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">TopQueueName</span><span class="p">,</span> <span class="n">basicProperties</span><span class="p">:</span> <span class="k">null</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="n">msgBody</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***发送时间:{0}，发送完成，输入exit退出消息发送&#34;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">vadata</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="消费者">消费者</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -613,182 +611,180 @@
 </span><span class="lnt">163
 </span><span class="lnt">164
 </span><span class="lnt">165
-</span><span class="lnt">166
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">using</span> <span class="nn">RabbitMQ.Client</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">RabbitMQ.Client.Events</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">RabbitMQConsumer</span>
-<span class="p">{</span>
-    <span class="k">internal</span> <span class="k">class</span> <span class="nc">Program</span>
-    <span class="p">{</span>
-        <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Welcome to RabbitMQ Consumer!&#34;</span><span class="p">);</span>
-            <span class="c1">//DirectAcceptExchange();
-</span><span class="c1"></span>            <span class="c1">//DirectAcceptExchangeEvent();
-</span><span class="c1"></span>            <span class="n">DirectAcceptExchangeTask</span><span class="p">();</span>
-            <span class="c1">//TopicAcceptExchange();
-</span><span class="c1"></span>            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;按任意值，退出程序&#34;</span><span class="p">);</span>
-            <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
-        <span class="p">}</span>
-
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// 连接配置
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">ConnectionFactory</span> <span class="n">rabbitMqFactory</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConnectionFactory</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">UserName</span> <span class="p">=</span> <span class="s">&#34;guest&#34;</span><span class="p">,</span>
-            <span class="n">Password</span> <span class="p">=</span> <span class="s">&#34;guest&#34;</span><span class="p">,</span>
-            <span class="n">Port</span> <span class="p">=</span> <span class="m">5672</span><span class="p">,</span>
-            <span class="c1">//VirtualHost = &#34;LesanVirtualHost&#34;
-</span><span class="c1"></span>        <span class="p">};</span>
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// 路由名称
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">const</span> <span class="kt">string</span> <span class="n">ExchangeName</span> <span class="p">=</span> <span class="s">&#34;Lesan.exchange&#34;</span><span class="p">;</span>
-
-        <span class="c1">//队列名称
-</span><span class="c1"></span>        <span class="k">const</span> <span class="kt">string</span> <span class="n">QueueName</span> <span class="p">=</span> <span class="s">&#34;Lesan.queue&#34;</span><span class="p">;</span>
-
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// 路由名称
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">const</span> <span class="kt">string</span> <span class="n">TopExchangeName</span> <span class="p">=</span> <span class="s">&#34;topic.Lesan.exchange&#34;</span><span class="p">;</span>
-
-        <span class="c1">//队列名称
-</span><span class="c1"></span>        <span class="k">const</span> <span class="kt">string</span> <span class="n">TopQueueName</span> <span class="p">=</span> <span class="s">&#34;topic.Lesan.queue&#34;</span><span class="p">;</span>
-
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// 基于时间轮询的，每隔一段时间获取一次
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">DirectAcceptExchange</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
-            <span class="p">{</span>
-                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
-                <span class="p">{</span>
-                    <span class="c1">//设置交换器的类型
-</span><span class="c1"></span>                    <span class="n">channel</span><span class="p">.</span><span class="n">ExchangeDeclare</span><span class="p">(</span><span class="n">ExchangeName</span><span class="p">,</span> <span class="n">ExchangeType</span><span class="p">.</span><span class="n">Direct</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-                    <span class="c1">//声明一个队列，设置队列是否持久化，排他性，与自动删除
-</span><span class="c1"></span>                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-                    <span class="c1">//绑定消息队列，交换器，routingkey
-</span><span class="c1"></span>                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueBind</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">ExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">QueueName</span><span class="p">);</span>
-                    <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="n">BasicGetResult</span> <span class="n">msgResponse</span> <span class="p">=</span> <span class="n">channel</span><span class="p">.</span><span class="n">BasicGet</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">msgResponse</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-                        <span class="p">{</span>
-                            <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="n">msgResponse</span><span class="p">.</span><span class="n">Body</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
-                            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***接收时间:{0}，消息内容：{1}&#34;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">),</span> <span class="n">msgBody</span><span class="p">));</span>
-                        <span class="p">}</span>
-
-                        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">1</span><span class="p">));</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// 基于事件的，当消息到达时触发事件，获取数据
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">DirectAcceptExchangeEvent</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
-            <span class="p">{</span>
-                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
-                <span class="p">{</span>
-                    <span class="c1">//channel.ExchangeDeclare(ExchangeName, &#34;direct&#34;, durable: true, autoDelete: false, arguments: null);
-</span><span class="c1"></span>                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-                    <span class="c1">//channel.QueueBind(QueueName, ExchangeName, routingKey: QueueName);
-</span><span class="c1"></span>                    <span class="kt">var</span> <span class="n">consumer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventingBasicConsumer</span><span class="p">(</span><span class="n">channel</span><span class="p">);</span>
-                    <span class="n">consumer</span><span class="p">.</span><span class="n">Received</span> <span class="p">+=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ea</span><span class="p">)</span> <span class="p">=&gt;</span>
-                    <span class="p">{</span>
-                        <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="n">ea</span><span class="p">.</span><span class="n">Body</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
-                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***接收时间:{0}，消息内容：{1}&#34;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">),</span> <span class="n">msgBody</span><span class="p">));</span>
-                    <span class="p">};</span>
-                    <span class="n">channel</span><span class="p">.</span><span class="n">BasicConsume</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="n">consumer</span><span class="p">:</span> <span class="n">consumer</span><span class="p">);</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;按任意值，退出程序&#34;</span><span class="p">);</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// 基于事件的，当消息到达时触发事件，获取数据
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">DirectAcceptExchangeTask</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
-            <span class="p">{</span>
-                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
-                <span class="p">{</span>
-                    <span class="c1">//channel.ExchangeDeclare(ExchangeName, &#34;direct&#34;, durable: true, autoDelete: false, arguments: null);
-</span><span class="c1"></span>                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-                    <span class="n">channel</span><span class="p">.</span><span class="n">BasicQos</span><span class="p">(</span><span class="n">prefetchSize</span><span class="p">:</span> <span class="m">0</span><span class="p">,</span> <span class="n">prefetchCount</span><span class="p">:</span> <span class="m">1</span><span class="p">,</span> <span class="n">global</span><span class="p">:</span> <span class="k">false</span><span class="p">);</span><span class="c1">//告诉broker同一时间只处理一个消息
-</span><span class="c1"></span>                    <span class="c1">//channel.QueueBind(QueueName, ExchangeName, routingKey: QueueName);
-</span><span class="c1"></span>
-                    <span class="c1">//定义这个队列的消费者
-</span><span class="c1"></span>                    <span class="kt">var</span> <span class="n">consumer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventingBasicConsumer</span><span class="p">(</span><span class="n">channel</span><span class="p">);</span>
-                    <span class="n">consumer</span><span class="p">.</span><span class="n">Received</span> <span class="p">+=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ea</span><span class="p">)</span> <span class="p">=&gt;</span>
-                    <span class="p">{</span>
-                        <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="n">ea</span><span class="p">.</span><span class="n">Body</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
-                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***接收时间:{0}，消息内容：{1}&#34;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">),</span> <span class="n">msgBody</span><span class="p">));</span>
-                        <span class="kt">int</span> <span class="n">dots</span> <span class="p">=</span> <span class="n">msgBody</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;.&#39;</span><span class="p">).</span><span class="n">Length</span> <span class="p">-</span> <span class="m">1</span><span class="p">;</span>
-                        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="n">dots</span> <span class="p">*</span> <span class="m">1000</span><span class="p">);</span>
-                        <span class="c1">//处理完成，告诉Broker可以服务端可以删除消息，分配新的消息过来
-</span><span class="c1"></span>                        <span class="n">channel</span><span class="p">.</span><span class="n">BasicAck</span><span class="p">(</span><span class="n">deliveryTag</span><span class="p">:</span> <span class="n">ea</span><span class="p">.</span><span class="n">DeliveryTag</span><span class="p">,</span> <span class="n">multiple</span><span class="p">:</span> <span class="k">false</span><span class="p">);</span>
-                    <span class="p">};</span>
-                    <span class="c1">//noAck设置false,告诉broker，发送消息之后，消息暂时不要删除，等消费者处理完成再说
-</span><span class="c1"></span>                    <span class="c1">//false为手动应答，true为自动应答
-</span><span class="c1"></span>                    <span class="n">channel</span><span class="p">.</span><span class="n">BasicConsume</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">consumer</span><span class="p">:</span> <span class="n">consumer</span><span class="p">);</span>
-
-                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;按任意值，退出程序&#34;</span><span class="p">);</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// topic 模糊匹配模式，符号“#”匹配一个或多个词，符号“*”匹配不多不少一个词。因此“log.#”能够匹配到“log.info.oa”，但是“log.*” 只会匹配到“log.error”
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">TopicAcceptExchange</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
-            <span class="p">{</span>
-                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
-                <span class="p">{</span>
-                    <span class="n">channel</span><span class="p">.</span><span class="n">ExchangeDeclare</span><span class="p">(</span><span class="n">TopExchangeName</span><span class="p">,</span> <span class="n">ExchangeType</span><span class="p">.</span><span class="n">Topic</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">TopQueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
-                    <span class="n">channel</span><span class="p">.</span><span class="n">BasicQos</span><span class="p">(</span><span class="n">prefetchSize</span><span class="p">:</span> <span class="m">0</span><span class="p">,</span> <span class="n">prefetchCount</span><span class="p">:</span> <span class="m">1</span><span class="p">,</span> <span class="n">global</span><span class="p">:</span> <span class="k">false</span><span class="p">);</span>
-                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueBind</span><span class="p">(</span><span class="n">TopQueueName</span><span class="p">,</span> <span class="n">TopExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">TopQueueName</span><span class="p">);</span>
-                    <span class="kt">var</span> <span class="n">consumer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventingBasicConsumer</span><span class="p">(</span><span class="n">channel</span><span class="p">);</span>
-                    <span class="n">consumer</span><span class="p">.</span><span class="n">Received</span> <span class="p">+=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ea</span><span class="p">)</span> <span class="p">=&gt;</span>
-                    <span class="p">{</span>
-                        <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="n">ea</span><span class="p">.</span><span class="n">Body</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
-                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***接收时间:{0}，消息内容：{1}&#34;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">),</span> <span class="n">msgBody</span><span class="p">));</span>
-                        <span class="kt">int</span> <span class="n">dots</span> <span class="p">=</span> <span class="n">msgBody</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;.&#39;</span><span class="p">).</span><span class="n">Length</span> <span class="p">-</span> <span class="m">1</span><span class="p">;</span>
-                        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="n">dots</span> <span class="p">*</span> <span class="m">1000</span><span class="p">);</span>
-                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34; [x] Done&#34;</span><span class="p">);</span>
-                        <span class="n">channel</span><span class="p">.</span><span class="n">BasicAck</span><span class="p">(</span><span class="n">deliveryTag</span><span class="p">:</span> <span class="n">ea</span><span class="p">.</span><span class="n">DeliveryTag</span><span class="p">,</span> <span class="n">multiple</span><span class="p">:</span> <span class="k">false</span><span class="p">);</span>
-                    <span class="p">};</span>
-                    <span class="n">channel</span><span class="p">.</span><span class="n">BasicConsume</span><span class="p">(</span><span class="n">TopQueueName</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">consumer</span><span class="p">:</span> <span class="n">consumer</span><span class="p">);</span>
-
-                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;按任意值，退出程序&#34;</span><span class="p">);</span>
-                    <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">RabbitMQ.Client</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">RabbitMQ.Client.Events</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">RabbitMQConsumer</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">internal</span> <span class="k">class</span> <span class="nc">Program</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Welcome to RabbitMQ Consumer!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//DirectAcceptExchange();</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//DirectAcceptExchangeEvent();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">DirectAcceptExchangeTask</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//TopicAcceptExchange();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;按任意值，退出程序&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// 连接配置</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">ConnectionFactory</span> <span class="n">rabbitMqFactory</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConnectionFactory</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">UserName</span> <span class="p">=</span> <span class="s">&#34;guest&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Password</span> <span class="p">=</span> <span class="s">&#34;guest&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Port</span> <span class="p">=</span> <span class="m">5672</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//VirtualHost = &#34;LesanVirtualHost&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// 路由名称</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="kt">string</span> <span class="n">ExchangeName</span> <span class="p">=</span> <span class="s">&#34;Lesan.exchange&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//队列名称</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="kt">string</span> <span class="n">QueueName</span> <span class="p">=</span> <span class="s">&#34;Lesan.queue&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// 路由名称</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="kt">string</span> <span class="n">TopExchangeName</span> <span class="p">=</span> <span class="s">&#34;topic.Lesan.exchange&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//队列名称</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="kt">string</span> <span class="n">TopQueueName</span> <span class="p">=</span> <span class="s">&#34;topic.Lesan.queue&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// 基于时间轮询的，每隔一段时间获取一次</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">DirectAcceptExchange</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//设置交换器的类型</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">ExchangeDeclare</span><span class="p">(</span><span class="n">ExchangeName</span><span class="p">,</span> <span class="n">ExchangeType</span><span class="p">.</span><span class="n">Direct</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//声明一个队列，设置队列是否持久化，排他性，与自动删除</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//绑定消息队列，交换器，routingkey</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueBind</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">ExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">QueueName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">BasicGetResult</span> <span class="n">msgResponse</span> <span class="p">=</span> <span class="n">channel</span><span class="p">.</span><span class="n">BasicGet</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">if</span> <span class="p">(</span><span class="n">msgResponse</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="n">msgResponse</span><span class="p">.</span><span class="n">Body</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***接收时间:{0}，消息内容：{1}&#34;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">),</span> <span class="n">msgBody</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="m">1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// 基于事件的，当消息到达时触发事件，获取数据</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">DirectAcceptExchangeEvent</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//channel.ExchangeDeclare(ExchangeName, &#34;direct&#34;, durable: true, autoDelete: false, arguments: null);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//channel.QueueBind(QueueName, ExchangeName, routingKey: QueueName);</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">var</span> <span class="n">consumer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventingBasicConsumer</span><span class="p">(</span><span class="n">channel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">consumer</span><span class="p">.</span><span class="n">Received</span> <span class="p">+=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ea</span><span class="p">)</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="n">ea</span><span class="p">.</span><span class="n">Body</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***接收时间:{0}，消息内容：{1}&#34;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">),</span> <span class="n">msgBody</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">BasicConsume</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="n">consumer</span><span class="p">:</span> <span class="n">consumer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;按任意值，退出程序&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// 基于事件的，当消息到达时触发事件，获取数据</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">DirectAcceptExchangeTask</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//channel.ExchangeDeclare(ExchangeName, &#34;direct&#34;, durable: true, autoDelete: false, arguments: null);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">BasicQos</span><span class="p">(</span><span class="n">prefetchSize</span><span class="p">:</span> <span class="m">0</span><span class="p">,</span> <span class="n">prefetchCount</span><span class="p">:</span> <span class="m">1</span><span class="p">,</span> <span class="n">global</span><span class="p">:</span> <span class="k">false</span><span class="p">);</span><span class="c1">//告诉broker同一时间只处理一个消息</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//channel.QueueBind(QueueName, ExchangeName, routingKey: QueueName);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="c1">//定义这个队列的消费者</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">var</span> <span class="n">consumer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventingBasicConsumer</span><span class="p">(</span><span class="n">channel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">consumer</span><span class="p">.</span><span class="n">Received</span> <span class="p">+=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ea</span><span class="p">)</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="n">ea</span><span class="p">.</span><span class="n">Body</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***接收时间:{0}，消息内容：{1}&#34;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">),</span> <span class="n">msgBody</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">                        <span class="kt">int</span> <span class="n">dots</span> <span class="p">=</span> <span class="n">msgBody</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;.&#39;</span><span class="p">).</span><span class="n">Length</span> <span class="p">-</span> <span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="n">dots</span> <span class="p">*</span> <span class="m">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="c1">//处理完成，告诉Broker可以服务端可以删除消息，分配新的消息过来</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">channel</span><span class="p">.</span><span class="n">BasicAck</span><span class="p">(</span><span class="n">deliveryTag</span><span class="p">:</span> <span class="n">ea</span><span class="p">.</span><span class="n">DeliveryTag</span><span class="p">,</span> <span class="n">multiple</span><span class="p">:</span> <span class="k">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//noAck设置false,告诉broker，发送消息之后，消息暂时不要删除，等消费者处理完成再说</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//false为手动应答，true为自动应答</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">BasicConsume</span><span class="p">(</span><span class="n">QueueName</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">consumer</span><span class="p">:</span> <span class="n">consumer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;按任意值，退出程序&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// topic 模糊匹配模式，符号“#”匹配一个或多个词，符号“*”匹配不多不少一个词。因此“log.#”能够匹配到“log.info.oa”，但是“log.*” 只会匹配到“log.error”</span>
+</span></span><span class="line"><span class="cl">        <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">TopicAcceptExchange</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">using</span> <span class="p">(</span><span class="n">IConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="n">rabbitMqFactory</span><span class="p">.</span><span class="n">CreateConnection</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">using</span> <span class="p">(</span><span class="n">IModel</span> <span class="n">channel</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateModel</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">ExchangeDeclare</span><span class="p">(</span><span class="n">TopExchangeName</span><span class="p">,</span> <span class="n">ExchangeType</span><span class="p">.</span><span class="n">Topic</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueDeclare</span><span class="p">(</span><span class="n">TopQueueName</span><span class="p">,</span> <span class="n">durable</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">autoDelete</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">exclusive</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">BasicQos</span><span class="p">(</span><span class="n">prefetchSize</span><span class="p">:</span> <span class="m">0</span><span class="p">,</span> <span class="n">prefetchCount</span><span class="p">:</span> <span class="m">1</span><span class="p">,</span> <span class="n">global</span><span class="p">:</span> <span class="k">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">QueueBind</span><span class="p">(</span><span class="n">TopQueueName</span><span class="p">,</span> <span class="n">TopExchangeName</span><span class="p">,</span> <span class="n">routingKey</span><span class="p">:</span> <span class="n">TopQueueName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">var</span> <span class="n">consumer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">EventingBasicConsumer</span><span class="p">(</span><span class="n">channel</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">consumer</span><span class="p">.</span><span class="n">Received</span> <span class="p">+=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ea</span><span class="p">)</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="kt">var</span> <span class="n">msgBody</span> <span class="p">=</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="n">ea</span><span class="p">.</span><span class="n">Body</span><span class="p">.</span><span class="n">ToArray</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;***接收时间:{0}，消息内容：{1}&#34;</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="p">),</span> <span class="n">msgBody</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">                        <span class="kt">int</span> <span class="n">dots</span> <span class="p">=</span> <span class="n">msgBody</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;.&#39;</span><span class="p">).</span><span class="n">Length</span> <span class="p">-</span> <span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">System</span><span class="p">.</span><span class="n">Threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="n">dots</span> <span class="p">*</span> <span class="m">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34; [x] Done&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">channel</span><span class="p">.</span><span class="n">BasicAck</span><span class="p">(</span><span class="n">deliveryTag</span><span class="p">:</span> <span class="n">ea</span><span class="p">.</span><span class="n">DeliveryTag</span><span class="p">,</span> <span class="n">multiple</span><span class="p">:</span> <span class="k">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">channel</span><span class="p">.</span><span class="n">BasicConsume</span><span class="p">(</span><span class="n">TopQueueName</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="n">consumer</span><span class="p">:</span> <span class="n">consumer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;按任意值，退出程序&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="引用">引用</h2>
 <p>以上笔记摘录自网络</p>
 <blockquote>
-<p><a href="https://www.cnblogs.com/knowledgesea/p/5296008.html">https://www.cnblogs.com/knowledgesea/p/5296008.html</a></p>
-<p><a href="https://www.cnblogs.com/personblog/p/10681741.html">https://www.cnblogs.com/personblog/p/10681741.html</a></p>
+<p><a href="https://www.cnblogs.com/knowledgesea/p/5296008.html" target="_blank" rel="noopener noreffer">https://www.cnblogs.com/knowledgesea/p/5296008.html</a></p>
+<p><a href="https://www.cnblogs.com/personblog/p/10681741.html" target="_blank" rel="noopener noreffer">https://www.cnblogs.com/personblog/p/10681741.html</a></p>
 </blockquote>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">

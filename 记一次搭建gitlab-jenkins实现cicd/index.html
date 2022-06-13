@@ -8,10 +8,10 @@
         <title>记一次搭建gitlab&#43;jenkins实现CI&amp;CD - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="记一次搭建gitlab&#43;jenkins实现CI&amp;CD" />
 <meta property="og:description" content="本篇文章记录本人搭建CI&amp;CD实现持续集成和持续部署 1.使用docker安装gitlab 下载镜像 （使用中文社区版） docker pull twang2218/gitlab-ce-zh 创建所需目录" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://llssit.cn/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" />
-<meta property="og:image" content="https://llssit.cn/logo.png"/>
+<meta property="og:url" content="https://llssit.cn/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" /><meta property="og:image" content="https://llssit.cn/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-04-01T18:48:10+08:00" />
 <meta property="article:modified_time" content="2022-04-01T18:48:10+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://llssit.cn/logo.png"/>
 
@@ -179,13 +179,13 @@
 <p>镜像下载完成后可通过<code>docker images</code>查看下载结果，再通过镜像启动为容器</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">docker run -d -p 9443:443 -p 9080:80 -p 9022:22 --restart always --name testgitlab -v D:<span class="se">\t</span>estgitlab<span class="se">\g</span>itlab<span class="se">\e</span>tc:/etc/gitlab -v D:<span class="se">\t</span>estgitlab<span class="se">\g</span>itlab<span class="se">\l</span>og:/var/log/gitlab -v D:<span class="se">\t</span>estgitlab<span class="se">\g</span>itlab<span class="se">\d</span>ata:/var/opt/gitlab --privileged<span class="o">=</span><span class="nb">true</span> twang2218/gitlab-ce-zh
-<span class="c1"># 执行完成后会返回一串字符串</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -d -p 9443:443 -p 9080:80 -p 9022:22 --restart always --name testgitlab -v D:<span class="se">\t</span>estgitlab<span class="se">\g</span>itlab<span class="se">\e</span>tc:/etc/gitlab -v D:<span class="se">\t</span>estgitlab<span class="se">\g</span>itlab<span class="se">\l</span>og:/var/log/gitlab -v D:<span class="se">\t</span>estgitlab<span class="se">\g</span>itlab<span class="se">\d</span>ata:/var/opt/gitlab --privileged<span class="o">=</span><span class="nb">true</span> twang2218/gitlab-ce-zh
+</span></span><span class="line"><span class="cl"><span class="c1"># 执行完成后会返回一串字符串</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中：</p>
 <p>**-d：**后台执行</p>
@@ -201,7 +201,7 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -212,16 +212,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 整个gitlab.rb都是注释了的，我们可以按需加入我们的配置
-# 1. gitlab访问地址，可以写域名。如果端口不写的话默认为80端口
-eaxternal_url &#39;http://192.168.3.12:9080&#39;
-# 2. ssh主机ip
-gitlab_rails[&#39;gitlab_ssh_host&#39;] = &#39;192.168.3.12&#39;
-# 3. ssh连接端口
-gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 9022
-# 4. 防止内存占用过大，限制线程数
-unicorn[&#39;worker_processes&#39;] = 2
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 整个gitlab.rb都是注释了的，我们可以按需加入我们的配置
+</span></span><span class="line"><span class="cl"># 1. gitlab访问地址，可以写域名。如果端口不写的话默认为80端口
+</span></span><span class="line"><span class="cl">eaxternal_url &#39;http://192.168.3.12:9080&#39;
+</span></span><span class="line"><span class="cl"># 2. ssh主机ip
+</span></span><span class="line"><span class="cl">gitlab_rails[&#39;gitlab_ssh_host&#39;] = &#39;192.168.3.12&#39;
+</span></span><span class="line"><span class="cl"># 3. ssh连接端口
+</span></span><span class="line"><span class="cl">gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 9022
+</span></span><span class="line"><span class="cl"># 4. 防止内存占用过大，限制线程数
+</span></span><span class="line"><span class="cl">unicorn[&#39;worker_processes&#39;] = 2
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>修改<code>gitlab.yml</code>配置（这一步原本不是必须的，因为<code>gitlab.rb</code>内配置会覆盖这个，为了防止没有成功覆盖所以我在这里进行配置，当然你也可以选择不修改<code>gitlab.rb</code>直接修改这里）</li>
@@ -268,13 +268,13 @@ unicorn[&#39;worker_processes&#39;] = 2
 <h3 id="启动容器-1">启动容器</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">docker run -d -p 10240:8080 -p 10241:50000 -v D:<span class="se">\t</span>estjenkins<span class="se">\j</span>enkins_mount:/var/jenkins_home -v /etc/localtime:/etc/localtime --name testjenkins jenkins/jenkins
-<span class="c1"># 其中-v /etc/localtime:/etc/localtime让容器使用和服务器同样的时间设置</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -d -p 10240:8080 -p 10241:50000 -v D:<span class="se">\t</span>estjenkins<span class="se">\j</span>enkins_mount:/var/jenkins_home -v /etc/localtime:/etc/localtime --name testjenkins jenkins/jenkins
+</span></span><span class="line"><span class="cl"><span class="c1"># 其中-v /etc/localtime:/etc/localtime让容器使用和服务器同样的时间设置</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以通过<code>docker ps</code>来查看启动情况</p>
 <p>可以通过<code>docker logs testjenkins</code>来查看容器日志</p>
@@ -294,20 +294,20 @@ unicorn[&#39;worker_processes&#39;] = 2
 <p>linux下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sed -i <span class="s1">&#39;s/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&#39;</span> default.json <span class="o">&amp;&amp;</span> sed -i <span class="s1">&#39;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&#39;</span> default.json
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sed -i <span class="s1">&#39;s/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&#39;</span> default.json <span class="o">&amp;&amp;</span> sed -i <span class="s1">&#39;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&#39;</span> default.json
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>mac下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sed -i <span class="s2">&#34;&#34;</span> <span class="s1">&#39;s/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&#39;</span> default.json <span class="o">&amp;&amp;</span> sed -i <span class="s2">&#34;&#34;</span> <span class="s1">&#39;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&#39;</span> default.json
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sed -i <span class="s2">&#34;&#34;</span> <span class="s1">&#39;s/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&#39;</span> default.json <span class="o">&amp;&amp;</span> sed -i <span class="s2">&#34;&#34;</span> <span class="s1">&#39;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&#39;</span> default.json
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>重启容器 <code>docker restart testjenkins</code></p>
 <h3 id="访问jenkins">访问jenkins</h3>

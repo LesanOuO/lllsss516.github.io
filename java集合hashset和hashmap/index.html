@@ -8,10 +8,10 @@
         <title>Java集合(HashSet和HashMap) - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="Java集合(HashSet和HashMap)" />
 <meta property="og:description" content="API Collection 接口的接口 对象的集合（单列集合） ​ |&ndash;List 接口：元素按进入先后有序保存，可重复 ​ |&ndash;LinkedList 接口实现类， 链表， 插入删除， 没有同步， 线程不安全 ​ |&ndash;ArrayList 接口实现" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://llssit.cn/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/" />
-<meta property="og:image" content="https://llssit.cn/logo.png"/>
+<meta property="og:url" content="https://llssit.cn/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/" /><meta property="og:image" content="https://llssit.cn/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-01-13T12:20:25+08:00" />
 <meta property="article:modified_time" content="2021-01-13T12:20:25+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://llssit.cn/logo.png"/>
 
@@ -158,25 +158,25 @@
 <p>HashSet 类位于 java.util 包中，使用前需要引入它，语法格式如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">import java.util.HashSet; // 引入 HashSet 类
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import java.util.HashSet; // 引入 HashSet 类
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>以下实例我们创建一个 HashSet 对象 sites，用于保存字符串元素：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">HashSet&lt;String&gt; sites = new HashSet&lt;String&gt;();
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HashSet&lt;String&gt; sites = new HashSet&lt;String&gt;();
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>部分方法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -186,15 +186,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sites</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
-<span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Google&#34;</span><span class="o">);</span>
-<span class="n">sites</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;Taobao&#34;</span><span class="o">);</span>
-<span class="n">sites</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="s">&#34;Taobao&#34;</span><span class="o">);</span>
-<span class="n">sites</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
-<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">i</span> <span class="o">:</span> <span class="n">sites</span><span class="o">)</span> <span class="o">{</span>
-	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sites</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="n">sites</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Google&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">sites</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;Taobao&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">sites</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="s">&#34;Taobao&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">sites</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">i</span> <span class="o">:</span> <span class="n">sites</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="hashmap">HashMap</h3>
 <p>HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。</p>
@@ -204,25 +204,25 @@
 <p>HashMap 类位于 java.util 包中，使用前需要引入它，语法格式如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">import java.util.HashMap; // 引入 HashMap 类
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import java.util.HashMap; // 引入 HashMap 类
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>以下实例我们创建一个 HashMap 对象 Sites， 整型（Integer）的 key 和字符串（String）类型的 value：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">HashMap&lt;Integer, String&gt; Sites = new HashMap&lt;Integer, String&gt;();
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HashMap&lt;Integer, String&gt; Sites = new HashMap&lt;Integer, String&gt;();
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>部分方法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -239,119 +239,119 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 创建 HashMap 对象 Sites
-</span><span class="c1"></span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">Sites</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
-<span class="c1">// 添加键值对
-</span><span class="c1"></span><span class="n">Sites</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;Google&#34;</span><span class="o">);</span>
-<span class="n">Sites</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
-<span class="n">Sites</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>
-<span class="c1">// 输出 key 和 value
-</span><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="n">Integer</span> <span class="n">i</span> <span class="o">:</span> <span class="n">Sites</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
-  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;key: &#34;</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">&#34; value: &#34;</span> <span class="o">+</span> <span class="n">Sites</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-<span class="o">}</span>
-<span class="c1">// 返回所有 value 值
-</span><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="n">value</span><span class="o">:</span> <span class="n">Sites</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
-  <span class="c1">// 输出每一个value
-</span><span class="c1"></span>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">value</span> <span class="o">+</span> <span class="s">&#34;, &#34;</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 创建 HashMap 对象 Sites
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">Sites</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 添加键值对
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Sites</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;Google&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Sites</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Sites</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 输出 key 和 value
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="n">Integer</span> <span class="n">i</span> <span class="o">:</span> <span class="n">Sites</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;key: &#34;</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">&#34; value: &#34;</span> <span class="o">+</span> <span class="n">Sites</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 返回所有 value 值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="n">value</span><span class="o">:</span> <span class="n">Sites</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 输出每一个value
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">value</span> <span class="o">+</span> <span class="s">&#34;, &#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Java HashMap 常用方法列表如下：</p>
 <table>
 <thead>
 <tr>
-<th align="left">方法</th>
-<th align="left">描述</th>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-clear.html" target="_blank" rel="noopener noreffer">clear()</a></td>
-<td align="left">删除 hashMap 中的所有键/值对</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-clear.html" target="_blank" rel="noopener noreffer">clear()</a></td>
+<td style="text-align:left">删除 hashMap 中的所有键/值对</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-clone.html" target="_blank" rel="noopener noreffer">clone()</a></td>
-<td align="left">复制一份 hashMap</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-clone.html" target="_blank" rel="noopener noreffer">clone()</a></td>
+<td style="text-align:left">复制一份 hashMap</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-isempty.html" target="_blank" rel="noopener noreffer">isEmpty()</a></td>
-<td align="left">判断 hashMap 是否为空</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-isempty.html" target="_blank" rel="noopener noreffer">isEmpty()</a></td>
+<td style="text-align:left">判断 hashMap 是否为空</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-size.html" target="_blank" rel="noopener noreffer">size()</a></td>
-<td align="left">计算 hashMap 中键/值对的数量</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-size.html" target="_blank" rel="noopener noreffer">size()</a></td>
+<td style="text-align:left">计算 hashMap 中键/值对的数量</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-put.html" target="_blank" rel="noopener noreffer">put()</a></td>
-<td align="left">将键/值对添加到 hashMap 中</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-put.html" target="_blank" rel="noopener noreffer">put()</a></td>
+<td style="text-align:left">将键/值对添加到 hashMap 中</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-putall.html" target="_blank" rel="noopener noreffer">putAll()</a></td>
-<td align="left">将所有键/值对添加到 hashMap 中</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-putall.html" target="_blank" rel="noopener noreffer">putAll()</a></td>
+<td style="text-align:left">将所有键/值对添加到 hashMap 中</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-putifabsent.html" target="_blank" rel="noopener noreffer">putIfAbsent()</a></td>
-<td align="left">如果 hashMap 中不存在指定的键，则将指定的键/值对插入到 hashMap 中。</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-putifabsent.html" target="_blank" rel="noopener noreffer">putIfAbsent()</a></td>
+<td style="text-align:left">如果 hashMap 中不存在指定的键，则将指定的键/值对插入到 hashMap 中。</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-remove.html" target="_blank" rel="noopener noreffer">remove()</a></td>
-<td align="left">删除 hashMap 中指定键 key 的映射关系</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-remove.html" target="_blank" rel="noopener noreffer">remove()</a></td>
+<td style="text-align:left">删除 hashMap 中指定键 key 的映射关系</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-containskey.html" target="_blank" rel="noopener noreffer">containsKey()</a></td>
-<td align="left">检查 hashMap 中是否存在指定的 key 对应的映射关系。</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-containskey.html" target="_blank" rel="noopener noreffer">containsKey()</a></td>
+<td style="text-align:left">检查 hashMap 中是否存在指定的 key 对应的映射关系。</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-containsvalue.html" target="_blank" rel="noopener noreffer">containsValue()</a></td>
-<td align="left">检查 hashMap 中是否存在指定的 value 对应的映射关系。</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-containsvalue.html" target="_blank" rel="noopener noreffer">containsValue()</a></td>
+<td style="text-align:left">检查 hashMap 中是否存在指定的 value 对应的映射关系。</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-replace.html" target="_blank" rel="noopener noreffer">replace()</a></td>
-<td align="left">替换 hashMap 中是指定的 key 对应的 value。</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-replace.html" target="_blank" rel="noopener noreffer">replace()</a></td>
+<td style="text-align:left">替换 hashMap 中是指定的 key 对应的 value。</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-replaceall.html" target="_blank" rel="noopener noreffer">replaceAll()</a></td>
-<td align="left">将 hashMap 中的所有映射关系替换成给定的函数所执行的结果。</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-replaceall.html" target="_blank" rel="noopener noreffer">replaceAll()</a></td>
+<td style="text-align:left">将 hashMap 中的所有映射关系替换成给定的函数所执行的结果。</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-get.html" target="_blank" rel="noopener noreffer">get()</a></td>
-<td align="left">获取指定 key 对应对 value</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-get.html" target="_blank" rel="noopener noreffer">get()</a></td>
+<td style="text-align:left">获取指定 key 对应对 value</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-getordefault.html" target="_blank" rel="noopener noreffer">getOrDefault()</a></td>
-<td align="left">获取指定 key 对应对 value，如果找不到 key ，则返回设置的默认值</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-getordefault.html" target="_blank" rel="noopener noreffer">getOrDefault()</a></td>
+<td style="text-align:left">获取指定 key 对应对 value，如果找不到 key ，则返回设置的默认值</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-foreach.html" target="_blank" rel="noopener noreffer">forEach()</a></td>
-<td align="left">对 hashMap 中的每个映射执行指定的操作。</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-foreach.html" target="_blank" rel="noopener noreffer">forEach()</a></td>
+<td style="text-align:left">对 hashMap 中的每个映射执行指定的操作。</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-entryset.html" target="_blank" rel="noopener noreffer">entrySet()</a></td>
-<td align="left">返回 hashMap 中所有映射项的集合集合视图。</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-entryset.html" target="_blank" rel="noopener noreffer">entrySet()</a></td>
+<td style="text-align:left">返回 hashMap 中所有映射项的集合集合视图。</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-keyset.html" target="_blank" rel="noopener noreffer">keySet</a>()</td>
-<td align="left">返回 hashMap 中所有 key 组成的集合视图。</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-keyset.html" target="_blank" rel="noopener noreffer">keySet</a>()</td>
+<td style="text-align:left">返回 hashMap 中所有 key 组成的集合视图。</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-values.html" target="_blank" rel="noopener noreffer">values()</a></td>
-<td align="left">返回 hashMap 中存在的所有 value 值。</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-values.html" target="_blank" rel="noopener noreffer">values()</a></td>
+<td style="text-align:left">返回 hashMap 中存在的所有 value 值。</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-merge.html" target="_blank" rel="noopener noreffer">merge()</a></td>
-<td align="left">添加键值对到 hashMap 中</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-merge.html" target="_blank" rel="noopener noreffer">merge()</a></td>
+<td style="text-align:left">添加键值对到 hashMap 中</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-compute.html" target="_blank" rel="noopener noreffer">compute()</a></td>
-<td align="left">对 hashMap 中指定 key 的值进行重新计算</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-compute.html" target="_blank" rel="noopener noreffer">compute()</a></td>
+<td style="text-align:left">对 hashMap 中指定 key 的值进行重新计算</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-computeifabsent.html" target="_blank" rel="noopener noreffer">computeIfAbsent()</a></td>
-<td align="left">对 hashMap 中指定 key 的值进行重新计算，如果不存在这个 key，则添加到 hasMap 中</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-computeifabsent.html" target="_blank" rel="noopener noreffer">computeIfAbsent()</a></td>
+<td style="text-align:left">对 hashMap 中指定 key 的值进行重新计算，如果不存在这个 key，则添加到 hasMap 中</td>
 </tr>
 <tr>
-<td align="left"><a href="https://www.runoob.com/java/java-hashmap-computeifpresent.html" target="_blank" rel="noopener noreffer">computeIfPresent()</a></td>
-<td align="left">对 hashMap 中指定 key 的值进行重新计算，前提是该 key 存在于 hashMap 中。</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-hashmap-computeifpresent.html" target="_blank" rel="noopener noreffer">computeIfPresent()</a></td>
+<td style="text-align:left">对 hashMap 中指定 key 的值进行重新计算，前提是该 key 存在于 hashMap 中。</td>
 </tr>
 </tbody>
 </table>

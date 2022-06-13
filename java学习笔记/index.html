@@ -8,10 +8,10 @@
         <title>Java学习笔记 - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="Java学习笔记" />
 <meta property="og:description" content="Java集合框架 导入包 import java.util.*; ArrayList 一、定义一个ArrayList 1 2 3 4 5 6 //默认创建一个ArrayList集合 List&lt;String&gt; list = new ArrayList&lt;&gt;(); //创建一个初始化长度" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://llssit.cn/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" />
-<meta property="og:image" content="https://llssit.cn/logo.png"/>
+<meta property="og:url" content="https://llssit.cn/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><meta property="og:image" content="https://llssit.cn/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-10-12T14:07:39+08:00" />
 <meta property="article:modified_time" content="2020-10-12T14:07:39+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://llssit.cn/logo.png"/>
 
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/llssit.cn\/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/"
-        },"genre": "posts","keywords": "Java","wordcount":  4217 ,
+        },"genre": "posts","keywords": "Java","wordcount":  4193 ,
         "url": "https:\/\/llssit.cn\/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0\/","datePublished": "2020-10-12T14:07:39+08:00","dateModified": "2020-10-12T14:07:39+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java学习笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-12">2020-10-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4217 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-12">2020-10-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4193 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -168,7 +168,7 @@
 <h5 id="一定义一个arraylist">一、定义一个ArrayList</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -176,13 +176,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//默认创建一个ArrayList集合
-</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
-<span class="c1">//创建一个初始化长度为100的ArrayList集合
-</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">initlist</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">100</span><span class="o">);</span>
-<span class="c1">//将其他类型的集合转为ArrayList
-</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">setList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="n">HashSet</span><span class="o">());</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//默认创建一个ArrayList集合
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//创建一个初始化长度为100的ArrayList集合
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">initlist</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">100</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//将其他类型的集合转为ArrayList
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">setList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="n">HashSet</span><span class="o">());</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h5 id="二arraylist常用方法">二、ArrayList常用方法</h5>
 <ol>
@@ -217,7 +217,7 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -243,31 +243,31 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">=</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
-<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Hello&#34;</span><span class="o">);</span>
-<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;World&#34;</span><span class="o">);</span>
-<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;HAHAHAHA&#34;</span><span class="o">);</span>
-<span class="c1">//第一种遍历方法使用 For-Each 遍历 List
-</span><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>            <span class="c1">//也可以改写 for(int i=0;i&lt;list.size();i++) 这种形式
-</span><span class="c1"></span>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="c1">//第二种遍历，把链表变为数组相关的内容进行遍历
-</span><span class="c1"></span><span class="n">String</span><span class="o">[]</span> <span class="n">strArray</span><span class="o">=</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
-<span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="n">strArray</span><span class="o">);</span>
-<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">strArray</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="c1">//这里也可以改写为  for(String str:strArray) 这种形式
-</span><span class="c1"></span><span class="o">{</span>
-  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">strArray</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
-<span class="o">}</span>
-
-<span class="c1">//第三种遍历 使用迭代器进行相关遍历
-</span><span class="c1"></span>
-<span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">ite</span><span class="o">=</span><span class="n">list</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
-<span class="k">while</span><span class="o">(</span><span class="n">ite</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span><span class="c1">//判断下一个元素之后有值
-</span><span class="c1"></span><span class="o">{</span>
-  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ite</span><span class="o">.</span><span class="na">next</span><span class="o">());</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">=</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;Hello&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;World&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;HAHAHAHA&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//第一种遍历方法使用 For-Each 遍历 List
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">str</span> <span class="o">:</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>            <span class="c1">//也可以改写 for(int i=0;i&lt;list.size();i++) 这种形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//第二种遍历，把链表变为数组相关的内容进行遍历
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">String</span><span class="o">[]</span> <span class="n">strArray</span><span class="o">=</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+</span></span><span class="line"><span class="cl"><span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="n">strArray</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">strArray</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="c1">//这里也可以改写为  for(String str:strArray) 这种形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">strArray</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//第三种遍历 使用迭代器进行相关遍历
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">ite</span><span class="o">=</span><span class="n">list</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span><span class="o">(</span><span class="n">ite</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span><span class="c1">//判断下一个元素之后有值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ite</span><span class="o">.</span><span class="na">next</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="hashmap">HashMap</h4>
 <h5 id="一定义一个hashmap">一、定义一个HashMap</h5>
@@ -286,7 +286,7 @@
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -318,37 +318,37 @@
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
-<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;1&#34;</span><span class="o">,</span> <span class="s">&#34;value1&#34;</span><span class="o">);</span>
-<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;2&#34;</span><span class="o">,</span> <span class="s">&#34;value2&#34;</span><span class="o">);</span>
-<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;3&#34;</span><span class="o">,</span> <span class="s">&#34;value3&#34;</span><span class="o">);</span>
-
-<span class="c1">//第一种：普遍使用，二次取值
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;通过Map.keySet遍历key和value：&#34;</span><span class="o">);</span>
-<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">key</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
-  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;key= &#34;</span><span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s">&#34; and value= &#34;</span> <span class="o">+</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">));</span>
-<span class="o">}</span>
-
-<span class="c1">//第二种
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;通过Map.entrySet使用iterator遍历key和value：&#34;</span><span class="o">);</span>
-<span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
-<span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
-  <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;key= &#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; and value= &#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
-<span class="o">}</span>
-
-<span class="c1">//第三种：推荐，尤其是容量大时
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;通过Map.entrySet遍历key和value&#34;</span><span class="o">);</span>
-<span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
-  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;key= &#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; and value= &#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
-<span class="o">}</span>
-
-<span class="c1">//第四种
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;通过Map.values()遍历所有的value，但不能遍历key&#34;</span><span class="o">);</span>
-<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">v</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
-  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;value= &#34;</span> <span class="o">+</span> <span class="n">v</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;1&#34;</span><span class="o">,</span> <span class="s">&#34;value1&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;2&#34;</span><span class="o">,</span> <span class="s">&#34;value2&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;3&#34;</span><span class="o">,</span> <span class="s">&#34;value3&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//第一种：普遍使用，二次取值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;通过Map.keySet遍历key和value：&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">key</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;key= &#34;</span><span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s">&#34; and value= &#34;</span> <span class="o">+</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//第二种
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;通过Map.entrySet使用iterator遍历key和value：&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;key= &#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; and value= &#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//第三种：推荐，尤其是容量大时
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;通过Map.entrySet遍历key和value&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;key= &#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; and value= &#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//第四种
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;通过Map.values()遍历所有的value，但不能遍历key&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">v</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;value= &#34;</span> <span class="o">+</span> <span class="n">v</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="java多线程">Java多线程</h3>
 <p>Java 给多线程编程提供了内置的支持。 一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
@@ -400,42 +400,42 @@
 <table>
 <thead>
 <tr>
-<th align="center">序号</th>
-<th align="left">方法描述</th>
+<th style="text-align:center">序号</th>
+<th style="text-align:left">方法描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">1</td>
-<td align="left">**public void start()**<br/>使该线程开始执行；<strong>==Java==</strong> 虚拟机调用该线程的 run 方法。</td>
+<td style="text-align:center">1</td>
+<td style="text-align:left"><strong>public void start()</strong><br/>使该线程开始执行；<strong>==Java==</strong> 虚拟机调用该线程的 run 方法。</td>
 </tr>
 <tr>
-<td align="center">2</td>
-<td align="left">**public void run()**<br/>如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回。</td>
+<td style="text-align:center">2</td>
+<td style="text-align:left"><strong>public void run()</strong><br/>如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回。</td>
 </tr>
 <tr>
-<td align="center">3</td>
-<td align="left">**public final void setName(String name)**<br/>改变线程名称，使之与参数 name 相同。</td>
+<td style="text-align:center">3</td>
+<td style="text-align:left"><strong>public final void setName(String name)</strong><br/>改变线程名称，使之与参数 name 相同。</td>
 </tr>
 <tr>
-<td align="center">4</td>
-<td align="left">**public final void setPriority(int priority)**<br/> 更改线程的优先级。</td>
+<td style="text-align:center">4</td>
+<td style="text-align:left"><strong>public final void setPriority(int priority)</strong><br/> 更改线程的优先级。</td>
 </tr>
 <tr>
-<td align="center">5</td>
-<td align="left">**public final void setDaemon(boolean on)**<br/>将该线程标记为守护线程或用户线程。</td>
+<td style="text-align:center">5</td>
+<td style="text-align:left"><strong>public final void setDaemon(boolean on)</strong><br/>将该线程标记为守护线程或用户线程。</td>
 </tr>
 <tr>
-<td align="center">6</td>
-<td align="left">**public final void join(long millisec)**<br/>等待该线程终止的时间最长为 millis 毫秒。</td>
+<td style="text-align:center">6</td>
+<td style="text-align:left"><strong>public final void join(long millisec)</strong><br/>等待该线程终止的时间最长为 millis 毫秒。</td>
 </tr>
 <tr>
-<td align="center">7</td>
-<td align="left">**public void interrupt()**<br/>中断线程。</td>
+<td style="text-align:center">7</td>
+<td style="text-align:left"><strong>public void interrupt()</strong><br/>中断线程。</td>
 </tr>
 <tr>
-<td align="center">8</td>
-<td align="left">**public final boolean isAlive()**<br/>测试线程是否处于活动状态。</td>
+<td style="text-align:center">8</td>
+<td style="text-align:left"><strong>public final boolean isAlive()</strong><br/>测试线程是否处于活动状态。</td>
 </tr>
 </tbody>
 </table>
@@ -443,30 +443,30 @@
 <table>
 <thead>
 <tr>
-<th align="center">序号</th>
-<th align="left">方法描述</th>
+<th style="text-align:center">序号</th>
+<th style="text-align:left">方法描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">1</td>
-<td align="left">**public static void yield()**<br/>暂停当前正在执行的线程对象，并执行其他线程。</td>
+<td style="text-align:center">1</td>
+<td style="text-align:left"><strong>public static void yield()</strong><br/>暂停当前正在执行的线程对象，并执行其他线程。</td>
 </tr>
 <tr>
-<td align="center">2</td>
-<td align="left">**public static void sleep(long millisec)**<br/>在指定的毫秒数内让当前正在执行的线程休眠（暂停执行），此操作受到系统计时器和调度程序精度和准确性的影响。</td>
+<td style="text-align:center">2</td>
+<td style="text-align:left"><strong>public static void sleep(long millisec)</strong><br/>在指定的毫秒数内让当前正在执行的线程休眠（暂停执行），此操作受到系统计时器和调度程序精度和准确性的影响。</td>
 </tr>
 <tr>
-<td align="center">3</td>
-<td align="left">**public static boolean holdsLock(Object x)**<br/>当且仅当当前线程在指定的对象上保持监视器锁时，才返回 true。</td>
+<td style="text-align:center">3</td>
+<td style="text-align:left"><strong>public static boolean holdsLock(Object x)</strong><br/>当且仅当当前线程在指定的对象上保持监视器锁时，才返回 true。</td>
 </tr>
 <tr>
-<td align="center">4</td>
-<td align="left">**public static Thread currentThread()**<br/>返回对当前正在执行的线程对象的引用。</td>
+<td style="text-align:center">4</td>
+<td style="text-align:left"><strong>public static Thread currentThread()</strong><br/>返回对当前正在执行的线程对象的引用。</td>
 </tr>
 <tr>
-<td align="center">5</td>
-<td align="left">**public static void dumpStack()**<br/>将当前线程的堆栈跟踪打印至标准错误流。</td>
+<td style="text-align:center">5</td>
+<td style="text-align:left"><strong>public static void dumpStack()</strong><br/>将当前线程的堆栈跟踪打印至标准错误流。</td>
 </tr>
 </tbody>
 </table>
@@ -491,7 +491,7 @@
 <p>下面是一个创建线程并开始让它执行的实例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -535,49 +535,49 @@
 </span><span class="lnt">42
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">RunnableDemo</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span>
-   <span class="kd">private</span> <span class="n">Thread</span> <span class="n">t</span><span class="o">;</span>
-   <span class="kd">private</span> <span class="n">String</span> <span class="n">threadName</span><span class="o">;</span>
-   
-   <span class="n">RunnableDemo</span><span class="o">(</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">threadName</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Creating &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
-   <span class="o">}</span>
-   
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Running &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
-      <span class="k">try</span> <span class="o">{</span>
-         <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">4</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread: &#34;</span> <span class="o">+</span> <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34;, &#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
-            <span class="c1">// 让线程睡眠一会
-</span><span class="c1"></span>            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">50</span><span class="o">);</span>
-         <span class="o">}</span>
-      <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34; interrupted.&#34;</span><span class="o">);</span>
-      <span class="o">}</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34; exiting.&#34;</span><span class="o">);</span>
-   <span class="o">}</span>
-   
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span> <span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Starting &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">t</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span> <span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">threadName</span><span class="o">);</span>
-         <span class="n">t</span><span class="o">.</span><span class="na">start</span> <span class="o">();</span>
-      <span class="o">}</span>
-   <span class="o">}</span>
-<span class="o">}</span>
- 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestThread</span> <span class="o">{</span>
- 
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
-      <span class="n">RunnableDemo</span> <span class="n">R1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RunnableDemo</span><span class="o">(</span> <span class="s">&#34;Thread-1&#34;</span><span class="o">);</span>
-      <span class="n">R1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
-      
-      <span class="n">RunnableDemo</span> <span class="n">R2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RunnableDemo</span><span class="o">(</span> <span class="s">&#34;Thread-2&#34;</span><span class="o">);</span>
-      <span class="n">R2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
-   <span class="o">}</span>   
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">RunnableDemo</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">   <span class="kd">private</span> <span class="n">Thread</span> <span class="n">t</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">   <span class="kd">private</span> <span class="n">String</span> <span class="n">threadName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="n">RunnableDemo</span><span class="o">(</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">threadName</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Creating &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
+</span></span><span class="line"><span class="cl">   <span class="o">}</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Running &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">         <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">4</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread: &#34;</span> <span class="o">+</span> <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34;, &#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 让线程睡眠一会
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">50</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">         <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34; interrupted.&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34; exiting.&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">   <span class="o">}</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span> <span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Starting &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="o">(</span><span class="n">t</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">         <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span> <span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">threadName</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">         <span class="n">t</span><span class="o">.</span><span class="na">start</span> <span class="o">();</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">   <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestThread</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">RunnableDemo</span> <span class="n">R1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RunnableDemo</span><span class="o">(</span> <span class="s">&#34;Thread-1&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">R1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="n">RunnableDemo</span> <span class="n">R2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RunnableDemo</span><span class="o">(</span> <span class="s">&#34;Thread-2&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">R2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">   <span class="o">}</span>   
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h5 id="通过继承thread来创建线程">通过继承Thread来创建线程</h5>
 <p>创建一个线程的第二种方法是创建一个新的类，该类继承 Thread 类，然后创建一个该类的实例。</p>
@@ -585,7 +585,7 @@
 <p>该方法尽管被列为一种多线程实现方式，但是本质上也是实现了 Runnable 接口的一个实例。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -629,49 +629,49 @@
 </span><span class="lnt">42
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">ThreadDemo</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
-   <span class="kd">private</span> <span class="n">Thread</span> <span class="n">t</span><span class="o">;</span>
-   <span class="kd">private</span> <span class="n">String</span> <span class="n">threadName</span><span class="o">;</span>
-   
-   <span class="n">ThreadDemo</span><span class="o">(</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">threadName</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Creating &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
-   <span class="o">}</span>
-   
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Running &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
-      <span class="k">try</span> <span class="o">{</span>
-         <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">4</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread: &#34;</span> <span class="o">+</span> <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34;, &#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
-            <span class="c1">// 让线程睡眠一会
-</span><span class="c1"></span>            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">50</span><span class="o">);</span>
-         <span class="o">}</span>
-      <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34; interrupted.&#34;</span><span class="o">);</span>
-      <span class="o">}</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34; exiting.&#34;</span><span class="o">);</span>
-   <span class="o">}</span>
-   
-   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span> <span class="o">()</span> <span class="o">{</span>
-      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Starting &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
-      <span class="k">if</span> <span class="o">(</span><span class="n">t</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span> <span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">threadName</span><span class="o">);</span>
-         <span class="n">t</span><span class="o">.</span><span class="na">start</span> <span class="o">();</span>
-      <span class="o">}</span>
-   <span class="o">}</span>
-<span class="o">}</span>
- 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestThread</span> <span class="o">{</span>
- 
-   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
-      <span class="n">ThreadDemo</span> <span class="n">T1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadDemo</span><span class="o">(</span> <span class="s">&#34;Thread-1&#34;</span><span class="o">);</span>
-      <span class="n">T1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
-      
-      <span class="n">ThreadDemo</span> <span class="n">T2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadDemo</span><span class="o">(</span> <span class="s">&#34;Thread-2&#34;</span><span class="o">);</span>
-      <span class="n">T2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
-   <span class="o">}</span>   
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">ThreadDemo</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">   <span class="kd">private</span> <span class="n">Thread</span> <span class="n">t</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">   <span class="kd">private</span> <span class="n">String</span> <span class="n">threadName</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="n">ThreadDemo</span><span class="o">(</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">threadName</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Creating &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
+</span></span><span class="line"><span class="cl">   <span class="o">}</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Running &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">try</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">         <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">4</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread: &#34;</span> <span class="o">+</span> <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34;, &#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 让线程睡眠一会
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">50</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">         <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34; interrupted.&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Thread &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">+</span> <span class="s">&#34; exiting.&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">   <span class="o">}</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span> <span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Starting &#34;</span> <span class="o">+</span>  <span class="n">threadName</span> <span class="o">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="o">(</span><span class="n">t</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">         <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span> <span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">threadName</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">         <span class="n">t</span><span class="o">.</span><span class="na">start</span> <span class="o">();</span>
+</span></span><span class="line"><span class="cl">      <span class="o">}</span>
+</span></span><span class="line"><span class="cl">   <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestThread</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">ThreadDemo</span> <span class="n">T1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadDemo</span><span class="o">(</span> <span class="s">&#34;Thread-1&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">T1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">      
+</span></span><span class="line"><span class="cl">      <span class="n">ThreadDemo</span> <span class="n">T2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadDemo</span><span class="o">(</span> <span class="s">&#34;Thread-2&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">T2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">   <span class="o">}</span>   
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h5 id="通过callable和future创建线程">通过Callable和Future创建线程</h5>
 <ul>
@@ -698,7 +698,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -736,43 +736,43 @@
 </span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CallableThreadTest</span> <span class="kd">implements</span> <span class="n">Callable</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>  
-    <span class="o">{</span>  
-        <span class="n">CallableThreadTest</span> <span class="n">ctt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CallableThreadTest</span><span class="o">();</span>  
-        <span class="n">FutureTask</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ft</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FutureTask</span><span class="o">&lt;&gt;(</span><span class="n">ctt</span><span class="o">);</span>  
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">100</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span>  
-        <span class="o">{</span>  
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()+</span><span class="s">&#34; 的循环变量i的值&#34;</span><span class="o">+</span><span class="n">i</span><span class="o">);</span>  
-            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="n">20</span><span class="o">)</span>  
-            <span class="o">{</span>  
-                <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="n">ft</span><span class="o">,</span><span class="s">&#34;有返回值的线程&#34;</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>  
-            <span class="o">}</span>  
-        <span class="o">}</span>  
-        <span class="k">try</span>  
-        <span class="o">{</span>  
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;子线程的返回值：&#34;</span><span class="o">+</span><span class="n">ft</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>  
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span>  
-        <span class="o">{</span>  
-            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>  
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ExecutionException</span> <span class="n">e</span><span class="o">)</span>  
-        <span class="o">{</span>  
-            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>  
-        <span class="o">}</span>  
-  
-    <span class="o">}</span>
-    <span class="nd">@Override</span>  
-    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">call</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span>  
-    <span class="o">{</span>  
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>  
-        <span class="k">for</span><span class="o">(;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">100</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span>  
-        <span class="o">{</span>  
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()+</span><span class="s">&#34; &#34;</span><span class="o">+</span><span class="n">i</span><span class="o">);</span>  
-        <span class="o">}</span>  
-        <span class="k">return</span> <span class="n">i</span><span class="o">;</span>  
-    <span class="o">}</span>  
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CallableThreadTest</span> <span class="kd">implements</span> <span class="n">Callable</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>  
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>  
+</span></span><span class="line"><span class="cl">        <span class="n">CallableThreadTest</span> <span class="n">ctt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CallableThreadTest</span><span class="o">();</span>  
+</span></span><span class="line"><span class="cl">        <span class="n">FutureTask</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ft</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FutureTask</span><span class="o">&lt;&gt;(</span><span class="n">ctt</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">100</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">{</span>  
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()+</span><span class="s">&#34; 的循环变量i的值&#34;</span><span class="o">+</span><span class="n">i</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="n">20</span><span class="o">)</span>  
+</span></span><span class="line"><span class="cl">            <span class="o">{</span>  
+</span></span><span class="line"><span class="cl">                <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="n">ft</span><span class="o">,</span><span class="s">&#34;有返回值的线程&#34;</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>  
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>  
+</span></span><span class="line"><span class="cl">        <span class="k">try</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">{</span>  
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;子线程的返回值：&#34;</span><span class="o">+</span><span class="n">ft</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">{</span>  
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ExecutionException</span> <span class="n">e</span><span class="o">)</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">{</span>  
+</span></span><span class="line"><span class="cl">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>  
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">call</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span>  
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>  
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>  
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="o">(;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">100</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">{</span>  
+</span></span><span class="line"><span class="cl">            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()+</span><span class="s">&#34; &#34;</span><span class="o">+</span><span class="n">i</span><span class="o">);</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>  
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">i</span><span class="o">;</span>  
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>  
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h5 id="创建线程的三种方式的对比">创建线程的三种方式的对比</h5>
 <ul>

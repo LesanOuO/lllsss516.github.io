@@ -8,10 +8,10 @@
         <title>数据库Tip:行转列、列转行 - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="数据库Tip:行转列、列转行" />
 <meta property="og:description" content="SQL 行转列，列转行 行列转换在做报表分析时还是经常会遇到的，今天就说一下如何实现行列转换吧。 行列转换就是如下图所示两种展示形式的互相转换 行转列 假" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://llssit.cn/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C/" />
-<meta property="og:image" content="https://llssit.cn/logo.png"/>
+<meta property="og:url" content="https://llssit.cn/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C/" /><meta property="og:image" content="https://llssit.cn/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-04-03T10:45:10+08:00" />
 <meta property="article:modified_time" content="2022-04-03T10:45:10+08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://llssit.cn/logo.png"/>
 
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/llssit.cn\/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C\/"
-        },"genre": "posts","keywords": "SQL","wordcount":  881 ,
+        },"genre": "posts","keywords": "SQL","wordcount":  1154 ,
         "url": "https:\/\/llssit.cn\/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C\/","datePublished": "2022-04-03T10:45:10+08:00","dateModified": "2022-04-03T10:45:10+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">数据库Tip:行转列、列转行</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-03">2022-04-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 881 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-03">2022-04-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1154 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -145,19 +145,19 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span>
-<span class="k">FROM</span> <span class="n">student</span>
-<span class="n">PIVOT</span> <span class="p">(</span>
-    <span class="k">SUM</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="k">FOR</span> <span class="n">subject</span> <span class="k">IN</span> <span class="p">(</span><span class="err">语文</span><span class="p">,</span> <span class="err">数学</span><span class="p">,</span> <span class="err">英语</span><span class="p">)</span>
-<span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">PIVOT</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">subject</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="err">语文</span><span class="p">,</span><span class="w"> </span><span class="err">数学</span><span class="p">,</span><span class="w"> </span><span class="err">英语</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>通过上面 SQL 语句即可得到下面的结果</p>
 <p><img
@@ -175,7 +175,7 @@
 <p>当然我们也可以用 CASE WHEN 得到同样的结果，就是写起来麻烦一点。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -198,28 +198,28 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">name</span><span class="p">,</span>
-  <span class="k">MAX</span><span class="p">(</span>
-  <span class="k">CASE</span>
-    <span class="k">WHEN</span> <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;语文&#39;</span>
-    <span class="k">THEN</span> <span class="n">score</span>
-    <span class="k">ELSE</span> <span class="mi">0</span>
-  <span class="k">END</span><span class="p">)</span> <span class="k">AS</span> <span class="s2">&#34;语文&#34;</span><span class="p">,</span>
-  <span class="k">MAX</span><span class="p">(</span>
-  <span class="k">CASE</span>
-    <span class="k">WHEN</span> <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;数学&#39;</span>
-    <span class="k">THEN</span> <span class="n">score</span>
-    <span class="k">ELSE</span> <span class="mi">0</span>
-  <span class="k">END</span><span class="p">)</span> <span class="k">AS</span> <span class="s2">&#34;数学&#34;</span><span class="p">,</span>
-  <span class="k">MAX</span><span class="p">(</span>
-  <span class="k">CASE</span>
-    <span class="k">WHEN</span> <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;英语&#39;</span>
-    <span class="k">THEN</span> <span class="n">score</span>
-    <span class="k">ELSE</span> <span class="mi">0</span>
-  <span class="k">END</span><span class="p">)</span> <span class="k">AS</span> <span class="s2">&#34;英语&#34;</span>
-<span class="k">FROM</span> <span class="n">student</span>
-<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">name</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">MAX</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">CASE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">subject</span><span class="o">=</span><span class="s1">&#39;语文&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">THEN</span><span class="w"> </span><span class="n">score</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s2">&#34;语文&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">MAX</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">CASE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">subject</span><span class="o">=</span><span class="s1">&#39;数学&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">THEN</span><span class="w"> </span><span class="n">score</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s2">&#34;数学&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">MAX</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">CASE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">WHEN</span><span class="w"> </span><span class="n">subject</span><span class="o">=</span><span class="s1">&#39;英语&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">THEN</span><span class="w"> </span><span class="n">score</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s2">&#34;英语&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">name</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>使用 CASE WHEN 可以得到和 PIVOT 同样的结果，没有 PIVOT 简单直观。</p>
 <h2 id="列转行">列转行</h2>
@@ -237,19 +237,19 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span>
-<span class="k">FROM</span> <span class="n">student1</span>
-<span class="n">UNPIVOT</span> <span class="p">(</span>
-    <span class="n">score</span> <span class="k">FOR</span> <span class="n">subject</span> <span class="k">IN</span> <span class="p">(</span><span class="s2">&#34;语文&#34;</span><span class="p">,</span><span class="s2">&#34;数学&#34;</span><span class="p">,</span><span class="s2">&#34;英语&#34;</span><span class="p">)</span>
-<span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">student1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">UNPIVOT</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">score</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">subject</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s2">&#34;语文&#34;</span><span class="p">,</span><span class="s2">&#34;数学&#34;</span><span class="p">,</span><span class="s2">&#34;英语&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>通过 UNPIVOT 即可得到如下结果：</p>
 <p><img
@@ -266,7 +266,7 @@
 <p>我们也可以使用下面方法得到同样结果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -285,24 +285,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span>
-    <span class="n">NAME</span><span class="p">,</span>
-    <span class="s1">&#39;语文&#39;</span> <span class="k">AS</span> <span class="n">subject</span> <span class="p">,</span>
-    <span class="k">MAX</span><span class="p">(</span><span class="s2">&#34;语文&#34;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">score</span>
-<span class="k">FROM</span> <span class="n">student1</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">NAME</span>
-<span class="k">UNION</span>
-<span class="k">SELECT</span>
-    <span class="n">NAME</span><span class="p">,</span>
-    <span class="s1">&#39;数学&#39;</span> <span class="k">AS</span> <span class="n">subject</span> <span class="p">,</span>
-    <span class="k">MAX</span><span class="p">(</span><span class="s2">&#34;数学&#34;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">score</span>
-<span class="k">FROM</span> <span class="n">student1</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">NAME</span>
-<span class="k">UNION</span>
-<span class="k">SELECT</span>
-    <span class="n">NAME</span><span class="p">,</span>
-    <span class="s1">&#39;英语&#39;</span> <span class="k">AS</span> <span class="n">subject</span> <span class="p">,</span>
-    <span class="k">MAX</span><span class="p">(</span><span class="s2">&#34;英语&#34;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">score</span>
-<span class="k">FROM</span> <span class="n">student1</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">NAME</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">NAME</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;语文&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">subject</span><span class="w"> </span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="s2">&#34;语文&#34;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">score</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">student1</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">NAME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UNION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">NAME</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;数学&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">subject</span><span class="w"> </span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="s2">&#34;数学&#34;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">score</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">student1</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">NAME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UNION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">NAME</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;英语&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">subject</span><span class="w"> </span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="s2">&#34;英语&#34;</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">score</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">student1</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">NAME</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>UNION &amp; UNION ALL</li>
@@ -312,29 +312,29 @@
 <p><strong>SQL UNION 语法</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">column_name</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">table_name1</span>
-<span class="k">UNION</span>
-<span class="k">SELECT</span> <span class="k">column_name</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">table_name2</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">column_name</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table_name1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UNION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">column_name</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table_name2</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>**注释：**默认地，UNION 操作符选取不同的值。如果允许重复的值，请使用 UNION ALL。</p>
 <p><strong>SQL UNION ALL 语法</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">column_name</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">table_name1</span>
-<span class="k">UNION</span> <span class="k">ALL</span>
-<span class="k">SELECT</span> <span class="k">column_name</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">table_name2</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">column_name</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table_name1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">column_name</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table_name2</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>另外，UNION 结果集中的列名总是等于 UNION 中第一个 SELECT 语句中的列名。</p>
 </div><div class="post-footer" id="post-footer">

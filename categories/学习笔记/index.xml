@@ -3,7 +3,14 @@
         <title>学习笔记 - 分类 - Lesan&#39;s blog</title>
         <link>https://llssit.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <description>学习笔记 - 分类 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 20 May 2022 18:45:30 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 13 Jun 2022 18:41:25 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>数据库优化</title>
+    <link>https://llssit.cn/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/</link>
+    <pubDate>Mon, 13 Jun 2022 18:41:25 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://llssit.cn/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/</guid>
+    <description><![CDATA[索引 MySQL 索引 MySQL 的索引有两种分类方式：逻辑分类和物理分类 逻辑分类 主键索引：一张表只能有一个主键索引，不允许重复、不允许为 NULL 唯一索引：数据列不允许]]></description>
+</item><item>
     <title>Redis学习</title>
     <link>https://llssit.cn/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <pubDate>Fri, 20 May 2022 18:45:30 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>https://llssit.cn/nginx%E5%AD%A6%E4%B9%A0/</guid>
     <description><![CDATA[本文为个人学习和实践 Nginx 的笔记 Nginx 常用功能 Nginx 有以下几个常用功能 反向代理 这是它的主要功能之一，客户端向服务器发送请求时，会先通过 Nginx 服务器，由服务器]]></description>
-</item><item>
-    <title>Java集合(HashSet和HashMap)</title>
-    <link>https://llssit.cn/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/</link>
-    <pubDate>Wed, 13 Jan 2021 12:20:25 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://llssit.cn/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/</guid>
-    <description><![CDATA[API Collection 接口的接口 对象的集合（单列集合） ​ |&ndash;List 接口：元素按进入先后有序保存，可重复 ​ |&ndash;LinkedList 接口实现类， 链表， 插入删除， 没有同步， 线程不安全 ​ |&ndash;ArrayList 接口实现]]></description>
 </item></channel>
 </rss>
