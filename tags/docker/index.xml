@@ -3,7 +3,14 @@
         <title>Docker - 标签 - Lesan&#39;s blog</title>
         <link>https://llssit.cn/tags/docker/</link>
         <description>Docker - 标签 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 01 Apr 2022 18:48:10 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/tags/docker/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 14 Jun 2022 21:01:15 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/tags/docker/" rel="self" type="application/rss+xml" /><item>
+    <title>docker为已启动容器添加挂载目录或端口映射</title>
+    <link>https://llssit.cn/docker%E4%B8%BA%E5%B7%B2%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8%E6%B7%BB%E5%8A%A0%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95%E6%88%96%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</link>
+    <pubDate>Tue, 14 Jun 2022 21:01:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://llssit.cn/docker%E4%B8%BA%E5%B7%B2%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8%E6%B7%BB%E5%8A%A0%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95%E6%88%96%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</guid>
+    <description><![CDATA[在使用docker时，常常需要对已启动的容器进行相应的配置修改，其中最常见的就是挂载目录或端口映射。其实配置也并不是非常复杂，可以通过修改d]]></description>
+</item><item>
     <title>记一次搭建gitlab&#43;jenkins实现CI&amp;CD</title>
     <link>https://llssit.cn/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/</link>
     <pubDate>Fri, 01 Apr 2022 18:48:10 &#43;0800</pubDate>
