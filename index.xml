@@ -3,15 +3,22 @@
         <title>Lesan&#39;s blog</title>
         <link>https://llssit.cn/</link>
         <description>这是我的全新 Hugo 网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 16 Jun 2022 21:31:03 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 18 Jun 2022 19:34:02 &#43;0800</lastBuildDate>
             <atom:link href="https://llssit.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Docker 清理和限制容器日志大小</title>
+    <link>https://llssit.cn/docker-%E6%B8%85%E7%90%86%E5%92%8C%E9%99%90%E5%88%B6%E5%AE%B9%E5%99%A8%E6%97%A5%E5%BF%97%E5%A4%A7%E5%B0%8F/</link>
+    <pubDate>Sat, 18 Jun 2022 19:34:02 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://llssit.cn/docker-%E6%B8%85%E7%90%86%E5%92%8C%E9%99%90%E5%88%B6%E5%AE%B9%E5%99%A8%E6%97%A5%E5%BF%97%E5%A4%A7%E5%B0%8F/</guid>
+    <description><![CDATA[docker logs 是我们经常用来查看容器运行日志的命令，但是在长时间容器运行后，会产生大量的日志，会发现越来越慢，所以我们需要清理日志。 Docker 清理日志 通过命令]]></description>
+</item><item>
     <title>正则表达式总结</title>
     <link>https://llssit.cn/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%80%BB%E7%BB%93/</link>
     <pubDate>Thu, 16 Jun 2022 21:31:03 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://llssit.cn/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%80%BB%E7%BB%93/</guid>
-    <description><![CDATA[索引 MySQL 索引 MySQL 的索引有两种分类方式：逻辑分类和物理分类 逻辑分类 主键索引：一张表只能有一个主键索引，不允许重复、不允许为 NULL 唯一索引：数据列不允许]]></description>
+    <description><![CDATA[简介 使用正则表达式来处理搜索文本，能够提高灵活性。 通过使用正则表达式，可以做到： 测试字符串内的模式，例如，可以匹配字符串是否满足电话号码或信]]></description>
 </item><item>
     <title>docker为已启动容器添加挂载目录或端口映射</title>
     <link>https://llssit.cn/docker%E4%B8%BA%E5%B7%B2%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8%E6%B7%BB%E5%8A%A0%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95%E6%88%96%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/</link>
@@ -68,12 +75,5 @@
     <author>作者</author>
     <guid>https://llssit.cn/java%E5%AD%A6%E4%B9%A0stream%E6%B5%81%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[本篇笔记主要记录我在学习Java的stream流中记录的笔记 stream是什么 流是从支持数据处理操作的源生成的元素序列，源可以是数组、文件、]]></description>
-</item><item>
-    <title>数据库Tip:行转列、列转行</title>
-    <link>https://llssit.cn/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C/</link>
-    <pubDate>Sun, 03 Apr 2022 10:45:10 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://llssit.cn/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C/</guid>
-    <description><![CDATA[SQL 行转列，列转行 行列转换在做报表分析时还是经常会遇到的，今天就说一下如何实现行列转换吧。 行列转换就是如下图所示两种展示形式的互相转换 行转列 假]]></description>
 </item></channel>
 </rss>
