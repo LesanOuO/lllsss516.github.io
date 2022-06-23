@@ -3,9 +3,16 @@
         <title>Lesan&#39;s blog</title>
         <link>https://llssit.cn/</link>
         <description>这是我的全新 Hugo 网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 18 Jun 2022 19:34:02 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 23 Jun 2022 20:14:20 &#43;0800</lastBuildDate>
             <atom:link href="https://llssit.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Vue中全局封装SignalR</title>
+    <link>https://llssit.cn/vue%E4%B8%AD%E5%85%A8%E5%B1%80%E5%B0%81%E8%A3%85signalr/</link>
+    <pubDate>Thu, 23 Jun 2022 20:14:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://llssit.cn/vue%E4%B8%AD%E5%85%A8%E5%B1%80%E5%B0%81%E8%A3%85signalr/</guid>
+    <description><![CDATA[SignalR 简介 ASP.NET SignalR 是一个供 ASP.NET 开发人员使用的库，它简化了向应用程序添加实时 Web 功能的过程。实时 Web 功能是让服务器代码在内容可用时立即将内容推送到连接的客户]]></description>
+</item><item>
     <title>Docker 清理和限制容器日志大小</title>
     <link>https://llssit.cn/docker-%E6%B8%85%E7%90%86%E5%92%8C%E9%99%90%E5%88%B6%E5%AE%B9%E5%99%A8%E6%97%A5%E5%BF%97%E5%A4%A7%E5%B0%8F/</link>
     <pubDate>Sat, 18 Jun 2022 19:34:02 &#43;0800</pubDate>
@@ -68,12 +75,5 @@
     <author>作者</author>
     <guid>https://llssit.cn/%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E9%A2%98-%E6%8A%A5%E6%95%B0%E6%B8%B8%E6%88%8F/</guid>
     <description><![CDATA[在进行华为机试时遇到了报数游戏的编程题（约瑟夫环），但是看了很多网上的解题都非常长，于是经过不断的学习参考，有了下面这个解题方法，也不知道是]]></description>
-</item><item>
-    <title>Java Stream流学习笔记</title>
-    <link>https://llssit.cn/java%E5%AD%A6%E4%B9%A0stream%E6%B5%81%E4%BD%BF%E7%94%A8/</link>
-    <pubDate>Sun, 17 Apr 2022 09:26:10 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://llssit.cn/java%E5%AD%A6%E4%B9%A0stream%E6%B5%81%E4%BD%BF%E7%94%A8/</guid>
-    <description><![CDATA[本篇笔记主要记录我在学习Java的stream流中记录的笔记 stream是什么 流是从支持数据处理操作的源生成的元素序列，源可以是数组、文件、]]></description>
 </item></channel>
 </rss>
