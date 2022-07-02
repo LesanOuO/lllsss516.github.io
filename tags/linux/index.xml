@@ -3,7 +3,14 @@
         <title>Linux - 标签 - Lesan&#39;s blog</title>
         <link>https://llssit.cn/tags/linux/</link>
         <description>Linux - 标签 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 21 May 2022 18:36:30 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/tags/linux/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 02 Jul 2022 11:12:07 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux中修改Docker存储位置</title>
+    <link>https://llssit.cn/linux%E4%B8%AD%E4%BF%AE%E6%94%B9docker%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/</link>
+    <pubDate>Sat, 02 Jul 2022 11:12:07 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://llssit.cn/linux%E4%B8%AD%E4%BF%AE%E6%94%B9docker%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/</guid>
+    <description><![CDATA[在维护服务器时，发现docker所在盘容量已满，导致mongodb插入数据失败从而崩溃。由此记录修改Linux中Dockder位置时遇到的问]]></description>
+</item><item>
     <title>Linux增加SSH端口</title>
     <link>https://llssit.cn/linux%E5%A2%9E%E5%8A%A0ssh%E7%AB%AF%E5%8F%A3/</link>
     <pubDate>Sat, 21 May 2022 18:36:30 &#43;0800</pubDate>

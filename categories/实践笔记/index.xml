@@ -3,7 +3,14 @@
         <title>实践笔记 - 分类 - Lesan&#39;s blog</title>
         <link>https://llssit.cn/categories/%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/</link>
         <description>实践笔记 - 分类 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 23 Jun 2022 20:14:20 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/categories/%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 02 Jul 2022 11:12:07 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/categories/%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux中修改Docker存储位置</title>
+    <link>https://llssit.cn/linux%E4%B8%AD%E4%BF%AE%E6%94%B9docker%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/</link>
+    <pubDate>Sat, 02 Jul 2022 11:12:07 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://llssit.cn/linux%E4%B8%AD%E4%BF%AE%E6%94%B9docker%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/</guid>
+    <description><![CDATA[在维护服务器时，发现docker所在盘容量已满，导致mongodb插入数据失败从而崩溃。由此记录修改Linux中Dockder位置时遇到的问]]></description>
+</item><item>
     <title>Vue中全局封装SignalR</title>
     <link>https://llssit.cn/vue%E4%B8%AD%E5%85%A8%E5%B1%80%E5%B0%81%E8%A3%85signalr/</link>
     <pubDate>Thu, 23 Jun 2022 20:14:20 &#43;0800</pubDate>
