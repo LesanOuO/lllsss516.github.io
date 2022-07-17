@@ -1,42 +1,42 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Java - 标签 - Lesan&#39;s blog</title>
-        <link>https://llssit.cn/tags/java/</link>
+        <link>https://lesan.xyz/tags/java/</link>
         <description>Java - 标签 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 17 Apr 2022 09:26:10 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 17 Apr 2022 09:26:10 &#43;0800</lastBuildDate><atom:link href="https://lesan.xyz/tags/java/" rel="self" type="application/rss+xml" /><item>
     <title>Java Stream流学习笔记</title>
-    <link>https://llssit.cn/java%E5%AD%A6%E4%B9%A0stream%E6%B5%81%E4%BD%BF%E7%94%A8/</link>
+    <link>https://lesan.xyz/java%E5%AD%A6%E4%B9%A0stream%E6%B5%81%E4%BD%BF%E7%94%A8/</link>
     <pubDate>Sun, 17 Apr 2022 09:26:10 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://llssit.cn/java%E5%AD%A6%E4%B9%A0stream%E6%B5%81%E4%BD%BF%E7%94%A8/</guid>
+    <guid>https://lesan.xyz/java%E5%AD%A6%E4%B9%A0stream%E6%B5%81%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[本篇笔记主要记录我在学习Java的stream流中记录的笔记 stream是什么 流是从支持数据处理操作的源生成的元素序列，源可以是数组、文件、]]></description>
 </item><item>
     <title>Java集合学习</title>
-    <link>https://llssit.cn/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</link>
+    <link>https://lesan.xyz/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</link>
     <pubDate>Sun, 20 Mar 2022 09:33:31 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://llssit.cn/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</guid>
+    <guid>https://lesan.xyz/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</guid>
     <description><![CDATA[简介 Java集合框架为程序员提供了预先包装的数据结构和算法来操纵他们。这使得我们使用复杂的数据结构变得非常的方便，并且这些集合框架是高性能的]]></description>
 </item><item>
     <title>Java集合(HashSet和HashMap)</title>
-    <link>https://llssit.cn/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/</link>
+    <link>https://lesan.xyz/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/</link>
     <pubDate>Wed, 13 Jan 2021 12:20:25 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://llssit.cn/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/</guid>
+    <guid>https://lesan.xyz/java%E9%9B%86%E5%90%88hashset%E5%92%8Chashmap/</guid>
     <description><![CDATA[API Collection 接口的接口 对象的集合（单列集合） ​ |&ndash;List 接口：元素按进入先后有序保存，可重复 ​ |&ndash;LinkedList 接口实现类， 链表， 插入删除， 没有同步， 线程不安全 ​ |&ndash;ArrayList 接口实现]]></description>
 </item><item>
     <title>Java数据结构</title>
-    <link>https://llssit.cn/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+    <link>https://lesan.xyz/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
     <pubDate>Wed, 13 Jan 2021 11:46:02 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://llssit.cn/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+    <guid>https://lesan.xyz/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
     <description><![CDATA[API Vector Vector 类实现了一个动态数组。和 ArrayList 很相似，但是两者是不同的： Vector 是同步访问的。 Vector 包含了许多传统的方法，这些方法不属于集合框架。 Vector 主要用在事先不知]]></description>
 </item><item>
     <title>Java学习笔记</title>
-    <link>https://llssit.cn/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <link>https://lesan.xyz/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <pubDate>Mon, 12 Oct 2020 14:07:39 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://llssit.cn/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+    <guid>https://lesan.xyz/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
     <description><![CDATA[Java集合框架 导入包 import java.util.*; ArrayList 一、定义一个ArrayList 1 2 3 4 5 6 //默认创建一个ArrayList集合 List&lt;String&gt; list = new ArrayList&lt;&gt;(); //创建一个初始化长度]]></description>
 </item></channel>
 </rss>

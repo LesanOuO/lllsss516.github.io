@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>消息推送 - 标签 - Lesan&#39;s blog</title>
-        <link>https://llssit.cn/tags/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/</link>
+        <link>https://lesan.xyz/tags/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/</link>
         <description>消息推送 - 标签 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 19 Mar 2022 19:14:25 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/tags/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 19 Mar 2022 19:14:25 &#43;0800</lastBuildDate><atom:link href="https://lesan.xyz/tags/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" rel="self" type="application/rss+xml" /><item>
     <title>实现简单消息推送功能</title>
-    <link>https://llssit.cn/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/</link>
+    <link>https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/</link>
     <pubDate>Sat, 19 Mar 2022 19:14:25 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://llssit.cn/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/</guid>
+    <guid>https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/</guid>
     <description><![CDATA[消息推送是大部分系统都需要做到的功能，在.NET中我分别通过RabbitMQ、MQTT、SignalR实现消息推送功能，本篇文章将通过它们实]]></description>
 </item></channel>
 </rss>

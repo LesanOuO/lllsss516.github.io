@@ -1,21 +1,21 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>SQL - 标签 - Lesan&#39;s blog</title>
-        <link>https://llssit.cn/tags/sql/</link>
+        <link>https://lesan.xyz/tags/sql/</link>
         <description>SQL - 标签 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 13 Jun 2022 18:41:25 &#43;0800</lastBuildDate><atom:link href="https://llssit.cn/tags/sql/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 13 Jun 2022 18:41:25 &#43;0800</lastBuildDate><atom:link href="https://lesan.xyz/tags/sql/" rel="self" type="application/rss+xml" /><item>
     <title>数据库优化</title>
-    <link>https://llssit.cn/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/</link>
+    <link>https://lesan.xyz/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/</link>
     <pubDate>Mon, 13 Jun 2022 18:41:25 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://llssit.cn/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/</guid>
+    <guid>https://lesan.xyz/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/</guid>
     <description><![CDATA[索引 MySQL 索引 MySQL 的索引有两种分类方式：逻辑分类和物理分类 逻辑分类 主键索引：一张表只能有一个主键索引，不允许重复、不允许为 NULL 唯一索引：数据列不允许]]></description>
 </item><item>
     <title>数据库Tip:行转列、列转行</title>
-    <link>https://llssit.cn/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C/</link>
+    <link>https://lesan.xyz/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C/</link>
     <pubDate>Sun, 03 Apr 2022 10:45:10 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://llssit.cn/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C/</guid>
+    <guid>https://lesan.xyz/%E8%A1%8C%E8%BD%AC%E5%88%97%E5%88%97%E8%BD%AC%E8%A1%8C/</guid>
     <description><![CDATA[SQL 行转列，列转行 行列转换在做报表分析时还是经常会遇到的，今天就说一下如何实现行列转换吧。 行列转换就是如下图所示两种展示形式的互相转换 行转列 假]]></description>
 </item></channel>
 </rss>
