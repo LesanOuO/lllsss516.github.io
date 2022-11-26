@@ -32,7 +32,7 @@ public static void Main(string[] args)
 ```C#
 public static void Main(string[] args)
 {
-    Task<int> task = new Task<int>(() => 
+    Task<int> task = new Task<int>(() =>
     {
         Thread,Sleep(3000);
         return 1;
@@ -46,7 +46,7 @@ public static void Main(string[] args)
 虽然 `Thread` 可以通过 Start 方法参数来进行返回值处理，但十分不便。
 ```C#
 public static void Main(string[] args)
-{  
+{
     Task task = new Task(LongRunningTask);
     task.Start();
     Console.WriteLine(task.Result);
@@ -92,7 +92,7 @@ static void Main(string[] args)
         {
             Console.WriteLine("Cancelling..");
             cts.Cancel();
-        }                
+        }
         Console.Read();
     }
 }
@@ -105,10 +105,10 @@ private static void LongRunningTask(CancellationToken token)
             break;
         }
         else
-        {                  
+        {
             Console.WriteLine(i);
-        }               
-    }          
+        }
+    }
 }
 ```
 

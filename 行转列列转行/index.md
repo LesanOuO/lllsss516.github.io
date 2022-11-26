@@ -9,15 +9,11 @@
 
 ![](https://cdn.jsdelivr.net/gh/LesanOuO/images/img/行转列1.png)
 
-
-
 ## 行转列
 
 假如我们有下表：
 
 ![](https://cdn.jsdelivr.net/gh/LesanOuO/images/img/行转列2.png)
-
-
 
 - 使用PIVOT实现
 

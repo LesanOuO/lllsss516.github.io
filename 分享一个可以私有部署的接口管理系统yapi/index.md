@@ -51,19 +51,19 @@ YApi 成熟的团队管理扁平化项目权限配置满足各类企业的需求
 
 `docker run -it --rm --link yapimongo:mongo --entrypoint npm --workdir /api/vendors registry.cn-hangzhou.aliyuncs.com/anoy/yapi run install-server`
 
-**--rm：**在 Docker 容器退出时，默认容器内部的文件系统仍然被保留，以方便调试并保留用户数据。但是，对于 foreground 容器，由于其只是在开发调试过程中短期运行，其用户数据并无保留的必要，因而可以在容器启动时设置 **--rm** 选项，这样在容器退出时就能够自动清理容器内部的文件系统
+`--rm：`在 Docker 容器退出时，默认容器内部的文件系统仍然被保留，以方便调试并保留用户数据。但是，对于 foreground 容器，由于其只是在开发调试过程中短期运行，其用户数据并无保留的必要，因而可以在容器启动时设置 **--rm** 选项，这样在容器退出时就能够自动清理容器内部的文件系统
 
-**--entrypoint：**类似于 CMD 指令，但其不会被 docker run 的命令行参数指定的指令所覆盖，而且这些命令行参数会被当作参数送给 ENTRYPOINT 指令指定的程序。但是, 如果运行 docker run 时使用了 --entrypoint 选项，将覆盖 ENTRYPOINT 指令指定的程序
+`--entrypoint：`类似于 CMD 指令，但其不会被 docker run 的命令行参数指定的指令所覆盖，而且这些命令行参数会被当作参数送给 ENTRYPOINT 指令指定的程序。但是, 如果运行 docker run 时使用了 --entrypoint 选项，将覆盖 ENTRYPOINT 指令指定的程序
 
-**--workdir：**指定工作目录。用 WORKDIR 指定的工作目录，会在构建镜像的每一层中都存在
+`--workdir：`指定工作目录。用 WORKDIR 指定的工作目录，会在构建镜像的每一层中都存在
 
-**run：**用于执行后面跟着的命令行命令
+`run：`用于执行后面跟着的命令行命令
 
 5. 创建Yapi容器并启动
 
 `docker run -d --name yapi --restart=always --link yapimongo:mongo --workdir /api/vendors  -p 3001:3000  registry.cn-hangzhou.aliyuncs.com/anoy/yapi  server/app.js`
 
-**--link：**用于容器直接的互通
+`--link：`用于容器直接的互通
 
 6. 使用Yapi
 
@@ -100,7 +100,5 @@ docker restart yapi
 
 
 > 本文参考至：
->
 > [docker安装yapi](https://www.cnblogs.com/binz/p/12684610.html)
->
 > 具体使用可参考[官方教程](https://hellosean1025.github.io/yapi/documents/index.html)

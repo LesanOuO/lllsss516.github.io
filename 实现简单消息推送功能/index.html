@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/lesan.xyz\/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD\/"
-        },"genre": "posts","keywords": "消息推送","wordcount":  3132 ,
+        },"genre": "posts","keywords": "消息推送, .NET","wordcount":  3094 ,
         "url": "https:\/\/lesan.xyz\/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD\/","datePublished": "2022-03-19T19:14:25+08:00","dateModified": "2022-03-19T19:14:25+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">实现简单消息推送功能</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>实践笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-19">2022-03-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3132 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-19">2022-03-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3094 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -136,13 +136,14 @@
     <li><a href="#其他">其他</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>消息推送是大部分系统都需要做到的功能，在.NET中我分别通过RabbitMQ、MQTT、SignalR实现消息推送功能，本篇文章将通过它们实现简单的推送功能，手把手带大家完成编程。本文环境为.NET Core 3.1下</p>
+            </div><div class="content" id="content"><p>消息推送是大部分系统都需要做到的功能，在.NET中我分别通过RabbitMQ、MQTT、SignalR实现消息推送功能，本篇文章将通过它们实现简单的推送功能，手把手带大家完成编程。本文环境为<code>.NET Core 3.1</code>下</p>
 <h2 id="signalr实现">SignalR实现</h2>
 <h3 id="简介">简介</h3>
 <p><strong>SignalR是一个开源的库，跨平台</strong>；让Web应用与其他应用通讯变得很简单，<strong>Web服务端可以实时的将内容推送给对应的客户端，客户端发送的信息也可以实时到其他客户端</strong>。</p>
 <p><strong>SignalR提供了一种远程过程调用(RPC)的方式，使得客户端可以调用服务器的方法，同样在服务器端的方法中也能调用客户端的方法</strong>。</p>
 <h3 id="示例">示例</h3>
-<p>Nuget包为：<code>&lt;PackageReference Include=&quot;Microsoft.AspNetCore.SignalR.Core&quot; Version=&quot;1.1.0&quot; /&gt;</code></p>
+<p>Nuget包为：
+<code>&lt;PackageReference Include=&quot;Microsoft.AspNetCore.SignalR.Core&quot; Version=&quot;1.1.0&quot; /&gt;</code></p>
 <ul>
 <li>首先我们需要创建一个自己的SignalR Hub</li>
 </ul>
@@ -182,7 +183,7 @@
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.SignalR</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.SignalR</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">KBEAM.Hubs</span>
@@ -232,7 +233,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="c1">// 1.在ConfigureServices函数中添加以下语句，注册相关服务</span>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 1.在ConfigureServices函数中添加以下语句，注册相关服务</span>
 </span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddSignalR</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 2.在Configure函数中添加以下语句，配置管道终结点</span>
 </span></span><span class="line"><span class="cl"><span class="n">app</span><span class="p">.</span><span class="n">UseEndpoints</span><span class="p">(</span><span class="n">endpoints</span> <span class="p">=&gt;</span>
@@ -259,7 +260,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="c1">// 定义一个上下文</span>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 定义一个上下文</span>
 </span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">readonly</span> <span class="n">IHubContext</span><span class="p">&lt;</span><span class="n">ChatHub</span><span class="p">&gt;</span> <span class="n">hubContext</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 通过构造函数注入依赖</span>
 </span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">MonitorService</span><span class="p">(</span><span class="n">IHubContext</span><span class="p">&lt;</span><span class="n">ChatHub</span><span class="p">&gt;</span> <span class="n">hub</span><span class="p">)</span>
@@ -308,7 +309,7 @@
 </span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">configureLogging</span><span class="p">(</span><span class="nx">signalR</span><span class="p">.</span><span class="nx">LogLevel</span><span class="p">.</span><span class="nb">Error</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">build</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">conn</span>
-</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">signalR</span> <span class="nx">from</span> <span class="s2">&#34;@/utils/signalR&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 2.客户端调用服务端方法（RPC）
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">signalR</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="s2">&#34;AddToGroup&#34;</span><span class="p">,</span> <span class="s2">&#34;groupName&#34;</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// 加入用户组
@@ -348,7 +349,8 @@
 </div><ul>
 <li>服务端发送消息</li>
 </ul>
-<p>所需Nuget包：<code>&lt;PackageReference Include=&quot;RabbitMQ.Client&quot; Version=&quot;6.2.4&quot; /&gt;</code></p>
+<p>所需Nuget包：
+<code>&lt;PackageReference Include=&quot;RabbitMQ.Client&quot; Version=&quot;6.2.4&quot; /&gt;</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -377,7 +379,7 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="c1">// 建立RabbitMQ连接</span>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 建立RabbitMQ连接</span>
 </span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">ConnectionFactory</span> <span class="n">rabbitMqFactory</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ConnectionFactory</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">HostName</span> <span class="p">=</span> <span class="s">&#34;localhost&#34;</span><span class="p">,</span>
@@ -467,7 +469,7 @@
 </span></span><span class="line"><span class="cl">        <span class="nx">client</span><span class="o">:</span> <span class="nx">Stomp</span><span class="p">.</span><span class="nx">client</span><span class="p">(</span><span class="s2">&#34;ws://localhost:15674/ws&#34;</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">    <span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="p">},</span>
-</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 初始化连接操作
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">created</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">     <span class="k">this</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span>
@@ -541,7 +543,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="n">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="n">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Host</span><span class="p">.</span><span class="n">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
 </span></span><span class="line"><span class="cl">        <span class="p">{</span>
@@ -603,7 +605,7 @@
 </span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="c1">// 在ConfigureServices函数中添加</span>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="c1">// 在ConfigureServices函数中添加</span>
 </span></span><span class="line"><span class="cl"><span class="n">services</span><span class="p">.</span><span class="n">AddHostedMqttServer</span><span class="p">(</span><span class="n">mqttServer</span> <span class="p">=&gt;</span> <span class="n">mqttServer</span><span class="p">.</span><span class="n">WithoutDefaultEndpoint</span><span class="p">().</span><span class="n">WithConnectionValidator</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">Username</span> <span class="p">!=</span> <span class="s">&#34;admin&#34;</span> <span class="p">||</span> <span class="n">c</span><span class="p">.</span><span class="n">Password</span> <span class="p">!=</span> <span class="s">&#34;123456&#34;</span><span class="p">)</span>
@@ -686,7 +688,7 @@
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MQTTnet.Server</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">MQTTnet.Server</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">Common</span>
@@ -902,7 +904,7 @@
 </span><span class="lnt">119
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-vue" data-lang="vue"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;app&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;Vue logo&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;./assets/logo.png&#34;</span> <span class="p">/&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">HelloWorld</span> <span class="na">msg</span><span class="o">=</span><span class="s">&#34;Welcome to Your Vue.js App&#34;</span> <span class="p">/&gt;</span>
@@ -1012,13 +1014,13 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="err">#</span><span class="nx">app</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">font</span><span class="o">-</span><span class="nx">family</span><span class="o">:</span> <span class="nx">Avenir</span><span class="p">,</span> <span class="nx">Helvetica</span><span class="p">,</span> <span class="nx">Arial</span><span class="p">,</span> <span class="nx">sans</span><span class="o">-</span><span class="nx">serif</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="o">-</span><span class="nx">webkit</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">smoothing</span><span class="o">:</span> <span class="nx">antialiased</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="o">-</span><span class="nx">moz</span><span class="o">-</span><span class="nx">osx</span><span class="o">-</span><span class="nx">font</span><span class="o">-</span><span class="nx">smoothing</span><span class="o">:</span> <span class="nx">grayscale</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">text</span><span class="o">-</span><span class="nx">align</span><span class="o">:</span> <span class="nx">center</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">color</span><span class="o">:</span> <span class="err">#</span><span class="mi">2</span><span class="nx">c3e50</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">margin</span><span class="o">-</span><span class="nx">top</span><span class="o">:</span> <span class="mi">60</span><span class="nx">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">app</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-family</span><span class="p">:</span> <span class="n">Avenir</span><span class="p">,</span> <span class="n">Helvetica</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kp">-moz-</span><span class="n">osx-font-smoothing</span><span class="p">:</span> <span class="n">grayscale</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="mh">#2c3e50</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">margin-top</span><span class="p">:</span> <span class="mi">60</span><span class="kt">px</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
 </span></span></code></pre></td></tr></table>
@@ -1036,13 +1038,13 @@
                             <a class="link-to-markdown" href="/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能" data-via="xxxx" data-hashtags="消息推送"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-hashtag="消息推送"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能" data-via="xxxx" data-hashtags="消息推送,.NET"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-hashtag="消息推送"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://lesan.xyz/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD/" data-title="实现简单消息推送功能"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/">消息推送</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/">消息推送</a>,&nbsp;<a href="/tags/.net/">.NET</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>

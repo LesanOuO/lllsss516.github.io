@@ -32,17 +32,17 @@ docker run -d -p 9443:443 -p 9080:80 -p 9022:22 --restart always --name testgitl
 
 其中：
 
-**-d：**后台执行
+`-d：`后台执行
 
-**-p：**端口映射
+`-p：`端口映射
 
-**--restart：**重启机制
+`--restart：`重启机制
 
-**--name：**容器名称
+`--name：`容器名称
 
-**-v：**挂载文件，使得容器内文件在宿主机内有映射
+`-v：`挂载文件，使得容器内文件在宿主机内有映射
 
-**--privileged：**使得容器获取宿主机root权限
+`--privileged：`使得容器获取宿主机root权限
 
 ### 进入容器，修改配置
 
@@ -68,8 +68,6 @@ unicorn['worker_processes'] = 2
 
 ![](https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab3.png)
 
-
-
 ![](https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab4.png)
 
 修改上图红框配置
@@ -80,15 +78,11 @@ unicorn['worker_processes'] = 2
 
 或者重启容器`docker restart testgitlab`
 
-
-
 ### 访问gitlab
 
 输入http://192.168.3.12:9080打开页面（ip请输入前面设置的），默认账户root，密码需要重新设置至少8位
 
 ![](https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab5.png)
-
-
 
 ## 2.使用docker安装jenkins
 
@@ -288,16 +282,10 @@ sed -i "" 's/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.ts
 
 - 删除 **Tag** 也会推送事件, 要做好过滤 ( 上面配置中已使用 **commitsId** 字段进行过滤 )
 
-
-
 > 本篇文章产考下列文章：
->
 > [docker安装gitlab](https://www.cnblogs.com/hanease/p/15690227.html)
->
 > [docker安装jenkins](https://www.cnblogs.com/fuzongle/p/12834080.html)
->
 > [docker中jenkins插件加速](https://juejin.cn/post/6844904137570648072)
->
 > [整合gitlab+jenkins](https://www.jianshu.com/p/7e8037c63d63)
 
 

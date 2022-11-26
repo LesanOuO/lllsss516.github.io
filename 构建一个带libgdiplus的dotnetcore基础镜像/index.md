@@ -116,14 +116,9 @@ ln -s /usr/lib/libgdiplus.so /usr/lib/gdiplus.dll
 
 修改项目Dockerfile基础镜像为刚刚构建的自定义镜像`dotnetcore-with-libgdiplus:v3.1`
 
-
-
 > 借鉴参考以下文章：
->
 > https://blog.csdn.net/leilei1366615/article/details/106267225
->
 > https://www.runoob.com/docker/docker-command-manual.html
->
 > https://blog.csdn.net/u014374975/article/details/115436174
 
 

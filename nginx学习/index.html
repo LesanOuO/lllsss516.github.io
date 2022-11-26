@@ -665,8 +665,8 @@
 <p>静态负载均衡算法在一般网络环境下也能表现的比较好，动态负载均衡算法更加适用于复杂的网络环境。</p>
 <p>例子：</p>
 <ol>
-<li>
-<p>普通轮询算法</p>
+<li>普通轮询算法</li>
+</ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -701,9 +701,9 @@
 </span></span><span class="line"><span class="cl">}
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-<li>
-<p>基于比例加权轮询</p>
+</div><ol start="2">
+<li>基于比例加权轮询</li>
+</ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -739,15 +739,15 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
-<li>
-<p>基于IP路由负载</p>
-<p>　　我们知道一个请求在经过一个服务器处理时，服务器会保存相关的会话信息，比如session，但是该请求如果第一个服务器没处理完，通过nginx轮询到第二个服务器上，那么这个服务器是没有会话信息的。</p>
-<p>　　最典型的一个例子：用户第一次进入一个系统是需要进行登录身份验证的，首先将请求跳转到Tomcat1服务器进行处理，登录信息是保存在Tomcat1 上的，这时候需要进行别的操作，那么可能会将请求轮询到第二个Tomcat2上，那么由于Tomcat2 没有保存会话信息，会以为该用户没有登录，然后继续登录一次，如果有多个服务器，每次第一次访问都要进行登录，这显然是很影响用户体验的。</p>
-<p>　　这里产生的一个问题也就是集群环境下的 session 共享，如何解决这个问题？</p>
-<p>　　通常由两种方法：</p>
-<p>　　1、第一种方法是选择一个中间件，将登录信息保存在一个中间件上，这个中间件可以为 Redis 这样的数据库。那么第一次登录，我们将session 信息保存在 Redis 中，跳转到第二个服务器时，我们可以先去Redis上查询是否有登录信息，如果有，就能直接进行登录之后的操作了，而不用进行重复登录。</p>
-<p>　　2、第二种方法是根据客户端的IP地址划分，每次都将同一个 IP 地址发送的请求都分发到同一个 Tomcat 服务器，那么也不会存在 session 共享的问题。</p>
-<p>　　而 nginx 的基于 IP 路由负载的机制就是上诉第二种形式。大概配置如下：</p>
+<li>基于IP路由负载</li>
+</ol>
+<p>我们知道一个请求在经过一个服务器处理时，服务器会保存相关的会话信息，比如session，但是该请求如果第一个服务器没处理完，通过nginx轮询到第二个服务器上，那么这个服务器是没有会话信息的。</p>
+<p>最典型的一个例子：用户第一次进入一个系统是需要进行登录身份验证的，首先将请求跳转到Tomcat1服务器进行处理，登录信息是保存在Tomcat1 上的，这时候需要进行别的操作，那么可能会将请求轮询到第二个Tomcat2上，那么由于Tomcat2 没有保存会话信息，会以为该用户没有登录，然后继续登录一次，如果有多个服务器，每次第一次访问都要进行登录，这显然是很影响用户体验的。</p>
+<p>这里产生的一个问题也就是集群环境下的 session 共享，如何解决这个问题？</p>
+<p>通常由两种方法：</p>
+<p>1、第一种方法是选择一个中间件，将登录信息保存在一个中间件上，这个中间件可以为 Redis 这样的数据库。那么第一次登录，我们将session 信息保存在 Redis 中，跳转到第二个服务器时，我们可以先去Redis上查询是否有登录信息，如果有，就能直接进行登录之后的操作了，而不用进行重复登录。</p>
+<p>2、第二种方法是根据客户端的IP地址划分，每次都将同一个 IP 地址发送的请求都分发到同一个 Tomcat 服务器，那么也不会存在 session 共享的问题。</p>
+<p>而 nginx 的基于 IP 路由负载的机制就是上诉第二种形式。大概配置如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -787,8 +787,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="4">
-<li>
-<p>基于服务器响应时间负载分配</p>
+<li>基于服务器响应时间负载分配</li>
+</ol>
 <p>根据服务器处理请求的时间来进行负载，处理请求越快，也就是响应时间越短的优先分配。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -829,8 +829,8 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="5">
-<li>
-<p>对不同域名实现负载均衡</p>
+<li>对不同域名实现负载均衡</li>
+</ol>
 <p>通过配合location 指令块我们还可以实现对不同域名实现负载均衡。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -888,15 +888,7 @@
 </span></span><span class="line"><span class="cl">}
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="引用">引用</h2>
+</div><h2 id="引用">引用</h2>
 <p>以上学习笔记多处摘录自网络</p>
 <blockquote>
 <p><a href="https://www.cnblogs.com/ysocean/p/9392912.html" target="_blank" rel="noopener noreffer">https://www.cnblogs.com/ysocean/p/9392912.html</a></p>

@@ -2,7 +2,7 @@
 
 
 ## SignalR 简介
-ASP.NET SignalR 是一个供 ASP.NET 开发人员使用的库，它简化了向应用程序添加实时 Web 功能的过程。实时 Web 功能是让服务器代码在内容可用时立即将内容推送到连接的客户端的能力，而不是让服务器等待客户端请求新数据。
+`ASP.NET` SignalR 是一个供 `ASP.NET` 开发人员使用的库，它简化了向应用程序添加实时 Web 功能的过程。实时 Web 功能是让服务器代码在内容可用时立即将内容推送到连接的客户端的能力，而不是让服务器等待客户端请求新数据。
 
 [官方网址](https://docs.microsoft.com/en-us/aspnet/signalr/)
 

@@ -44,6 +44,6 @@
     <pubDate>Sun, 27 Mar 2022 10:26:15 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://lesan.xyz/%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8docker%E4%B8%8Ekubernetes/</guid>
-    <description><![CDATA[本笔记为Docker与Kubernetes的学习笔记 将.NET Core的项目发布为Docker镜像 通过VS支持创建Docker镜像 第一步，创]]></description>
+    <description><![CDATA[本笔记为Docker与Kubernetes的实践笔记 将.NET Core的项目发布为Docker镜像 通过VS支持创建Docker镜像 第一步，创]]></description>
 </item></channel>
 </rss>

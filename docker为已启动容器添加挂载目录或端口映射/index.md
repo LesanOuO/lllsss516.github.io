@@ -7,7 +7,7 @@
 
 ## 1. 先查看需要修改的容器的id号
 
-首先通过 `docker ps -a` 查看 **CONTAINER ID** 
+首先通过 `docker ps -a` 查看 **CONTAINER ID**
 
 再通过 `docker inspect <container_id>` 查看 **Id** （一般在最开始的位置）
 

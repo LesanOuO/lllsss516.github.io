@@ -7,8 +7,6 @@
 
 导入包  `import java.util.*;`
 
-
-
 #### ArrayList
 
 ##### 一、定义一个ArrayList
@@ -182,26 +180,26 @@ Java 线程的优先级是一个整数，其取值范围是 1 （Thread.MIN_PRIO
 
 #### Thread 方法
 
-| 序号 | 方法描述                                                     |
-| :--: | :----------------------------------------------------------- |
-|  1   | **public void start()**<br/>使该线程开始执行；**==Java==** 虚拟机调用该线程的 run 方法。 |
-|  2   | **public void run()**<br/>如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回。 |
-|  3   | **public final void setName(String name)**<br/>改变线程名称，使之与参数 name 相同。 |
-|  4   | **public final void setPriority(int priority)**<br/> 更改线程的优先级。 |
-|  5   | **public final void setDaemon(boolean on)**<br/>将该线程标记为守护线程或用户线程。 |
-|  6   | **public final void join(long millisec)**<br/>等待该线程终止的时间最长为 millis 毫秒。 |
-|  7   | **public void interrupt()**<br/>中断线程。                   |
-|  8   | **public final boolean isAlive()**<br/>测试线程是否处于活动状态。 |
+| 序号  | 方法描述                                                                                                                                        |
+| :---: | :---------------------------------------------------------------------------------------------------------------------------------------------- |
+|   1   | **public void start()**<br/>使该线程开始执行；**==Java==** 虚拟机调用该线程的 run 方法。                                                        |
+|   2   | **public void run()**<br/>如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回。 |
+|   3   | **public final void setName(String name)**<br/>改变线程名称，使之与参数 name 相同。                                                             |
+|   4   | **public final void setPriority(int priority)**<br/> 更改线程的优先级。                                                                         |
+|   5   | **public final void setDaemon(boolean on)**<br/>将该线程标记为守护线程或用户线程。                                                              |
+|   6   | **public final void join(long millisec)**<br/>等待该线程终止的时间最长为 millis 毫秒。                                                          |
+|   7   | **public void interrupt()**<br/>中断线程。                                                                                                      |
+|   8   | **public final boolean isAlive()**<br/>测试线程是否处于活动状态。                                                                               |
 
 测试线程是否处于活动状态。 上述方法是被Thread对象调用的。下面的方法是Thread类的静态方法。
 
-| 序号 | 方法描述                                                     |
-| :--: | :----------------------------------------------------------- |
-|  1   | **public static void yield()**<br/>暂停当前正在执行的线程对象，并执行其他线程。 |
-|  2   | **public static void sleep(long millisec)**<br/>在指定的毫秒数内让当前正在执行的线程休眠（暂停执行），此操作受到系统计时器和调度程序精度和准确性的影响。 |
-|  3   | **public static boolean holdsLock(Object x)**<br/>当且仅当当前线程在指定的对象上保持监视器锁时，才返回 true。 |
-|  4   | **public static Thread currentThread()**<br/>返回对当前正在执行的线程对象的引用。 |
-|  5   | **public static void dumpStack()**<br/>将当前线程的堆栈跟踪打印至标准错误流。 |
+| 序号  | 方法描述                                                                                                                                                 |
+| :---: | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   1   | **public static void yield()**<br/>暂停当前正在执行的线程对象，并执行其他线程。                                                                          |
+|   2   | **public static void sleep(long millisec)**<br/>在指定的毫秒数内让当前正在执行的线程休眠（暂停执行），此操作受到系统计时器和调度程序精度和准确性的影响。 |
+|   3   | **public static boolean holdsLock(Object x)**<br/>当且仅当当前线程在指定的对象上保持监视器锁时，才返回 true。                                            |
+|   4   | **public static Thread currentThread()**<br/>返回对当前正在执行的线程对象的引用。                                                                        |
+|   5   | **public static void dumpStack()**<br/>将当前线程的堆栈跟踪打印至标准错误流。                                                                            |
 
 
 

@@ -1,7 +1,7 @@
 # 实现简单消息推送功能
 
 
-消息推送是大部分系统都需要做到的功能，在.NET中我分别通过RabbitMQ、MQTT、SignalR实现消息推送功能，本篇文章将通过它们实现简单的推送功能，手把手带大家完成编程。本文环境为.NET Core 3.1下
+消息推送是大部分系统都需要做到的功能，在.NET中我分别通过RabbitMQ、MQTT、SignalR实现消息推送功能，本篇文章将通过它们实现简单的推送功能，手把手带大家完成编程。本文环境为`.NET Core 3.1`下
 
 ## SignalR实现
 
@@ -13,11 +13,12 @@
 
 ### 示例
 
-Nuget包为：`<PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.1.0" />`
+Nuget包为：
+`<PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.1.0" />`
 
 - 首先我们需要创建一个自己的SignalR Hub
 
-```C#
+```csharp
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
@@ -55,7 +56,7 @@ namespace KBEAM.Hubs
 
 - 在Startup.cs文件中注册相关服务及管道
 
-```c#
+```csharp
 // 1.在ConfigureServices函数中添加以下语句，注册相关服务
 services.AddSignalR();
 // 2.在Configure函数中添加以下语句，配置管道终结点
@@ -69,7 +70,7 @@ app.UseEndpoints(endpoints =>
 
 - 编写服务端业务，推送消息
 
-```c#
+```csharp
 // 定义一个上下文
 private readonly IHubContext<ChatHub> hubContext;
 // 通过构造函数注入依赖
@@ -95,7 +96,7 @@ let conn = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Error)
     .build()
 export default conn
-    
+
 import signalR from "@/utils/signalR";
 // 2.客户端调用服务端方法（RPC）
 signalR.invoke("AddToGroup", "groupName").catch(function (err) {   // 加入用户组
@@ -110,8 +111,6 @@ signalR.on("ReceiveMessageFromGroup", function (group, message) {
     that.lineChartData = JSON.parse(message);
 });
 ```
-
-
 
 ## RabbitMQ实现
 
@@ -135,9 +134,10 @@ rabbitmq-plugins enable rabbitmq_web_stomp_examples
 
 - 服务端发送消息
 
-所需Nuget包：`<PackageReference Include="RabbitMQ.Client" Version="6.2.4" />`
+所需Nuget包：
+`<PackageReference Include="RabbitMQ.Client" Version="6.2.4" />`
 
-```c#
+```csharp
 // 建立RabbitMQ连接
 private static readonly ConnectionFactory rabbitMqFactory = new ConnectionFactory()
 {
@@ -179,7 +179,7 @@ data() {
         client: Stomp.client("ws://localhost:15674/ws"),
     };
 },
-    
+
 // 初始化连接操作
 created() {
      this.client.connect(
@@ -241,7 +241,7 @@ MQTT是IBM开发的一个即时通讯协议，该协议支持所有的平台，�
 
 对Program.cs修改：
 
-```c#
+```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
         .ConfigureWebHostDefaults(webBuilder =>
@@ -258,7 +258,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 对Startup.cs修改：
 
-```c#
+```csharp
 // 在ConfigureServices函数中添加
 services.AddHostedMqttServer(mqttServer => mqttServer.WithoutDefaultEndpoint().WithConnectionValidator(c =>
 {
@@ -306,7 +306,7 @@ MqttHelper.PublishAsync("monitor", JsonConvert.SerializeObject(new { expectedDat
 
 添加MqttHelper类：
 
-```c#
+```csharp
 using MQTTnet.Server;
 using System.Text;
 
@@ -377,7 +377,7 @@ import mqtt from "mqtt";
 
 Vue前端测试客户端全部代码，通过Vue-cli搭建的项目，修改App.vue即可
 
-```vue
+```html
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />

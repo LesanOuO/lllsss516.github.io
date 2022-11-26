@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/lesan.xyz\/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi\/"
-        },"genre": "posts","keywords": "Yapi","wordcount":  897 ,
+        },"genre": "posts","keywords": "收藏分享","wordcount":  857 ,
         "url": "https:\/\/lesan.xyz\/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi\/","datePublished": "2022-04-03T10:13:10+08:00","dateModified": "2022-04-03T10:13:10+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">分享一个可以私有部署的接口管理系统Yapi</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%94%B6%E8%97%8F%E5%88%86%E4%BA%AB/"><i class="far fa-folder fa-fw"></i>收藏分享</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-03">2022-04-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 897 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-03">2022-04-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 857 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -163,15 +163,15 @@
 <li>初始化 Yapi 数据库索引及管理员账号</li>
 </ol>
 <p><code>docker run -it --rm --link yapimongo:mongo --entrypoint npm --workdir /api/vendors registry.cn-hangzhou.aliyuncs.com/anoy/yapi run install-server</code></p>
-<p>**&ndash;rm：**在 Docker 容器退出时，默认容器内部的文件系统仍然被保留，以方便调试并保留用户数据。但是，对于 foreground 容器，由于其只是在开发调试过程中短期运行，其用户数据并无保留的必要，因而可以在容器启动时设置 <strong>&ndash;rm</strong> 选项，这样在容器退出时就能够自动清理容器内部的文件系统</p>
-<p>**&ndash;entrypoint：**类似于 CMD 指令，但其不会被 docker run 的命令行参数指定的指令所覆盖，而且这些命令行参数会被当作参数送给 ENTRYPOINT 指令指定的程序。但是, 如果运行 docker run 时使用了 &ndash;entrypoint 选项，将覆盖 ENTRYPOINT 指令指定的程序</p>
-<p>**&ndash;workdir：**指定工作目录。用 WORKDIR 指定的工作目录，会在构建镜像的每一层中都存在</p>
-<p>**run：**用于执行后面跟着的命令行命令</p>
+<p><code>--rm：</code>在 Docker 容器退出时，默认容器内部的文件系统仍然被保留，以方便调试并保留用户数据。但是，对于 foreground 容器，由于其只是在开发调试过程中短期运行，其用户数据并无保留的必要，因而可以在容器启动时设置 <strong>&ndash;rm</strong> 选项，这样在容器退出时就能够自动清理容器内部的文件系统</p>
+<p><code>--entrypoint：</code>类似于 CMD 指令，但其不会被 docker run 的命令行参数指定的指令所覆盖，而且这些命令行参数会被当作参数送给 ENTRYPOINT 指令指定的程序。但是, 如果运行 docker run 时使用了 &ndash;entrypoint 选项，将覆盖 ENTRYPOINT 指令指定的程序</p>
+<p><code>--workdir：</code>指定工作目录。用 WORKDIR 指定的工作目录，会在构建镜像的每一层中都存在</p>
+<p><code>run：</code>用于执行后面跟着的命令行命令</p>
 <ol start="5">
 <li>创建Yapi容器并启动</li>
 </ol>
 <p><code>docker run -d --name yapi --restart=always --link yapimongo:mongo --workdir /api/vendors  -p 3001:3000  registry.cn-hangzhou.aliyuncs.com/anoy/yapi  server/app.js</code></p>
-<p>**&ndash;link：**用于容器直接的互通</p>
+<p><code>--link：</code>用于容器直接的互通</p>
 <ol start="6">
 <li>使用Yapi</li>
 </ol>
@@ -232,9 +232,9 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>本文参考至：</p>
-<p><a href="https://www.cnblogs.com/binz/p/12684610.html" target="_blank" rel="noopener noreffer">docker安装yapi</a></p>
-<p>具体使用可参考<a href="https://hellosean1025.github.io/yapi/documents/index.html" target="_blank" rel="noopener noreffer">官方教程</a></p>
+<p>本文参考至：
+<a href="https://www.cnblogs.com/binz/p/12684610.html" target="_blank" rel="noopener noreffer">docker安装yapi</a>
+具体使用可参考<a href="https://hellosean1025.github.io/yapi/documents/index.html" target="_blank" rel="noopener noreffer">官方教程</a></p>
 </blockquote>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -249,13 +249,13 @@
                             <a class="link-to-markdown" href="/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi" data-via="xxxx" data-hashtags="Yapi"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-hashtag="Yapi"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi" data-via="xxxx" data-hashtags="收藏分享"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-hashtag="收藏分享"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" data-title="分享一个可以私有部署的接口管理系统Yapi"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/yapi/">Yapi</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%94%B6%E8%97%8F%E5%88%86%E4%BA%AB/">收藏分享</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>

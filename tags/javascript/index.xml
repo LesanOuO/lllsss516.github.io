@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>JavaScript - 标签 - Lesan&#39;s blog</title>
+        <link>https://lesan.xyz/tags/javascript/</link>
+        <description>JavaScript - 标签 - Lesan&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 26 Nov 2022 16:59:38 &#43;0800</lastBuildDate><atom:link href="https://lesan.xyz/tags/javascript/" rel="self" type="application/rss+xml" /><item>
+    <title>一些简洁的JS代码片段</title>
+    <link>https://lesan.xyz/%E4%B8%80%E4%BA%9B%E7%AE%80%E6%B4%81%E7%9A%84js%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</link>
+    <pubDate>Sat, 26 Nov 2022 16:59:38 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://lesan.xyz/%E4%B8%80%E4%BA%9B%E7%AE%80%E6%B4%81%E7%9A%84js%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</guid>
+    <description><![CDATA[本文章主要是一些简洁的JS代码片段，主要提升代码质量以及美观 从数组中删除重复项 1 2 const numbers = [1, 1, 20, 3, 3, 3, 9, 9]; const uniqueNumbers = [...new Set(numbers)]; // -&gt; [1, 20, 3, 9] 在 JavaScript 中，Set]]></description>
+</item></channel>
+</rss>

@@ -3,7 +3,42 @@
         <title>收藏分享 - 分类 - Lesan&#39;s blog</title>
         <link>https://lesan.xyz/categories/%E6%94%B6%E8%97%8F%E5%88%86%E4%BA%AB/</link>
         <description>收藏分享 - 分类 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 21 May 2022 18:36:30 &#43;0800</lastBuildDate><atom:link href="https://lesan.xyz/categories/%E6%94%B6%E8%97%8F%E5%88%86%E4%BA%AB/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 26 Nov 2022 17:14:20 &#43;0800</lastBuildDate><atom:link href="https://lesan.xyz/categories/%E6%94%B6%E8%97%8F%E5%88%86%E4%BA%AB/" rel="self" type="application/rss+xml" /><item>
+    <title>STEP、IGES、STL等3D模型转换为GLB</title>
+    <link>https://lesan.xyz/stepigesstl%E7%AD%893d%E6%A8%A1%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%BAglb/</link>
+    <pubDate>Sat, 26 Nov 2022 17:14:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://lesan.xyz/stepigesstl%E7%AD%893d%E6%A8%A1%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%BAglb/</guid>
+    <description><![CDATA[在用threejs渲染3D模型时，往往需要选择一个最适合的模型格式，通常都是使用GLB作为Web渲染模型。然而许多工业的模型往往都是以STE]]></description>
+</item><item>
+    <title>Nginx配置Http和Https正向代理</title>
+    <link>https://lesan.xyz/nginx%E9%85%8D%E7%BD%AEhttp%E5%92%8Chttps%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86/</link>
+    <pubDate>Sat, 26 Nov 2022 17:00:25 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://lesan.xyz/nginx%E9%85%8D%E7%BD%AEhttp%E5%92%8Chttps%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86/</guid>
+    <description><![CDATA[Nginx配置http代理非常简单，网上教程也很多，但是无法很方便的配置https代理，本片文章将记录搭建可以同时代理http和https的]]></description>
+</item><item>
+    <title>一些简洁的JS代码片段</title>
+    <link>https://lesan.xyz/%E4%B8%80%E4%BA%9B%E7%AE%80%E6%B4%81%E7%9A%84js%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</link>
+    <pubDate>Sat, 26 Nov 2022 16:59:38 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://lesan.xyz/%E4%B8%80%E4%BA%9B%E7%AE%80%E6%B4%81%E7%9A%84js%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</guid>
+    <description><![CDATA[本文章主要是一些简洁的JS代码片段，主要提升代码质量以及美观 从数组中删除重复项 1 2 const numbers = [1, 1, 20, 3, 3, 3, 9, 9]; const uniqueNumbers = [...new Set(numbers)]; // -&gt; [1, 20, 3, 9] 在 JavaScript 中，Set]]></description>
+</item><item>
+    <title>通过SQL导出数据库表结构</title>
+    <link>https://lesan.xyz/%E9%80%9A%E8%BF%87sql%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E7%BB%93%E6%9E%84/</link>
+    <pubDate>Sat, 26 Nov 2022 16:59:11 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://lesan.xyz/%E9%80%9A%E8%BF%87sql%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E7%BB%93%E6%9E%84/</guid>
+    <description><![CDATA[在编写数据库文档时，我们常常需要写表结构文档，这时候就需要一些方法来节约我们写文档的时间 我通过网络上的资料，总结了 MySQL 及 SQL Server 的通过SQL语句导]]></description>
+</item><item>
+    <title>设置代理后需要注意的事</title>
+    <link>https://lesan.xyz/%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E5%90%8E%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%BA%8B/</link>
+    <pubDate>Sat, 26 Nov 2022 16:58:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://lesan.xyz/%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E5%90%8E%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%BA%8B/</guid>
+    <description><![CDATA[如电脑设置了网络代理，会导致一些软件工具不能正常工作。查找了网上许多解决方案，总结如下。 Git 设置全局Config代理 1 2 3 4 5 git config --global http.proxy http://server:port git config --global]]></description>
+</item><item>
     <title>Linux增加SSH端口</title>
     <link>https://lesan.xyz/linux%E5%A2%9E%E5%8A%A0ssh%E7%AB%AF%E5%8F%A3/</link>
     <pubDate>Sat, 21 May 2022 18:36:30 &#43;0800</pubDate>

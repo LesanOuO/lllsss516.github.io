@@ -412,8 +412,5 @@ Map<Boolean, List<Integer>> result = integerList.stream().collect(partitioningBy
 // 结果为：{false=[3, 4, 5], true=[1, 2]}
 ```
 
-
-
 > 本篇文章为学习笔记，感谢以下文章的总结
->
 > https://blog.csdn.net/QiuHaoqian/article/details/120942134

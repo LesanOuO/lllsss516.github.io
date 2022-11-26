@@ -1,13 +1,13 @@
 # 学习使用Docker与Kubernetes
 
 
-本笔记为Docker与Kubernetes的学习笔记
+本笔记为Docker与Kubernetes的实践笔记
 
-## 将.NET Core的项目发布为Docker镜像
+## 将`.NET Core`的项目发布为Docker镜像
 
 ### 通过VS支持创建Docker镜像
 
-第一步，创建一个空的.NET Core项目，用来测试
+第一步，创建一个空的`.NET Core`项目，用来测试
 
 第二步，为项目添加Docker支持
 

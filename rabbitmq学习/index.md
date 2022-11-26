@@ -60,7 +60,7 @@ Note:消息从客户端发出，只要queue与exchange有绑定，那么他不�
 
 ![](https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220217105423.png)
 
-Note：这个图看上去很乱，但是他是根据匹配符做匹配的，这里我建议你自己做下消息队列的具体操作。ss
+Note：这个图看上去很乱，但是他是根据匹配符做匹配的，这里我建议你自己做下消息队列的具体操作。
 
 ## 消息队列的消费与消息确认
 
@@ -82,7 +82,7 @@ ack应答有两种方式：1、自动应答，2、手动应答
 
 ### 生产者
 
-```C#
+```csharp
 using RabbitMQ.Client;
 using System;
 using System.Text;
@@ -189,11 +189,9 @@ namespace RabbitMQProduct
 
 ```
 
-
-
 ### 消费者
 
-```C#
+```csharp
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
@@ -369,6 +367,5 @@ namespace RabbitMQConsumer
 以上笔记摘录自网络
 
 > https://www.cnblogs.com/knowledgesea/p/5296008.html
->
 > https://www.cnblogs.com/personblog/p/10681741.html
 

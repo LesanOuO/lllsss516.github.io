@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>网络代理 - 标签 - Lesan&#39;s blog</title>
+        <link>https://lesan.xyz/tags/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86/</link>
+        <description>网络代理 - 标签 - Lesan&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 26 Nov 2022 17:00:25 &#43;0800</lastBuildDate><atom:link href="https://lesan.xyz/tags/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86/" rel="self" type="application/rss+xml" /><item>
+    <title>Nginx配置Http和Https正向代理</title>
+    <link>https://lesan.xyz/nginx%E9%85%8D%E7%BD%AEhttp%E5%92%8Chttps%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86/</link>
+    <pubDate>Sat, 26 Nov 2022 17:00:25 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://lesan.xyz/nginx%E9%85%8D%E7%BD%AEhttp%E5%92%8Chttps%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86/</guid>
+    <description><![CDATA[Nginx配置http代理非常简单，网上教程也很多，但是无法很方便的配置https代理，本片文章将记录搭建可以同时代理http和https的]]></description>
+</item><item>
+    <title>设置代理后需要注意的事</title>
+    <link>https://lesan.xyz/%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E5%90%8E%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%BA%8B/</link>
+    <pubDate>Sat, 26 Nov 2022 16:58:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://lesan.xyz/%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E5%90%8E%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%BA%8B/</guid>
+    <description><![CDATA[如电脑设置了网络代理，会导致一些软件工具不能正常工作。查找了网上许多解决方案，总结如下。 Git 设置全局Config代理 1 2 3 4 5 git config --global http.proxy http://server:port git config --global]]></description>
+</item></channel>
+</rss>

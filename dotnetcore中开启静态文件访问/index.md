@@ -8,7 +8,7 @@
 静态文件一般位于网站根目录的 `wwwroot` 文件夹下，可以通过相对根的路径来访问文件夹中的文件，如 `http://ip:port/filename`
 
 使用静态文件服务前，需要配置中间件，把静态文件中间件加入到管道中。静态文件一般会默认配置，在Configure方法中调用`app.UseStaticFiles()`。`app.UseStaticFiles()` 使得web root(默认为wwwroot)下的文件可以被访问。同时可以通过UseStaticFiles方法将其他目录下的内容也可以向外提供：
-```C#
+```csharp
 // 假如wwwroot外面有一个MyStaticFiles文件夹，要访问文件夹里面的资源
 app.UseStaticFiles(new StaticFileOptions() {
     FileProvider = new PhysicalFileProvider(
@@ -26,7 +26,7 @@ app.UseStaticFiles(new StaticFileOptions() {
 
 目录浏览允许网站用户看到指定目录下的目录和文件列表。基于安全考虑，默认情况下是禁止目录访问功能。在Startup中Configure方法调用`UseDirectoryBrowser`扩展方法可以开启网络应用目录浏览：
 
-```C#
+```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 {
     app.UseStaticFiles();
@@ -45,7 +45,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 要想访问具体文件需要调用UseStaticFiles配置：
 
-```c#
+```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 {
     app.UseStaticFiles();
@@ -68,7 +68,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 调用`app.UseFileServer();` 可以获得静态文件和默认文件，但不允许直接访问目录。需要调用`app.UseFileServer(enableDirectoryBrowsing:true);` 才能启用目录浏览功能。
 
 如果想要访问wwwroot以外的文件，需要配置一个FileServerOptions对象
-```c#
+```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 {
     app.UseStaticFiles();//如果不调用，将不会启动默认功能。
@@ -88,7 +88,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 FileExtensionContentTypeProvider类包含一个将文件扩展名映射到MIME内容类型的集合。
 
-```c#
+```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 {
     var provider = new FileExtensionContentTypeProvider();
@@ -111,7 +111,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 使用UseStaticFiles方法可以将未知类型作为指定类型处理：
 
-```c#
+```csharp
 app.UseStaticFiles(new StaticFileOptions() {
     ServeUnknownFileTypes = true,
     DefaultContentType = "application/x-msdownload"

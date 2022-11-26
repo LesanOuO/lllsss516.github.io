@@ -6,7 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>学习使用Docker与Kubernetes - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="学习使用Docker与Kubernetes" />
-<meta property="og:description" content="本笔记为Docker与Kubernetes的学习笔记 将.NET Core的项目发布为Docker镜像 通过VS支持创建Docker镜像 第一步，创" />
+<meta property="og:description" content="本笔记为Docker与Kubernetes的实践笔记 将.NET Core的项目发布为Docker镜像 通过VS支持创建Docker镜像 第一步，创" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lesan.xyz/%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8docker%E4%B8%8Ekubernetes/" /><meta property="og:image" content="https://lesan.xyz/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-27T10:26:15+08:00" />
@@ -16,7 +16,7 @@
 <meta name="twitter:image" content="https://lesan.xyz/logo.png"/>
 
 <meta name="twitter:title" content="学习使用Docker与Kubernetes"/>
-<meta name="twitter:description" content="本笔记为Docker与Kubernetes的学习笔记 将.NET Core的项目发布为Docker镜像 通过VS支持创建Docker镜像 第一步，创"/>
+<meta name="twitter:description" content="本笔记为Docker与Kubernetes的实践笔记 将.NET Core的项目发布为Docker镜像 通过VS支持创建Docker镜像 第一步，创"/>
 <meta name="application-name" content="Lesan&#39;s blog">
 <meta name="apple-mobile-web-app-title" content="Lesan&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/lesan.xyz\/%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8docker%E4%B8%8Ekubernetes\/"
-        },"genre": "posts","keywords": "Docker, K8S, .NET","wordcount":  718 ,
+        },"genre": "posts","keywords": "Docker, K8S, .NET","wordcount":  740 ,
         "url": "https:\/\/lesan.xyz\/%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8docker%E4%B8%8Ekubernetes\/","datePublished": "2022-03-27T10:26:15+08:00","dateModified": "2022-03-27T10:26:15+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">学习使用Docker与Kubernetes</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>实践笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-27">2022-03-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 718 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-27">2022-03-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 740 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -115,7 +115,7 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#将net-core的项目发布为docker镜像">将.NET Core的项目发布为Docker镜像</a>
+    <li><a href="#将net-core的项目发布为docker镜像">将<code>.NET Core</code>的项目发布为Docker镜像</a>
       <ul>
         <li><a href="#通过vs支持创建docker镜像">通过VS支持创建Docker镜像</a></li>
         <li><a href="#通过已发布的文件包创建docker镜像">通过已发布的文件包创建Docker镜像</a></li>
@@ -125,10 +125,10 @@
     <li><a href="#添加kubernetes支持">添加Kubernetes支持</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>本笔记为Docker与Kubernetes的学习笔记</p>
-<h2 id="将net-core的项目发布为docker镜像">将.NET Core的项目发布为Docker镜像</h2>
+            </div><div class="content" id="content"><p>本笔记为Docker与Kubernetes的实践笔记</p>
+<h2 id="将net-core的项目发布为docker镜像">将<code>.NET Core</code>的项目发布为Docker镜像</h2>
 <h3 id="通过vs支持创建docker镜像">通过VS支持创建Docker镜像</h3>
-<p>第一步，创建一个空的.NET Core项目，用来测试</p>
+<p>第一步，创建一个空的<code>.NET Core</code>项目，用来测试</p>
 <p>第二步，为项目添加Docker支持</p>
 <p><img
         class="lazyload"
