@@ -9,22 +9,22 @@
         <title>Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="Lesan&#39;s blog" />
 <meta property="og:description" content="这是我的全新 Hugo 网站" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://lesan.xyz/" /><meta property="og:image" content="https://lesan.xyz/logo.png"/>
+<meta property="og:url" content="https://blog.lesan.xyz/" /><meta property="og:image" content="https://blog.lesan.xyz/logo.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lesan.xyz/logo.png"/>
+<meta name="twitter:image" content="https://blog.lesan.xyz/logo.png"/>
 
 <meta name="twitter:title" content="Lesan&#39;s blog"/>
 <meta name="twitter:description" content="这是我的全新 Hugo 网站"/>
 <meta name="application-name" content="Lesan&#39;s blog">
 <meta name="apple-mobile-web-app-title" content="Lesan&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lesan.xyz/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="Lesan&#39;s blog">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.lesan.xyz/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="Lesan&#39;s blog">
     <link rel="feed" href="/index.xml" type="application/rss+xml" title="Lesan&#39;s blog"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "WebSite",
-        "url": "https:\/\/lesan.xyz\/","inLanguage": "zh-CN","author": {
+        "url": "https:\/\/blog.lesan.xyz\/","inLanguage": "zh-CN","author": {
                 "@type": "Person",
                 "name": "Lesan"
             },"description": "这是我的全新 Hugo 网站","name": "Lesan's blog"
@@ -102,6 +102,26 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/lllsss516" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/xxxx" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="https://www.instagram.com/xxxx" title="Instagram" target="_blank" rel="noopener noreffer me"><i class="fab fa-instagram fa-fw"></i></a><a href="https://facebook.com/xxxx" title="facebook" target="_blank" rel="noopener noreffer me"><i class="fab fa-facebook fa-fw"></i></a><a href="https://t.me/xxxx" title="Telegram" target="_blank" rel="noopener noreffer me"><i class="fab fa-telegram-plane fa-fw"></i></a><a href="mailto:xxxx@xxxx.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/sqlserver%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7%E5%88%86%E4%BA%AB/">SQLServer一些小技巧分享</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-11-26">2022-11-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div><div class="content">多行转成一列（并用&quot;,&ldquo;分割） 1 2 3 4 5 SELECT NAME, STUFF (( SELECT &#39;,&#39; + VALUE FROM A WHERE NAME = Test.NAME FOR XML PATH ( &#39;&#39; ) ),1,1,&#39;&#39;) VALUE FROM A AS Test GROUP BY NAME; STUFF语句就是为</div><div class="post-footer">
+        <a href="/sqlserver%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7%E5%88%86%E4%BA%AB/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/sql/">SQL</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/sql%E4%BC%98%E5%8C%96%E5%B0%8F%E6%8A%80%E5%B7%A7/">SQL优化小技巧</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-11-26">2022-11-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div><div class="content">本篇文章主要是一些SQL优化的小技巧，为了提升SQL编写规范及性能 避免使用select * 在实际业务场景中，我们不一定需要查出整张表中的所有数</div><div class="post-footer">
+        <a href="/sql%E4%BC%98%E5%8C%96%E5%B0%8F%E6%8A%80%E5%B7%A7/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/sql/">SQL</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/springboot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%80%BB%E7%BB%93/">SpringBoot常用注解总结</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-11-26">2022-11-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div><div class="content">简介 基于 SpringBoot 平台开发的项目数不胜数，与常规的基于Spring开发的项目最大的不同之处，SpringBoot 里面提供了大量的注解用于快速开发，而</div><div class="post-footer">
+        <a href="/springboot%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%80%BB%E7%BB%93/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/springboot/">SpringBoot</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/springboot-redis%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81/">SpringBoot&#43;Redis实现接口限流</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-11-26">2022-11-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>实践笔记</a></span></div><div class="content">Redis 作为21世纪最流行的缓存中间件，它也能够实现接口限流的作用，本片文章主要记录个人实现过程。 在分布式高并发系统中，常常需要用到 缓存 、降级 、 限</div><div class="post-footer">
+        <a href="/springboot-redis%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/springboot/">SpringBoot</a>,&nbsp;<a href="/tags/redis/">Redis</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/nginx%E9%85%8D%E7%BD%AEhttp%E5%92%8Chttps%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86/">Nginx配置Http和Https正向代理</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-11-26">2022-11-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%94%B6%E8%97%8F%E5%88%86%E4%BA%AB/"><i class="far fa-folder fa-fw"></i>收藏分享</a></span></div><div class="content">Nginx配置http代理非常简单，网上教程也很多，但是无法很方便的配置https代理，本片文章将记录搭建可以同时代理http和https的</div><div class="post-footer">
         <a href="/nginx%E9%85%8D%E7%BD%AEhttp%E5%92%8Chttps%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86/">阅读全文</a><div class="post-tags">
@@ -111,26 +131,6 @@
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-11-26">2022-11-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%94%B6%E8%97%8F%E5%88%86%E4%BA%AB/"><i class="far fa-folder fa-fw"></i>收藏分享</a></span></div><div class="content">本文章主要是一些简洁的JS代码片段，主要提升代码质量以及美观 从数组中删除重复项 1 2 const numbers = [1, 1, 20, 3, 3, 3, 9, 9]; const uniqueNumbers = [...new Set(numbers)]; // -&gt; [1, 20, 3, 9] 在 JavaScript 中，Set</div><div class="post-footer">
         <a href="/%E4%B8%80%E4%BA%9B%E7%AE%80%E6%B4%81%E7%9A%84js%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">阅读全文</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/javascript/">JavaScript</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E9%80%9A%E8%BF%87sql%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E7%BB%93%E6%9E%84/">通过SQL导出数据库表结构</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-11-26">2022-11-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%94%B6%E8%97%8F%E5%88%86%E4%BA%AB/"><i class="far fa-folder fa-fw"></i>收藏分享</a></span></div><div class="content">在编写数据库文档时，我们常常需要写表结构文档，这时候就需要一些方法来节约我们写文档的时间 我通过网络上的资料，总结了 MySQL 及 SQL Server 的通过SQL语句导</div><div class="post-footer">
-        <a href="/%E9%80%9A%E8%BF%87sql%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E7%BB%93%E6%9E%84/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/sql/">SQL</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E5%90%8E%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%BA%8B/">设置代理后需要注意的事</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-11-26">2022-11-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%94%B6%E8%97%8F%E5%88%86%E4%BA%AB/"><i class="far fa-folder fa-fw"></i>收藏分享</a></span></div><div class="content">如电脑设置了网络代理，会导致一些软件工具不能正常工作。查找了网上许多解决方案，总结如下。 Git 设置全局Config代理 1 2 3 4 5 git config --global http.proxy http://server:port git config --global</div><div class="post-footer">
-        <a href="/%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E5%90%8E%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%BA%8B/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86/">网络代理</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E8%AE%A9controller%E5%B1%82%E4%BB%A3%E7%A0%81%E6%9B%B4%E4%BC%98%E9%9B%85/">让Controller层代码更优雅</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-11-26">2022-11-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>实践笔记</a></span></div><div class="content">本篇主要介绍的就是 controller 层的一些优雅技巧，一个完整的后端请求由4部分组成：1. 接口地址(也就是URL地址)、2. 请求方式(一般就是get、set</div><div class="post-footer">
-        <a href="/%E8%AE%A9controller%E5%B1%82%E4%BB%A3%E7%A0%81%E6%9B%B4%E4%BC%98%E9%9B%85/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/springboot/">SpringBoot</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84%E7%90%90%E4%BA%8B/">多线程下的琐事</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-11-26">2022-11-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div><div class="content">单线程与多线程可以看作是： 单线程为在一个单向行驶的道路上，每辆汽车都遵守交通规则 多线程为多条车道，这样在同一时间内，通行的车辆数远远大于单车</div><div class="post-footer">
-        <a href="/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84%E7%90%90%E4%BA%8B/">阅读全文</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -151,7 +151,7 @@
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/7/">7</a>
+                        <a href="/page/8/">8</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

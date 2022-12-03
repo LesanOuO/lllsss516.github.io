@@ -1,21 +1,21 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Redis - 标签 - Lesan&#39;s blog</title>
-        <link>https://lesan.xyz/tags/redis/</link>
+        <link>https://blog.lesan.xyz/tags/redis/</link>
         <description>Redis - 标签 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 26 Nov 2022 17:01:11 &#43;0800</lastBuildDate><atom:link href="https://lesan.xyz/tags/redis/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 26 Nov 2022 17:01:11 &#43;0800</lastBuildDate><atom:link href="https://blog.lesan.xyz/tags/redis/" rel="self" type="application/rss+xml" /><item>
     <title>SpringBoot&#43;Redis实现接口限流</title>
-    <link>https://lesan.xyz/springboot-redis%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81/</link>
+    <link>https://blog.lesan.xyz/springboot-redis%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81/</link>
     <pubDate>Sat, 26 Nov 2022 17:01:11 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://lesan.xyz/springboot-redis%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81/</guid>
+    <guid>https://blog.lesan.xyz/springboot-redis%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E9%99%90%E6%B5%81/</guid>
     <description><![CDATA[Redis 作为21世纪最流行的缓存中间件，它也能够实现接口限流的作用，本片文章主要记录个人实现过程。 在分布式高并发系统中，常常需要用到 缓存 、降级 、 限]]></description>
 </item><item>
     <title>Redis学习</title>
-    <link>https://lesan.xyz/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <link>https://blog.lesan.xyz/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <pubDate>Fri, 20 May 2022 18:45:30 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://lesan.xyz/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+    <guid>https://blog.lesan.xyz/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
     <description><![CDATA[Redis简介 Redis 是完全开源的，遵守 BSD 协议，是一个高性能的 key-value 数据库。 Redis 与其他 key - value 缓存产品有以下三个特点： Redis支持数据的持久化，可以将内]]></description>
 </item></channel>
 </rss>

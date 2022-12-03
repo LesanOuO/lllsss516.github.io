@@ -8,19 +8,19 @@
         <title>C#中Task与Thread区别 - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="C#中Task与Thread区别" />
 <meta property="og:description" content="什么是 Thread 当我们提及多线程的时候会想到 Thread 和 Threadpool，这都是异步操作，Threadpool 其实就是 Thread 的集合，具有很多优势，不过在任务" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" /><meta property="og:image" content="https://lesan.xyz/logo.png"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" /><meta property="og:image" content="https://blog.lesan.xyz/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-26T11:17:47+08:00" />
 <meta property="article:modified_time" content="2022-06-26T11:17:47+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lesan.xyz/logo.png"/>
+<meta name="twitter:image" content="https://blog.lesan.xyz/logo.png"/>
 
 <meta name="twitter:title" content="C#中Task与Thread区别"/>
 <meta name="twitter:description" content="什么是 Thread 当我们提及多线程的时候会想到 Thread 和 Threadpool，这都是异步操作，Threadpool 其实就是 Thread 的集合，具有很多优势，不过在任务"/>
 <meta name="application-name" content="Lesan&#39;s blog">
 <meta name="apple-mobile-web-app-title" content="Lesan&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" /><link rel="prev" href="https://lesan.xyz/vue%E4%B8%AD%E5%85%A8%E5%B1%80%E5%B0%81%E8%A3%85signalr/" /><link rel="next" href="https://lesan.xyz/%E7%90%86%E8%A7%A3csharp%E4%B8%ADasync%E5%92%8Cawait%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" /><link rel="prev" href="https://blog.lesan.xyz/vue%E4%B8%AD%E5%85%A8%E5%B1%80%E5%B0%81%E8%A3%85signalr/" /><link rel="next" href="https://blog.lesan.xyz/%E7%90%86%E8%A7%A3csharp%E4%B8%ADasync%E5%92%8Cawait%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -28,9 +28,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/lesan.xyz\/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB\/"
+            "@id": "https:\/\/blog.lesan.xyz\/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB\/"
         },"genre": "posts","keywords": ".NET","wordcount":  882 ,
-        "url": "https:\/\/lesan.xyz\/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB\/","datePublished": "2022-06-26T11:17:47+08:00","dateModified": "2022-06-26T11:17:47+08:00","publisher": {
+        "url": "https:\/\/blog.lesan.xyz\/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB\/","datePublished": "2022-06-26T11:17:47+08:00","dateModified": "2022-06-26T11:17:47+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -340,7 +340,7 @@
                             <a class="link-to-markdown" href="/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别" data-via="xxxx" data-hashtags=".NET"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-hashtag=".NET"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://blog.lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别" data-via="xxxx" data-hashtags=".NET"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://blog.lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-hashtag=".NET"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://blog.lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://blog.lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://blog.lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://blog.lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://blog.lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://blog.lesan.xyz/csharp%E4%B8%ADtask%E4%B8%8Ethread%E5%8C%BA%E5%88%AB/" data-title="C#中Task与Thread区别"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>

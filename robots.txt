@@ -61,4 +61,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://lesan.xyz/sitemap.xml
+Sitemap: https://blog.lesan.xyz/sitemap.xml

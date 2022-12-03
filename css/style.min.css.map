@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "style.min.css",
-	"sourceRoot": "/Users/lisheng/myblog",
+	"sourceRoot": "/Users/lisheng/Library/CloudStorage/OneDrive-个人/myblog",
 	"sources": [
 		"themes/LoveIt/assets/css/style.scss",
 		"themes/LoveIt/assets/css/_variables.scss",

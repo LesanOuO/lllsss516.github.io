@@ -1,14 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Java集合 - 标签 - Lesan&#39;s blog</title>
-        <link>https://lesan.xyz/tags/java%E9%9B%86%E5%90%88/</link>
+        <link>https://blog.lesan.xyz/tags/java%E9%9B%86%E5%90%88/</link>
         <description>Java集合 - 标签 - Lesan&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 20 Mar 2022 09:33:31 &#43;0800</lastBuildDate><atom:link href="https://lesan.xyz/tags/java%E9%9B%86%E5%90%88/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 20 Mar 2022 09:33:31 &#43;0800</lastBuildDate><atom:link href="https://blog.lesan.xyz/tags/java%E9%9B%86%E5%90%88/" rel="self" type="application/rss+xml" /><item>
     <title>Java集合学习</title>
-    <link>https://lesan.xyz/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</link>
+    <link>https://blog.lesan.xyz/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</link>
     <pubDate>Sun, 20 Mar 2022 09:33:31 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://lesan.xyz/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</guid>
+    <guid>https://blog.lesan.xyz/java%E9%9B%86%E5%90%88%E5%AD%A6%E4%B9%A0/</guid>
     <description><![CDATA[简介 Java集合框架为程序员提供了预先包装的数据结构和算法来操纵他们。这使得我们使用复杂的数据结构变得非常的方便，并且这些集合框架是高性能的]]></description>
 </item></channel>
 </rss>
