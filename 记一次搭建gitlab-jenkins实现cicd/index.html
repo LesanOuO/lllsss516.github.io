@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>记一次搭建gitlab&#43;jenkins实现CI&amp;CD - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="记一次搭建gitlab&#43;jenkins实现CI&amp;CD" />
+<meta property="og:description" content="本篇文章记录本人搭建CI&amp;CD实现持续集成和持续部署 1.使用docker安装gitlab 下载镜像 （使用中文社区版） docker pull twang2218/gitlab-ce-zh 创建所需目录" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.lesan.xyz/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" /><meta property="og:image" content="https://blog.lesan.xyz/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-01T18:48:10+08:00" />
+<meta property="article:modified_time" content="2022-04-01T18:48:10+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.lesan.xyz/logo.png"/>
+
+<meta name="twitter:title" content="记一次搭建gitlab&#43;jenkins实现CI&amp;CD"/>
+<meta name="twitter:description" content="本篇文章记录本人搭建CI&amp;CD实现持续集成和持续部署 1.使用docker安装gitlab 下载镜像 （使用中文社区版） docker pull twang2218/gitlab-ce-zh 创建所需目录"/>
+<meta name="application-name" content="Lesan&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lesan&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.lesan.xyz/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" /><link rel="prev" href="https://blog.lesan.xyz/%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B8%A6libgdiplus%E7%9A%84dotnetcore%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/" /><link rel="next" href="https://blog.lesan.xyz/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "记一次搭建gitlab+jenkins实现CI\u0026CD",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.lesan.xyz\/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd\/"
+        },"genre": "posts","keywords": "Docker, gitlab, jenkins","wordcount":  2693 ,
+        "url": "https:\/\/blog.lesan.xyz\/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd\/","datePublished": "2022-04-01T18:48:10+08:00","dateModified": "2022-04-01T18:48:10+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lesan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Lesan&#39;s blog"><span class="header-title-pre"><i class='fas fa-smile-beam fa-fw'></i></span>Lesan&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/lllsss516" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Lesan&#39;s blog"><span class="header-title-pre"><i class='fas fa-smile-beam fa-fw'></i></span>Lesan&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/lllsss516" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">记一次搭建gitlab&#43;jenkins实现CI&amp;CD</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>实践笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-04-01">2022-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2693 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1使用docker安装gitlab">1.使用docker安装gitlab</a>
+      <ul>
+        <li><a href="#下载镜像-使用中文社区版">下载镜像 （使用中文社区版）</a></li>
+        <li><a href="#创建所需目录为后续挂载文件">创建所需目录为后续挂载文件</a></li>
+        <li><a href="#启动容器">启动容器</a></li>
+        <li><a href="#进入容器修改配置">进入容器，修改配置</a></li>
+        <li><a href="#访问gitlab">访问gitlab</a></li>
+      </ul>
+    </li>
+    <li><a href="#2使用docker安装jenkins">2.使用docker安装jenkins</a>
+      <ul>
+        <li><a href="#下载镜像">下载镜像</a></li>
+        <li><a href="#创建所需目录为后续挂载文件-1">创建所需目录为后续挂载文件</a></li>
+        <li><a href="#启动容器-1">启动容器</a></li>
+        <li><a href="#修改配置">修改配置</a></li>
+        <li><a href="#访问jenkins">访问jenkins</a></li>
+      </ul>
+    </li>
+    <li><a href="#3gitlab--jenkins">3.gitlab + jenkins</a>
+      <ul>
+        <li><a href="#配置gitlab">配置gitlab</a></li>
+        <li><a href="#配置jenkins">配置jenkins</a>
+          <ul>
+            <li><a href="#安装环境所需插件">安装环境所需插件</a></li>
+            <li><a href="#添加-gitlab-凭据">添加 GitLab 凭据</a></li>
+            <li><a href="#在系统配置中配置gitlab">在系统配置中配置gitlab</a></li>
+            <li><a href="#创建新的freestyle任务">创建新的FreeStyle任务</a></li>
+            <li><a href="#在gitlab的项目页面中-添加一个webhook">在GitLab的项目页面中, 添加一个Webhook</a></li>
+          </ul>
+        </li>
+        <li><a href="#测试效果">测试效果</a></li>
+        <li><a href="#关于-tag-的几点说明">关于 Tag 的几点说明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>本篇文章记录本人搭建CI&amp;CD实现持续集成和持续部署</p>
+<h2 id="1使用docker安装gitlab">1.使用docker安装gitlab</h2>
+<h3 id="下载镜像-使用中文社区版">下载镜像 （使用中文社区版）</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab1.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab1.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab1.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab1.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab1.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab1.png" /></p>
+<p><code>docker pull twang2218/gitlab-ce-zh</code></p>
+<h3 id="创建所需目录为后续挂载文件">创建所需目录为后续挂载文件</h3>
+<p>进入所需目录后，打开PowerShell，通过以下命令进行目录创建</p>
+<p><code>mkdir -p gitlab/etc </code> 、 <code>mkdir -p gitlab/etc</code> 、 <code>mkdir -p gitlab/etc</code></p>
+<p>目录结构如下图所示</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab2.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab2.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab2.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab2.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab2.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab2.png" /></p>
+<h3 id="启动容器">启动容器</h3>
+<p>镜像下载完成后可通过<code>docker images</code>查看下载结果，再通过镜像启动为容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -d -p 9443:443 -p 9080:80 -p 9022:22 --restart always --name testgitlab -v D:<span class="se">\t</span>estgitlab<span class="se">\g</span>itlab<span class="se">\e</span>tc:/etc/gitlab -v D:<span class="se">\t</span>estgitlab<span class="se">\g</span>itlab<span class="se">\l</span>og:/var/log/gitlab -v D:<span class="se">\t</span>estgitlab<span class="se">\g</span>itlab<span class="se">\d</span>ata:/var/opt/gitlab --privileged<span class="o">=</span><span class="nb">true</span> twang2218/gitlab-ce-zh
+</span></span><span class="line"><span class="cl"><span class="c1"># 执行完成后会返回一串字符串</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
+<p><code>-d：</code>后台执行</p>
+<p><code>-p：</code>端口映射</p>
+<p><code>--restart：</code>重启机制</p>
+<p><code>--name：</code>容器名称</p>
+<p><code>-v：</code>挂载文件，使得容器内文件在宿主机内有映射</p>
+<p><code>--privileged：</code>使得容器获取宿主机root权限</p>
+<h3 id="进入容器修改配置">进入容器，修改配置</h3>
+<p>输入命令 <code>docker exec -it testgitlab bash</code> 即可进入刚刚创建好的容器</p>
+<ol>
+<li>修改<code>gitlab.rb</code>配置的两种方式：1. 进入挂载好的etc目录下找到<code>gitlab.rb</code>文件进行修改；2. 通过进入容器内进行命令行<code>vi /etc/gitlab/gitlab.rb </code>修改</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 整个gitlab.rb都是注释了的，我们可以按需加入我们的配置
+</span></span><span class="line"><span class="cl"># 1. gitlab访问地址，可以写域名。如果端口不写的话默认为80端口
+</span></span><span class="line"><span class="cl">eaxternal_url &#39;http://192.168.3.12:9080&#39;
+</span></span><span class="line"><span class="cl"># 2. ssh主机ip
+</span></span><span class="line"><span class="cl">gitlab_rails[&#39;gitlab_ssh_host&#39;] = &#39;192.168.3.12&#39;
+</span></span><span class="line"><span class="cl"># 3. ssh连接端口
+</span></span><span class="line"><span class="cl">gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 9022
+</span></span><span class="line"><span class="cl"># 4. 防止内存占用过大，限制线程数
+</span></span><span class="line"><span class="cl">unicorn[&#39;worker_processes&#39;] = 2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>修改<code>gitlab.yml</code>配置（这一步原本不是必须的，因为<code>gitlab.rb</code>内配置会覆盖这个，为了防止没有成功覆盖所以我在这里进行配置，当然你也可以选择不修改<code>gitlab.rb</code>直接修改这里）</li>
+</ol>
+<p>通过命令行<code>vi /opt/gitlab/embedded/service/gitlab-rails/config/gitlab.yml</code>修改，或者找到挂载文件修改</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab3.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab3.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab3.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab3.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab3.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab3.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab4.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab4.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab4.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab4.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab4.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab4.png" /></p>
+<p>修改上图红框配置</p>
+<ol start="3">
+<li>让修改后的配置生效，并重启</li>
+</ol>
+<p><code>gitlab-ctl reconfigure</code> 、 <code>gitlab-ctl restart</code> 、 <code>exit</code>（退出容器命令行）</p>
+<p>或者重启容器<code>docker restart testgitlab</code></p>
+<h3 id="访问gitlab">访问gitlab</h3>
+<p>输入http://192.168.3.12:9080打开页面（ip请输入前面设置的），默认账户root，密码需要重新设置至少8位</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab5.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab5.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab5.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab5.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab5.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/gitlab5.png" /></p>
+<h2 id="2使用docker安装jenkins">2.使用docker安装jenkins</h2>
+<h3 id="下载镜像">下载镜像</h3>
+<p><code>docker pull jenkins/jenkins</code></p>
+<h3 id="创建所需目录为后续挂载文件-1">创建所需目录为后续挂载文件</h3>
+<p>在服务器上先创建一个jenkins工作目录 /var/jenkins_mount，赋予相应权限，稍后我们将jenkins容器目录挂载到这个目录上，这样我们就可以很方便地对容器内的配置文件进行修改。如何后续在容器内修改的话会非常麻烦，由于容器中无vi命令。</p>
+<p><code>mkdir -p /var/jenkins_mount</code> 、 <code>chmod 777 /var/jenkins_mount</code></p>
+<h3 id="启动容器-1">启动容器</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -d -p 10240:8080 -p 10241:50000 -v D:<span class="se">\t</span>estjenkins<span class="se">\j</span>enkins_mount:/var/jenkins_home -v /etc/localtime:/etc/localtime --name testjenkins jenkins/jenkins
+</span></span><span class="line"><span class="cl"><span class="c1"># 其中-v /etc/localtime:/etc/localtime让容器使用和服务器同样的时间设置</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以通过<code>docker ps</code>来查看启动情况</p>
+<p>可以通过<code>docker logs testjenkins</code>来查看容器日志</p>
+<h3 id="修改配置">修改配置</h3>
+<p>进入刚刚挂载的文件，修改<code>hudson.model.UpdateCenter.xml</code>文件</p>
+<p>将 url 修改为 清华大学官方镜像：https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json ，配置镜像加速</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins1.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins1.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins1.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins1.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins1.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins1.png" /></p>
+<p>还需要修改<code>default.json</code>文件，位置为<code>cd /var/jenkins_home/updates</code></p>
+<p>使用sed命令修改<code>default.json</code></p>
+<p>linux下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sed -i <span class="s1">&#39;s/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&#39;</span> default.json <span class="o">&amp;&amp;</span> sed -i <span class="s1">&#39;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&#39;</span> default.json
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>mac下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sed -i <span class="s2">&#34;&#34;</span> <span class="s1">&#39;s/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&#39;</span> default.json <span class="o">&amp;&amp;</span> sed -i <span class="s2">&#34;&#34;</span> <span class="s1">&#39;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&#39;</span> default.json
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重启容器 <code>docker restart testjenkins</code></p>
+<h3 id="访问jenkins">访问jenkins</h3>
+<p>输入http://localhost:10240打开页面</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins2.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins2.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins2.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins2.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins2.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/jenkins2.png" /></p>
+<p>选择默认插件安装即可</p>
+<h2 id="3gitlab--jenkins">3.gitlab + jenkins</h2>
+<p>为了实现自动持续构建, 不需要人工操作 ( 留人工操作用于处理特殊情况 )，通过gitlab+jenkins实现CI&amp;CD，具体流程如下</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/jenkins5.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/jenkins5.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/jenkins5.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/jenkins5.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/jenkins5.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/jenkins5.png" /></p>
+<ol>
+<li>
+<p>开发提交代码</p>
+</li>
+<li>
+<p>开发对需要发布的版本打上 <strong>Tag</strong></p>
+</li>
+<li>
+<p>触发 <strong>GitLab</strong> 的 <strong>tag push</strong> 事件, 调用 <strong>Webhook</strong></p>
+</li>
+<li>
+<p><strong>Webhook</strong> 触发 <strong>Jenkins</strong> 的构建任务</p>
+</li>
+<li>
+<p><strong>Jenkins</strong> 构建完项目可以按版本号上传到仓库、部署、通知相关人员等等</p>
+</li>
+</ol>
+<h3 id="配置gitlab">配置gitlab</h3>
+<ol>
+<li>建一个测试项目 <strong>test</strong> ，随便 <strong>commit</strong> 一些内容，比如通过网页添加<code>README.md</code></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins1.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins1.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins1.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins1.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins1.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins1.png" /></p>
+<ol start="2">
+<li>创建账号的 <strong>access token</strong> ，用于 <strong>Jenkins</strong> 调用 <strong>GitLab</strong> 的 <strong>API</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins2.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins2.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins2.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins2.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins2.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins2.png" /></p>
+<ol start="3">
+<li>记下生成的 <strong>access token</strong>  , 后面需要用到！！！且它只会展示一次，请记录好！！！</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins3.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins3.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins3.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins3.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins3.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins3.png" /></p>
+<h3 id="配置jenkins">配置jenkins</h3>
+<h4 id="安装环境所需插件">安装环境所需插件</h4>
+<ul>
+<li>
+<p><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwiki.jenkins.io%2Fdisplay%2FJENKINS%2FGit%2BParameter%2BPlugin" target="_blank" rel="noopener noreffer">Git Parameter</a> ( 用于参数化构建中动态获取项目分支 )</p>
+</li>
+<li>
+<p><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwiki.jenkins-ci.org%2Fdisplay%2FJENKINS%2FGeneric%2BWebhook%2BTrigger%2BPlugin" target="_blank" rel="noopener noreffer">Generic Webhook Trigger</a> ( 用于解析 <strong>Webhook</strong> 传过来的参数 )</p>
+</li>
+<li>
+<p><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwiki.jenkins-ci.org%2Fdisplay%2FJENKINS%2FGitLab%2BPlugin" target="_blank" rel="noopener noreffer">GitLab</a> ( 用于推送构建结果给 <strong>GitLab</strong> )</p>
+</li>
+</ul>
+<h4 id="添加-gitlab-凭据">添加 GitLab 凭据</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins4.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins4.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins4.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins4.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins4.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins4.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins5.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins5.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins5.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins5.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins5.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins5.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins6.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins6.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins6.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins6.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins6.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins6.png" /></p>
+<h4 id="在系统配置中配置gitlab">在系统配置中配置gitlab</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins7.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins7.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins7.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins7.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins7.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins7.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins8.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins8.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins8.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins8.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins8.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins8.png" /></p>
+<h4 id="创建新的freestyle任务">创建新的FreeStyle任务</h4>
+<ul>
+<li><strong>General</strong></li>
+</ul>
+<p><strong>勾选</strong> 参数化构建过程, 添加 <strong>Git Parameter</strong> 类型的参数 <strong>ref</strong> , 这样构建的时候就可以指定分支进行构建</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins9.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins9.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins9.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins9.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins9.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins9.png" /></p>
+<ul>
+<li><strong>源码管理</strong></li>
+</ul>
+<p>选择 <strong>Git</strong> , 添加项目地址和授权方式 ( <strong>帐号密码</strong> 或者 <strong>ssh key</strong> ) , 分支填写构建参数 <strong>$ref</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins10.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins10.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins10.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins10.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins10.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins10.png" /></p>
+<ul>
+<li><strong>构建触发器</strong></li>
+</ul>
+<p>选择 <strong>Generic Webhook Trigger</strong> 方式用于解析 <strong>GitLab</strong> 推过来的详细参数 ( <a href="https://links.jianshu.com/go?to=http%3A%2F%2Fjsonpath.com" target="_blank" rel="noopener noreffer">jsonpath 在线测试</a> ) 。其他触发方式中: <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.cnblogs.com%2Fjwentest%2Fp%2F8204421.html" target="_blank" rel="noopener noreffer">Trigger builds remotely</a> 是 <strong>Jenkins</strong> 自带的, <strong>Build when a change is pushed to GitLab</strong> 是 <strong>GitLab 插件</strong> 提供的, 都属于简单的触发构建, 无法做复杂的处理</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins11.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins11.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins11.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins11.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins11.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins11.png" /></p>
+<ul>
+<li><strong>Optional filter</strong></li>
+</ul>
+<p>虽然 <strong>Generic Webhook Trigger</strong> 提供了 <strong>Token</strong> 参数进行鉴权, 但为了避免不同项目进行混调 ( 比如 A 项目提交代码却触发了 B 项目的构建) , 还要对请求做下过滤。<strong>Optional filter</strong> 中 <strong>Text</strong> 填写需要校验的内容 ( 可使用变量 ) , <strong>Expression</strong> 使用正则表达式对 <strong>Text</strong> 进行匹配, 匹配成功才允许触发构建</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins12.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins12.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins12.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins12.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins12.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins12.png" /></p>
+<ul>
+<li><strong>构建</strong></li>
+</ul>
+<p>构建内容按自己实际的项目类型进行调整, 使用 <strong>Maven 插件</strong> 或 <strong>脚本</strong> 等等</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins13.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins13.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins13.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins13.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins13.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins13.png" /></p>
+<ul>
+<li><strong>构建后操作</strong></li>
+</ul>
+<p>构建后操作添加 <strong>Publish build status to GitLab</strong> 动作, 实现构建结束后通知构建结果给 <strong>GitLab</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins14.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins14.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins14.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins14.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins14.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins14.png" /></p>
+<h4 id="在gitlab的项目页面中-添加一个webhook">在GitLab的项目页面中, 添加一个Webhook</h4>
+<p>添加一个 <strong>Webhook</strong> ( <a href="https://links.jianshu.com/go?to=http%3A%2F%2FJENKINS_URL%2Fgeneric-webhook-trigger%2Finvoke%3Ftoken%3D" target="_blank" rel="noopener noreffer">http://JENKINS_URL/generic-webhook-trigger/invoke?token=</a>&lt;上面 <strong>Jenkins</strong> 项目配置中的 <strong>token</strong>&gt; ) , 触发器选择 <strong>标签推送事件</strong>。因为日常开发中 <strong>push</strong> 操作比较频繁而且不是每个版本都需要构建, 所以只针对需要构建的版本打上 <strong>Tag</strong> 就好了</p>
+<p><code>http://172.20.10.7:10240//generic-webhook-trigger/invoke?token=d63ad84eb18cb04d4459ec347a196dce</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins16.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins16.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins16.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins16.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins16.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins16.png" /></p>
+<p>创建完使用 <strong>test 按钮</strong> 先测试下, 可能会出现下面的错误</p>
+<p><code>Requests to the local network are not allowed</code> 通过下面方法解决</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins17.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins17.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins17.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins17.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkins17.png"
+        title="切换root管理员-&amp;gt;点击配置GitLab-&amp;gt;点击设置-&amp;gt;展开外发请求-&amp;gt;勾选访问本地网络" /></p>
+<h3 id="测试效果">测试效果</h3>
+<p>将代码拉下来在本地操作通过IDEA进行操作</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT1.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT1.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT1.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT1.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT1.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT1.png" /></p>
+<p>然后使用快捷键 <strong>Cmd + Shift + K</strong> 调出 <strong>Push 窗口</strong> , 把 <strong>Tag</strong> 推送到 <strong>GitLab</strong> 中</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT2.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT2.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT2.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT2.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT2.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT2.png" /></p>
+<p>回到 <strong>GitLab</strong> 页面可以看到触发了 <strong>Webhook</strong> , <strong>View details</strong> 查看请求详情, <strong>Response body</strong> 中 <code>triggered</code> 字段值为 <code>true</code> 则表示成功触发了 <strong>Jenkins</strong> 进行构建</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT3.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT3.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT3.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT3.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT3.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT3.png" /></p>
+<p><strong>注意:</strong> 每添加一个 <strong>Tag</strong> 就会触发一次事件, 不管是不是一起 <strong>push</strong> 的。所以一次 <strong>push</strong> 多个 <strong>Tag</strong> 会触发 <strong>Jenkins</strong> 进行多次构建。不过 <strong>Jenkins</strong> 已经做了处理, 默认串行执行任务 ( 一个任务结束再执行下一个 ) , 而且在构建前有一个 <strong>pending</strong> 状态, 此时被多次触发会进行合并, 并取首次触发的参数, 如下图所示:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT4.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT4.png, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT4.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT4.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT4.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images/img/gitlab2jenkinsT4.png" /></p>
+<h3 id="关于-tag-的几点说明">关于 Tag 的几点说明</h3>
+<ul>
+<li>
+<p>推送 <strong>Tag</strong> 到远端的时候, 远端已存在 ( 同名 ) 的 <strong>Tag</strong> 不会被添加到远端</p>
+</li>
+<li>
+<p>拉取远端的 <strong>Tag</strong> 时, 本地已存在 ( 同名 ) 的 <strong>Tag</strong> 不会添加到本地</p>
+</li>
+<li>
+<p>拉取远端的 <strong>Tag</strong> 时, 本地不会删除远端已删除的 <strong>Tag</strong> , 需要同步远端的 <strong>Tag</strong> 可以先删除本地所有 <strong>Tag</strong> 再 <strong>pull</strong></p>
+</li>
+<li>
+<p>删除 <strong>Tag</strong> 也会推送事件, 要做好过滤 ( 上面配置中已使用 <strong>commitsId</strong> 字段进行过滤 )</p>
+</li>
+</ul>
+<blockquote>
+<p>本篇文章产考下列文章：
+<a href="https://www.cnblogs.com/hanease/p/15690227.html" target="_blank" rel="noopener noreffer">docker安装gitlab</a>
+<a href="https://www.cnblogs.com/fuzongle/p/12834080.html" target="_blank" rel="noopener noreffer">docker安装jenkins</a>
+<a href="https://juejin.cn/post/6844904137570648072" target="_blank" rel="noopener noreffer">docker中jenkins插件加速</a>
+<a href="https://www.jianshu.com/p/7e8037c63d63" target="_blank" rel="noopener noreffer">整合gitlab+jenkins</a></p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-04-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://blog.lesan.xyz/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" data-title="记一次搭建gitlab&#43;jenkins实现CI&amp;CD" data-via="xxxx" data-hashtags="Docker,gitlab,jenkins"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://blog.lesan.xyz/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" data-hashtag="Docker"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://blog.lesan.xyz/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" data-title="记一次搭建gitlab&#43;jenkins实现CI&amp;CD" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://blog.lesan.xyz/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" data-title="记一次搭建gitlab&#43;jenkins实现CI&amp;CD"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://blog.lesan.xyz/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" data-title="记一次搭建gitlab&#43;jenkins实现CI&amp;CD"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://blog.lesan.xyz/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" data-title="记一次搭建gitlab&#43;jenkins实现CI&amp;CD" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://blog.lesan.xyz/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" data-title="记一次搭建gitlab&#43;jenkins实现CI&amp;CD" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://blog.lesan.xyz/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%90%AD%E5%BB%BAgitlab-jenkins%E5%AE%9E%E7%8E%B0cicd/" data-title="记一次搭建gitlab&#43;jenkins实现CI&amp;CD"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/docker/">Docker</a>,&nbsp;<a href="/tags/gitlab/">gitlab</a>,&nbsp;<a href="/tags/jenkins/">jenkins</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B8%A6libgdiplus%E7%9A%84dotnetcore%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/" class="prev" rel="prev" title="构建一个带libgdiplus的DotNetCore基础Docker镜像"><i class="fas fa-angle-left fa-fw"></i>构建一个带libgdiplus的DotNetCore基础Docker镜像</a>
+            <a href="/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E5%8F%AF%E4%BB%A5%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fyapi/" class="next" rel="next" title="分享一个可以私有部署的接口管理系统Yapi">分享一个可以私有部署的接口管理系统Yapi<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Lesan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

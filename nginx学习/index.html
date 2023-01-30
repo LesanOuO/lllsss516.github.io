@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Nginx学习 - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="Nginx学习" />
+<meta property="og:description" content="本文为个人学习和实践 Nginx 的笔记 Nginx 常用功能 Nginx 有以下几个常用功能 反向代理 这是它的主要功能之一，客户端向服务器发送请求时，会先通过 Nginx 服务器，由服务器" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.lesan.xyz/nginx%E5%AD%A6%E4%B9%A0/" /><meta property="og:image" content="https://blog.lesan.xyz/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-16T21:03:06+08:00" />
+<meta property="article:modified_time" content="2022-02-16T21:03:06+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.lesan.xyz/logo.png"/>
+
+<meta name="twitter:title" content="Nginx学习"/>
+<meta name="twitter:description" content="本文为个人学习和实践 Nginx 的笔记 Nginx 常用功能 Nginx 有以下几个常用功能 反向代理 这是它的主要功能之一，客户端向服务器发送请求时，会先通过 Nginx 服务器，由服务器"/>
+<meta name="application-name" content="Lesan&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lesan&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.lesan.xyz/nginx%E5%AD%A6%E4%B9%A0/" /><link rel="prev" href="https://blog.lesan.xyz/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0-%E9%93%BE%E8%A1%A8/" /><link rel="next" href="https://blog.lesan.xyz/rabbitmq%E5%AD%A6%E4%B9%A0/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Nginx学习",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.lesan.xyz\/nginx%E5%AD%A6%E4%B9%A0\/"
+        },"genre": "posts","keywords": "Nginx","wordcount":  7426 ,
+        "url": "https:\/\/blog.lesan.xyz\/nginx%E5%AD%A6%E4%B9%A0\/","datePublished": "2022-02-16T21:03:06+08:00","dateModified": "2022-02-16T21:03:06+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lesan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Lesan&#39;s blog"><span class="header-title-pre"><i class='fas fa-smile-beam fa-fw'></i></span>Lesan&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/lllsss516" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Lesan&#39;s blog"><span class="header-title-pre"><i class='fas fa-smile-beam fa-fw'></i></span>Lesan&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/lllsss516" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Nginx学习</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-16">2022-02-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 7426 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 15 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#nginx-常用功能">Nginx 常用功能</a></li>
+    <li><a href="#nginx-安装">Nginx 安装</a>
+      <ul>
+        <li><a href="#下载地址">下载地址</a></li>
+        <li><a href="#windows-版本安装">Windows 版本安装</a></li>
+        <li><a href="#linux-版本安装">Linux 版本安装</a></li>
+      </ul>
+    </li>
+    <li><a href="#nginxconf-配置文件">nginx.conf 配置文件</a>
+      <ul>
+        <li><a href="#全局块">全局块</a></li>
+        <li><a href="#events-块">events 块</a></li>
+        <li><a href="#http-块">http 块</a></li>
+      </ul>
+    </li>
+    <li><a href="#反向代理">反向代理</a>
+      <ul>
+        <li><a href="#代理定义">代理定义</a></li>
+        <li><a href="#正向代理定义">正向代理定义</a></li>
+        <li><a href="#反向代理定义">反向代理定义</a></li>
+        <li><a href="#nginx-反向代理">Nginx 反向代理</a>
+          <ul>
+            <li><a href="#相关指令">相关指令</a>
+              <ul>
+                <li><a href="#listen">listen</a></li>
+                <li><a href="#server_name">server_name</a></li>
+                <li><a href="#location">location</a></li>
+                <li><a href="#proxy_pass">proxy_pass</a></li>
+                <li><a href="#index">index</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#配置案例">配置案例</a></li>
+      </ul>
+    </li>
+    <li><a href="#负载均衡">负载均衡</a>
+      <ul>
+        <li><a href="#负载均衡的由来">负载均衡的由来</a></li>
+        <li><a href="#nginx-实现负载均衡">Nginx 实现负载均衡</a></li>
+      </ul>
+    </li>
+    <li><a href="#引用">引用</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>本文为个人学习和实践 Nginx 的笔记</p>
+<h2 id="nginx-常用功能">Nginx 常用功能</h2>
+<p>Nginx 有以下几个常用功能</p>
+<ol>
+<li>
+<p>反向代理</p>
+<p>这是它的主要功能之一，客户端向服务器发送请求时，会先通过 Nginx 服务器，由服务器将请求分发到相应的Web服务器。正向代理是代理客户端，而反向代理则是代理服务器，Nginx 在提供反向代理服务方面，通过使用正则表达式进行相关配置，采取不同的转发策略，配置相当灵活，而且在配置后端转发请求时，完全不用关心网络环境如何，可以指定任意的IP地址和端口号，或其他类型的连接、请求等。</p>
+</li>
+<li>
+<p>负载均衡</p>
+<p>这也是 Nginx 最常用的功能之一，负载均衡，一方面是将单一的重负载分担到多个网络节点上做并行处理，每个节点处理结束后将结果汇总返回给用户，这样可以大幅度提高网络系统的处理能力；另一方面将大量的前端并发请求或数据流量分担到多个后端网络节点分别处理，这样可以有效减少前端用户等待相应的时间。而 Nginx 负载均衡都是属于后一方面，主要是对大量前端访问或流量进行分流，已保证前端用户访问效率，并可以减少后端服务器处理压力。</p>
+</li>
+<li>
+<p>Web缓存</p>
+<p>在很多优秀的网站中，Nginx 可以作为前置缓存服务器，它被用于缓存前端请求，从而提高 Web服务器的性能。Nginx 会对用户已经访问过的内容在服务器本地建立副本，这样在一段时间内再次访问该数据，就不需要通过 Nginx 服务器向后端发出请求。减轻网络拥堵，减小数据传输延时，提高用户访问速度。</p>
+</li>
+</ol>
+<h2 id="nginx-安装">Nginx 安装</h2>
+<h3 id="下载地址">下载地址</h3>
+<p>Nginx 下载地址：http://nginx.org/en/download.html</p>
+<h3 id="windows-版本安装">Windows 版本安装</h3>
+<p>解压下载的文件后</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216084221.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216084221.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216084221.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216084221.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216084221.png"
+        title="目录" /></p>
+<p>下面对上面文件夹进行介绍：</p>
+<ol>
+<li>conf 目录：存放 Nginx 的主要配置文件，很多功能实现都是通过配置该目录下的 nginx.conf 文件，后面我们会详细介绍。</li>
+<li>docs目录：存放 Nginx 服务器的主要文档资料，包括 Nginx 服务器的 LICENSE、OpenSSL 的 LICENSE 、PCRE 的 LICENSE 以及 zlib 的 LICENSE ，还包括本版本的 Nginx服务器升级的版本变更说明，以及 README 文档。</li>
+<li>html目录：存放了两个后缀名为 .html 的静态网页文件，这两个文件与 Nginx 服务器的运行相关。</li>
+<li>logs目录：存放 Nginx 服务器运行的日志文件。</li>
+<li>nginx.exe：启动 Nginx 服务器的exe文件，如果 conf 目录下的 nginx.conf 文件配置正确的话，通过该文件即可启动 Nginx 服务器。</li>
+</ol>
+<p>关闭 nginx 的方法：</p>
+<p>进入到 nginx 目录并且输入以下命令：<code>nginx.exe -s stop</code></p>
+<h3 id="linux-版本安装">Linux 版本安装</h3>
+<p>首先需要安装 nginx 的依赖环境：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install gcc-c++
+</span></span><span class="line"><span class="cl">yum install -y pcre pcre-devel
+</span></span><span class="line"><span class="cl">yum install -y zlib zlib-devel
+</span></span><span class="line"><span class="cl">yum install -y openssl openssl-devel
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>对于 gcc，因为安装nginx需要先将官网下载的源码进行编译，编译依赖gcc环境，如果没有gcc环境的话，需要安装gcc。</li>
+<li>对于 pcre，prce(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。nginx的http模块使用pcre来解析正则表达式，所以需要在linux上安装pcre库。</li>
+<li>对于 zlib，zlib库提供了很多种压缩和解压缩的方式，nginx使用zlib对http包的内容进行gzip，所以需要在linux上安装zlib库。</li>
+<li>对于 openssl，OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。nginx不仅支持http协议，还支持https（即在ssl协议上传输http），所以需要在linux安装openssl库。</li>
+</ol>
+<p>编译及安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">1. 首先将下载的文件放到 Linux 系统中，然后解压：
+</span></span><span class="line"><span class="cl">tar -zxvf nginx-1.14.0.tar.gz
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2. 接着进入解压之后的目录进行编译安装
+</span></span><span class="line"><span class="cl">./configure --prefix<span class="o">=</span>/usr/local/nginx
+</span></span><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">make install
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3. 进入到/usr/local/nginx目录，再进入sbin目录，通过以下命令启动nginx:
+</span></span><span class="line"><span class="cl">./nginx
+</span></span><span class="line"><span class="cl">通过 ps -ef <span class="p">|</span> grep nginx 查看nginx的进程
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4. 关闭nginx：
+</span></span><span class="line"><span class="cl">快速关闭：cd /usr/local/nginx/sbin ./nginx -s stop 相当于直接kill掉nginx的进程id
+</span></span><span class="line"><span class="cl">平缓关闭：cd /usr/local/nginx/sbin ./nginx -s quit 等nginx服务处理完所有请求后再关闭连接，停止工作
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">5. 重启nginx
+</span></span><span class="line"><span class="cl">先停止再启动：./nginx -s quit ./nginx
+</span></span><span class="line"><span class="cl">重新加载配置文件：./nginx -s reload
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">6. 检测配置文件语法是否正确
+</span></span><span class="line"><span class="cl">指定需要检测的配置文件：nginx -t -c /usr/local/nginx/conf/nginx.conf
+</span></span><span class="line"><span class="cl">检测默认nginx.conf配置文件：nginx -t
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="nginxconf-配置文件">nginx.conf 配置文件</h2>
+<p>根据默认配置文件，我们可以将nginx.conf配置文件分为三部分：</p>
+<h3 id="全局块">全局块</h3>
+<p>从配置文件开始到 events 块之间的内容，主要会设置一些影响 nginx 服务器整体运行的配置指令，主要包括配置运行 Nginx 服务器的用户（组）、允许生成的 worker process 数，进程 PID 存放路径、日志存放路径和类型以及配置文件的引入等。</p>
+<p>比如：<code>worker_processes 1;</code> 这是Nginx服务器并发处理服务的关键配置，worker_processes 值越大，可以支持的并发处理量也越多，但是会受到硬件、软件等设备的制约。</p>
+<h3 id="events-块">events 块</h3>
+<p>比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">events {
+</span></span><span class="line"><span class="cl">    worker_connections  1024;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>events 块涉及的指令主要影响 Nginx 服务器与用户的网络连接，常用的设置包括是否开启对多 work process 下的网络连接进行序列化，是否允许同时接收多个网络连接，选取哪种事件驱动模型来处理连接请求，每个 word process 可以同时支持的最大连接数等。</p>
+<p>上述例子就表示每个 work process 支持的最大连接数为 1024.</p>
+<p>这部分的配置对 Nginx 的性能影响较大，在实际中应该灵活配置。</p>
+<h3 id="http-块">http 块</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http {
+</span></span><span class="line"><span class="cl">    include       mime.types;
+</span></span><span class="line"><span class="cl">    default_type  application/octet-stream;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    sendfile        on;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    keepalive_timeout  65;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    server {
+</span></span><span class="line"><span class="cl">        listen       80;
+</span></span><span class="line"><span class="cl">        server_name  localhost;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        location / {
+</span></span><span class="line"><span class="cl">            root   html;
+</span></span><span class="line"><span class="cl">            index  index.html index.htm;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        error_page   500 502 503 504  /50x.html;
+</span></span><span class="line"><span class="cl">        location = /50x.html {
+</span></span><span class="line"><span class="cl">            root   html;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这是Nginx服务器配置中最频繁的部分，代理、缓存和日志定义等绝大多数功能和第三方模块的配置都在这里。</p>
+<p>http 块也可以包括 <strong>http全局块</strong>、<strong>server 块</strong>：</p>
+<ol>
+<li>
+<p>http全局块</p>
+<p>http全局块配置的指令包括文件引入、MIME-TYPE 定义、日志自定义、连接超时时间、单链接请求数上限等。</p>
+</li>
+<li>
+<p>server块</p>
+<p>这块和虚拟主机有密切关系，虚拟主机从用户角度看，和一台独立的硬件主机是完全一样的，该技术的产生是为了节省互联网服务器硬件成本。后面会详细介绍虚拟主机的概念。</p>
+<p>每个 http 块可以包括多个 server 块，而每个 server 块就相当于一个虚拟主机。</p>
+<p>而每个 server 块也分为全局 server 块，以及可以同时包含多个 locaton 块。</p>
+<p>全局server块：最常见的配置是本虚拟机主机的监听配置和本虚拟主机的名称或IP配置。</p>
+<p>location块：一个 server 块可以配置多个 location 块。</p>
+<p>这块的主要作用是基于 Nginx 服务器接收到的请求字符串（例如 server_name/uri-string），对虚拟主机名称（也可以是IP别名）之外的字符串（例如 前面的 /uri-string）进行匹配，对特定的请求进行处理。地址定向、数据缓存和应答控制等功能，还有许多第三方模块的配置也在这里进行。</p>
+</li>
+</ol>
+<h2 id="反向代理">反向代理</h2>
+<h3 id="代理定义">代理定义</h3>
+<p>Nginx 主要能够代理如下几种协议，其中用到的最多的就是做Http代理服务器。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216105556.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216105556.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216105556.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216105556.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216105556.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216105556.png" /></p>
+<p>在Java设计模式中，代理模式是这样定义的：给某个对象提供一个代理对象，并由代理对象控制原对象的引用。</p>
+<p>代理简单来说，就是如果我们想做什么，但又不想直接去做，那么这时候就找另外一个人帮我们去做。那么这个例子里面的中介公司就是给我们做代理服务的，我们委托中介公司帮我们找房子。</p>
+<h3 id="正向代理定义">正向代理定义</h3>
+<p>　　弄清楚什么是代理了，那么什么又是正向代理呢？</p>
+<p>　　这里我再举一个例子：大家都知道，现在国内是访问不了 Google的，那么怎么才能访问 Google呢？我们又想，美国人不是能访问 Google吗（这不废话，Google就是美国的），如果我们电脑的对外公网 IP 地址能变成美国的 IP 地址，那不就可以访问 Google了。你很聪明，VPN 就是这样产生的。我们在访问 Google 时，先连上 VPN 服务器将我们的 IP 地址变成美国的 IP 地址，然后就可以顺利的访问了。</p>
+<p>　　这里的 VPN 就是做正向代理的。正向代理服务器位于客户端和服务器之间，为了向服务器获取数据，客户端要向代理服务器发送一个请求，并指定目标服务器，代理服务器将目标服务器返回的数据转交给客户端。这里客户端是要进行一些正向代理的设置的。</p>
+<p>　　PS：这里介绍一下什么是 VPN，VPN 通俗的讲就是一种中转服务，当我们电脑接入 VPN 后，我们对外 IP 地址就会变成 VPN 服务器的 公网 IP，我们请求或接受任何数据都会通过这个VPN 服务器然后传入到我们本机。这样做有什么好处呢？比如 VPN 游戏加速方面的原理，我们要玩网通区的 LOL，但是本机接入的是电信的宽带，玩网通区的会比较卡，这时候就利用 VPN 将电信网络变为网通网络，然后在玩网通区的LOL就不会卡了（注意：VPN 是不能增加带宽的，不要以为不卡了是因为网速提升了）。</p>
+<p>　　可能听到这里大家还是很抽象，没关系，和下面的反向代理对比理解就简单了。</p>
+<h3 id="反向代理定义">反向代理定义</h3>
+<p>　　反向代理和正向代理的区别就是：<strong>正向代理代理客户端，反向代理代理服务器。</strong></p>
+<p>　　反向代理，其实客户端对代理是无感知的，因为客户端不需要任何配置就可以访问，我们只需要将请求发送到反向代理服务器，由反向代理服务器去选择目标服务器获取数据后，在返回给客户端，此时反向代理服务器和目标服务器对外就是一个服务器，暴露的是代理服务器地址，隐藏了真实服务器IP地址。</p>
+<p>　　下面我们通过两张图来对比正向代理和方向代理：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216110708.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216110708.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216110708.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216110708.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216110708.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216110708.png" /></p>
+<p>理解这两种代理的关键在于代理服务器所代理的对象是什么，正向代理代理的是客户端，我们需要在客户端进行一些代理的设置。而反向代理代理的是服务器，作为客户端的我们是无法感知到服务器的真实存在的。</p>
+<p>总结起来还是一句话：<strong>正向代理代理客户端，反向代理代理服务器。</strong></p>
+<h3 id="nginx-反向代理">Nginx 反向代理</h3>
+<h4 id="相关指令">相关指令</h4>
+<h5 id="listen">listen</h5>
+<p>该指令用于配置网络监听。主要有如下三种配置语法结构：</p>
+<p>① 配置监听的IP地址</p>
+<p><code>listen address[:port] [default_server] [setfib=number] [backlog=number] [rcvbuf=size] [sndbuf=size] [deferred] [accept_filter=filter] [bind] [ssl];</code></p>
+<p>② 配置监听端口</p>
+<p><code>listen port [default_server] [setfib=number] [backlog=number] [rcvbuf=size] [sndbuf=size] [accept_filter=filter] [deffered] [bind] [ipv6only=on|off] [ssl];</code></p>
+<p>③ 配置 UNIX Domain Socket</p>
+<p><code>listen unix:path [default_server] [backlog=number] [rcvbuf=size] [sndbuf=size] [accept_filter=filter] [deffered] [bind] [ssl]</code></p>
+<p>上面的配置看似比较复杂，其实使用起来是比较简单的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">listen *:80 | *:8080 #监听所有80端口和8080端口
+</span></span><span class="line"><span class="cl">listen  IP_address:port   #监听指定的地址和端口号
+</span></span><span class="line"><span class="cl">listen  IP_address     #监听指定ip地址所有端口
+</span></span><span class="line"><span class="cl">listen port     #监听该端口的所有IP连接
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面分别解释每个选项的具体含义：</p>
+<p>1、address:IP地址，如果是 IPV6地址，需要使用中括号[] 括起来，比如[fe80::1]等。</p>
+<p>2、port:端口号，如果只定义了IP地址，没有定义端口号，那么就使用80端口。</p>
+<p>3、path:socket文件路径，如 var/run/nginx.sock等。</p>
+<p>4、default_server:标识符，将此虚拟主机设置为 address:port 的默认主机。（在 nginx-0.8.21 之前使用的是 default 指令）</p>
+<p>5、 setfib=number:Nginx-0.8.44 中使用这个变量监听 socket 关联路由表，目前只对 FreeBSD 起作用，不常用。</p>
+<p>6、backlog=number:设置监听函数listen()最多允许多少网络连接同时处于挂起状态，在 FreeBSD 中默认为 -1,其他平台默认为511.</p>
+<p>7、rcvbuf=size:设置监听socket接收缓存区大小。</p>
+<p>8、sndbuf=size:设置监听socket发送缓存区大小。</p>
+<p>9、deferred:标识符，将accept()设置为Deferred模式。</p>
+<p>10、accept_filter=filter:设置监听端口对所有请求进行过滤，被过滤的内容不能被接收和处理，本指令只在 FreeBSD 和 NetBSD 5.0+ 平台下有效。filter 可以设置为 dataready 或 httpready 。</p>
+<p>11、bind:标识符，使用独立的bind() 处理此address:port，一般情况下，对于端口相同而IP地址不同的多个连接，Nginx 服务器将只使用一个监听指令，并使用 bind() 处理端口相同的所有连接。</p>
+<p>12、ssl:标识符，设置会话连接使用 SSL模式进行，此标识符和Nginx服务器提供的 HTTPS 服务有关。</p>
+<h5 id="server_name">server_name</h5>
+<p>该指令用于虚拟主机的配置。通常分为以下两种：</p>
+<p><strong>1、基于名称的虚拟主机配置</strong></p>
+<p>语法格式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server_name   name ...;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一、对于name 来说，可以只有一个名称，也可以有多个名称，中间用空格隔开。而每个名字由两段或者三段组成，每段之间用“.”隔开。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server_name 123.com www.123.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>二、可以使用通配符“*”，但通配符只能用在由三段字符组成的首段或者尾端，或者由两端字符组成的尾端。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server_name *.123.com www.123.*
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>三、还可以使用正则表达式，用“~”作为正则表达式字符串的开始标记。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server_name ~^www\d+\.123\.com$;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该表达式“~”表示匹配正则表达式，以www开头（“^”表示开头），紧跟着一个0~9之间的数字，在紧跟“.123.co”，最后跟着“m”($表示结尾)</p>
+<p>以上匹配的顺序优先级如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1 ①、准确匹配 server_name
+</span></span><span class="line"><span class="cl">2 ②、通配符在开始时匹配 server_name 成功
+</span></span><span class="line"><span class="cl">3 ③、通配符在结尾时匹配 server_name 成功
+</span></span><span class="line"><span class="cl">4 ④、正则表达式匹配 server_name 成功
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>2、基于 IP 地址的虚拟主机配置</strong></p>
+<p>语法结构和基于域名匹配一样，而且不需要考虑通配符和正则表达式的问题。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server_name 192.168.1.1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="location">location</h5>
+<p>该指令用于匹配 URL。</p>
+<p>　　语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">location [ = | ~ | ~* | ^~] uri {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>　　1、= ：用于不含正则表达式的 uri 前，要求请求字符串与 uri 严格匹配，如果匹配成功，就停止继续向下搜索并立即处理该请求。</p>
+<p>　　2、~：用于表示 uri 包含正则表达式，并且区分大小写。</p>
+<p>　　3、~*：用于表示 uri 包含正则表达式，并且不区分大小写。</p>
+<p>　　4、^~：用于不含正则表达式的 uri 前，要求 Nginx 服务器找到标识 uri 和请求字符串匹配度最高的 location 后，立即使用此 location 处理请求，而不再使用 location 块中的正则 uri 和请求字符串做匹配。</p>
+<p>　　注意：如果 uri 包含正则表达式，则必须要有 ~ 或者 ~* 标识。</p>
+<h5 id="proxy_pass">proxy_pass</h5>
+<p>　　该指令用于设置被代理服务器的地址。可以是主机名称、IP地址加端口号的形式。</p>
+<p>　　语法结构如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">proxy_pass URL;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>　　URL 为被代理服务器的地址，可以包含传输协议、主机名称或IP地址加端口号，URI等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">proxy_pass  http://www.123.com/uri;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="index">index</h5>
+<p>　　该指令用于设置网站的默认首页。</p>
+<p>　　语法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">index  filename ...;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>　　后面的文件名称可以有多个，中间用空格隔开。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">index  index.html index.jsp;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>　　通常该指令有两个作用：第一个是用户在请求访问网站时，请求地址可以不写首页名称；第二个是可以对一个请求，根据请求内容而设置不同的首页。</p>
+<h3 id="配置案例">配置案例</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen       80;
+</span></span><span class="line"><span class="cl">    server_name  localhost;
+</span></span><span class="line"><span class="cl">    charset utf-8;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">        root   /home/ruoyi/projects/ruoyi-ui;
+</span></span><span class="line"><span class="cl">        try_files $uri $uri/ /index.html;
+</span></span><span class="line"><span class="cl">        index  index.html index.htm;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location /prod-api/ {
+</span></span><span class="line"><span class="cl">        proxy_set_header Host $http_host;
+</span></span><span class="line"><span class="cl">        proxy_set_header X-Real-IP $remote_addr;
+</span></span><span class="line"><span class="cl">        proxy_set_header REMOTE-HOST $remote_addr;
+</span></span><span class="line"><span class="cl">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span class="line"><span class="cl">        proxy_pass http://localhost:8080/;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    error_page   500 502 503 504  /50x.html;
+</span></span><span class="line"><span class="cl">    location = /50x.html {
+</span></span><span class="line"><span class="cl">    	root   html;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="负载均衡">负载均衡</h2>
+<h3 id="负载均衡的由来">负载均衡的由来</h3>
+<p>早期的系统架构，基本上都是如下形式的：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113322.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113322.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113322.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113322.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113322.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113322.png" /></p>
+<p>客户端发送多个请求到服务器，服务器处理请求，有一些可能要与数据库进行交互，服务器处理完毕后，再将结果返回给客户端。</p>
+<p>这种架构模式对于早期的系统相对单一，并发请求相对较少的情况下是比较适合的，成本也低。但是随着信息数量的不断增长，访问量和数据量的飞速增长，以及系统业务的复杂度增加，这种架构会造成服务器相应客户端的请求日益缓慢，并发量特别大的时候，还容易造成服务器直接崩溃。很明显这是由于服务器性能的瓶颈造成的问题，那么如何解决这种情况呢？</p>
+<p>我们首先想到的可能是升级服务器的配置，比如提高CPU执行频率，加大内存等提高机器的物理性能来解决此问题，但是我们知道<a href="https://www.cnblogs.com/ysocean/p/7641540.html" target="_blank" rel="noopener noreffer">摩尔定律</a>的日益失效，硬件的性能提升已经不能满足日益提升的需求了。最明显的一个例子，天猫双十一当天，某个热销商品的瞬时访问量是极其庞大的，那么类似上面的系统架构，将机器都增加到现有的顶级物理配置，都是不能够满足需求的。那么怎么办呢？</p>
+<p>上面的分析我们去掉了增加服务器物理配置来解决问题的办法，也就是说纵向解决问题的办法行不通了，那么横向增加服务器的数量呢？这时候集群的概念产生了，单个服务器解决不了，我们增加服务器的数量，然后将请求分发到各个服务器上，将原先请求集中到单个服务器上的情况改为将请求分发到多个服务器上，将负载分发到不同的服务器，也就是我们所说的<strong>负载均衡</strong>。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113509.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113509.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113509.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113509.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113509.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216113509.png" /></p>
+<p>负载均衡完美的解决了单个服务器硬件性能瓶颈的问题，但是随着而来的如何实现负载均衡呢？客户端怎么知道要将请求发送到那个服务器去处理呢？</p>
+<h3 id="nginx-实现负载均衡">Nginx 实现负载均衡</h3>
+<p>Nginx 服务器是介于客户端和服务器之间的中介，通过上一节的反向代理的功能，客户端发送的请求先经过 Nginx ，然后通过 Nginx 将请求根据相应的规则分发到相应的服务器。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216114059.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216114059.png, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216114059.png 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216114059.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216114059.png"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/20220216114059.png" /></p>
+<p>主要配置指令为上一讲的 pass_proxy 指令以及 upstream 指令。负载均衡主要通过专门的硬件设备或者软件算法实现。通过硬件设备实现的负载均衡效果好、效率高、性能稳定，但是成本较高。而通过软件实现的负载均衡主要依赖于均衡算法的选择和程序的健壮性。均衡算法又主要分为两大类：</p>
+<p>静态负载均衡算法：主要包括轮询算法、基于比率的加权轮询算法或者基于优先级的加权轮询算法。</p>
+<p>动态负载均衡算法：主要包括基于任务量的最少连接优化算法、基于性能的最快响应优先算法、预测算法及动态性能分配算法等。</p>
+<p>静态负载均衡算法在一般网络环境下也能表现的比较好，动态负载均衡算法更加适用于复杂的网络环境。</p>
+<p>例子：</p>
+<ol>
+<li>普通轮询算法</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">upstream OrdinaryPolling {
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8080;
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8081;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen       80;
+</span></span><span class="line"><span class="cl">    server_name  localhost;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">        proxy_pass http://OrdinaryPolling;
+</span></span><span class="line"><span class="cl">        index  index.html index.htm index.jsp;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>基于比例加权轮询</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">upstream OrdinaryPolling {
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8080 weight=5;
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8081 weight=2;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen       80;
+</span></span><span class="line"><span class="cl">    server_name  localhost;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">        proxy_pass http://OrdinaryPolling;
+</span></span><span class="line"><span class="cl">        index  index.html index.htm index.jsp;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>基于IP路由负载</li>
+</ol>
+<p>我们知道一个请求在经过一个服务器处理时，服务器会保存相关的会话信息，比如session，但是该请求如果第一个服务器没处理完，通过nginx轮询到第二个服务器上，那么这个服务器是没有会话信息的。</p>
+<p>最典型的一个例子：用户第一次进入一个系统是需要进行登录身份验证的，首先将请求跳转到Tomcat1服务器进行处理，登录信息是保存在Tomcat1 上的，这时候需要进行别的操作，那么可能会将请求轮询到第二个Tomcat2上，那么由于Tomcat2 没有保存会话信息，会以为该用户没有登录，然后继续登录一次，如果有多个服务器，每次第一次访问都要进行登录，这显然是很影响用户体验的。</p>
+<p>这里产生的一个问题也就是集群环境下的 session 共享，如何解决这个问题？</p>
+<p>通常由两种方法：</p>
+<p>1、第一种方法是选择一个中间件，将登录信息保存在一个中间件上，这个中间件可以为 Redis 这样的数据库。那么第一次登录，我们将session 信息保存在 Redis 中，跳转到第二个服务器时，我们可以先去Redis上查询是否有登录信息，如果有，就能直接进行登录之后的操作了，而不用进行重复登录。</p>
+<p>2、第二种方法是根据客户端的IP地址划分，每次都将同一个 IP 地址发送的请求都分发到同一个 Tomcat 服务器，那么也不会存在 session 共享的问题。</p>
+<p>而 nginx 的基于 IP 路由负载的机制就是上诉第二种形式。大概配置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">upstream OrdinaryPolling {
+</span></span><span class="line"><span class="cl">    ip_hash;
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8080 weight=5;
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8081 weight=2;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen       80;
+</span></span><span class="line"><span class="cl">    server_name  localhost;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">        proxy_pass http://OrdinaryPolling;
+</span></span><span class="line"><span class="cl">        index  index.html index.htm index.jsp;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">注意：我们在 upstream 指令块中增加了 ip_hash 指令。该指令就是告诉 nginx 服务器，同一个 IP 地址客户端发送的请求都将分发到同一个 Tomcat 服务器进行处理。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>基于服务器响应时间负载分配</li>
+</ol>
+<p>根据服务器处理请求的时间来进行负载，处理请求越快，也就是响应时间越短的优先分配。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">upstream OrdinaryPolling {
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8080 weight=5;
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8081 weight=2;
+</span></span><span class="line"><span class="cl">    fair;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">    server {
+</span></span><span class="line"><span class="cl">    listen       80;
+</span></span><span class="line"><span class="cl">    server_name  localhost;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location / {
+</span></span><span class="line"><span class="cl">        proxy_pass http://OrdinaryPolling;
+</span></span><span class="line"><span class="cl">        index  index.html index.htm index.jsp;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">通过增加了 fair 指令。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>对不同域名实现负载均衡</li>
+</ol>
+<p>通过配合location 指令块我们还可以实现对不同域名实现负载均衡。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">upstream wordbackend {
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8080;
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8081;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">upstream pptbackend {
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8082;
+</span></span><span class="line"><span class="cl">    server 127.0.0.1:8083;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">    listen       80;
+</span></span><span class="line"><span class="cl">    server_name  localhost;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    location /word/ {
+</span></span><span class="line"><span class="cl">        proxy_pass http://wordbackend;
+</span></span><span class="line"><span class="cl">        index  index.html index.htm index.jsp;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    location /ppt/ {
+</span></span><span class="line"><span class="cl">        proxy_pass http://pptbackend;
+</span></span><span class="line"><span class="cl">        index  index.html index.htm index.jsp;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="引用">引用</h2>
+<p>以上学习笔记多处摘录自网络</p>
+<blockquote>
+<p><a href="https://www.cnblogs.com/ysocean/p/9392912.html" target="_blank" rel="noopener noreffer">https://www.cnblogs.com/ysocean/p/9392912.html</a></p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-02-16</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/nginx%E5%AD%A6%E4%B9%A0/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://blog.lesan.xyz/nginx%E5%AD%A6%E4%B9%A0/" data-title="Nginx学习" data-via="xxxx" data-hashtags="Nginx"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://blog.lesan.xyz/nginx%E5%AD%A6%E4%B9%A0/" data-hashtag="Nginx"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://blog.lesan.xyz/nginx%E5%AD%A6%E4%B9%A0/" data-title="Nginx学习" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://blog.lesan.xyz/nginx%E5%AD%A6%E4%B9%A0/" data-title="Nginx学习"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://blog.lesan.xyz/nginx%E5%AD%A6%E4%B9%A0/" data-title="Nginx学习"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://blog.lesan.xyz/nginx%E5%AD%A6%E4%B9%A0/" data-title="Nginx学习" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://blog.lesan.xyz/nginx%E5%AD%A6%E4%B9%A0/" data-title="Nginx学习" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://blog.lesan.xyz/nginx%E5%AD%A6%E4%B9%A0/" data-title="Nginx学习"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nginx/">Nginx</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0-%E9%93%BE%E8%A1%A8/" class="prev" rel="prev" title="算法学习-链表"><i class="fas fa-angle-left fa-fw"></i>算法学习-链表</a>
+            <a href="/rabbitmq%E5%AD%A6%E4%B9%A0/" class="next" rel="next" title="RabbitMQ学习">RabbitMQ学习<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Lesan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>多线程 - 标签 - Lesan&#39;s blog</title>
+        <link>https://blog.lesan.xyz/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+        <description>多线程 - 标签 - Lesan&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 26 Nov 2022 16:56:21 &#43;0800</lastBuildDate><atom:link href="https://blog.lesan.xyz/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="self" type="application/rss+xml" /><item>
+    <title>多线程下的琐事</title>
+    <link>https://blog.lesan.xyz/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84%E7%90%90%E4%BA%8B/</link>
+    <pubDate>Sat, 26 Nov 2022 16:56:21 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.lesan.xyz/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84%E7%90%90%E4%BA%8B/</guid>
+    <description><![CDATA[单线程与多线程可以看作是： 单线程为在一个单向行驶的道路上，每辆汽车都遵守交通规则 多线程为多条车道，这样在同一时间内，通行的车辆数远远大于单车]]></description>
+</item><item>
+    <title>生产者与消费者问题</title>
+    <link>https://blog.lesan.xyz/%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98/</link>
+    <pubDate>Sun, 08 May 2022 10:18:10 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.lesan.xyz/%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98/</guid>
+    <description><![CDATA[简介 生产者消费者问题（Producer-consumer problem），也称有限缓冲问题（Bounded-buffer problem），是]]></description>
+</item></channel>
+</rss>

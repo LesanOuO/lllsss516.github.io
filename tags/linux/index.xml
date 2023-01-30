@@ -1,0 +1,35 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux - 标签 - Lesan&#39;s blog</title>
+        <link>https://blog.lesan.xyz/tags/linux/</link>
+        <description>Linux - 标签 - Lesan&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 01 Dec 2022 20:37:17 &#43;0800</lastBuildDate><atom:link href="https://blog.lesan.xyz/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>CentOS7系统安装</title>
+    <link>https://blog.lesan.xyz/centos7%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/</link>
+    <pubDate>Thu, 01 Dec 2022 20:37:17 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.lesan.xyz/centos7%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/</guid>
+    <description><![CDATA[本片文章记录个人安装CentOS7在台式主机上作为小型服务器 制作U盘启动盘 1. iso镜像下载 可以通过阿里云镜像站下载iso文件，本人下载的是C]]></description>
+</item><item>
+    <title>Linux中修改Docker存储位置</title>
+    <link>https://blog.lesan.xyz/linux%E4%B8%AD%E4%BF%AE%E6%94%B9docker%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/</link>
+    <pubDate>Sat, 02 Jul 2022 11:12:07 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.lesan.xyz/linux%E4%B8%AD%E4%BF%AE%E6%94%B9docker%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE/</guid>
+    <description><![CDATA[在维护服务器时，发现docker所在盘容量已满，导致mongodb插入数据失败从而崩溃。由此记录修改Linux中Dockder位置时遇到的问]]></description>
+</item><item>
+    <title>Linux增加SSH端口</title>
+    <link>https://blog.lesan.xyz/linux%E5%A2%9E%E5%8A%A0ssh%E7%AB%AF%E5%8F%A3/</link>
+    <pubDate>Sat, 21 May 2022 18:36:30 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.lesan.xyz/linux%E5%A2%9E%E5%8A%A0ssh%E7%AB%AF%E5%8F%A3/</guid>
+    <description><![CDATA[简介 在大型企业中，服务器网络一般都会有各种各样的限制，常见的就会有堡垒机或者运维网关，以达到操作审计等目的。但对于开发者来讲，这些限制大大降]]></description>
+</item><item>
+    <title>构建一个带libgdiplus的DotNetCore基础Docker镜像</title>
+    <link>https://blog.lesan.xyz/%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B8%A6libgdiplus%E7%9A%84dotnetcore%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/</link>
+    <pubDate>Sun, 27 Mar 2022 10:50:10 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://blog.lesan.xyz/%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B8%A6libgdiplus%E7%9A%84dotnetcore%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/</guid>
+    <description><![CDATA[Docker 简介 Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从 Apache2.0 协议开源。Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，]]></description>
+</item></channel>
+</rss>

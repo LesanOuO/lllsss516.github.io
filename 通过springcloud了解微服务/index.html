@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>通过SpringCloud了解微服务 - Lesan&#39;s blog</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="通过SpringCloud了解微服务" />
+<meta property="og:description" content="通过SpringCloud了解微服务 什么是微服务？ 微服务是一种开发软件的架构和组织方法，其中软件由通过明确定义的 API 进行通信的小型独立服务组成" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.lesan.xyz/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1/" /><meta property="og:image" content="https://blog.lesan.xyz/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-11T20:22:23+08:00" />
+<meta property="article:modified_time" content="2022-05-11T20:22:23+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.lesan.xyz/logo.png"/>
+
+<meta name="twitter:title" content="通过SpringCloud了解微服务"/>
+<meta name="twitter:description" content="通过SpringCloud了解微服务 什么是微服务？ 微服务是一种开发软件的架构和组织方法，其中软件由通过明确定义的 API 进行通信的小型独立服务组成"/>
+<meta name="application-name" content="Lesan&#39;s blog">
+<meta name="apple-mobile-web-app-title" content="Lesan&#39;s blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.lesan.xyz/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1/" /><link rel="prev" href="https://blog.lesan.xyz/%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98/" /><link rel="next" href="https://blog.lesan.xyz/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "通过SpringCloud了解微服务",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.lesan.xyz\/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1\/"
+        },"genre": "posts","keywords": "微服务, SpringCloud","wordcount":  2625 ,
+        "url": "https:\/\/blog.lesan.xyz\/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1\/","datePublished": "2022-05-11T20:22:23+08:00","dateModified": "2022-05-11T20:22:23+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lesan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Lesan&#39;s blog"><span class="header-title-pre"><i class='fas fa-smile-beam fa-fw'></i></span>Lesan&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/lllsss516" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Lesan&#39;s blog"><span class="header-title-pre"><i class='fas fa-smile-beam fa-fw'></i></span>Lesan&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/lllsss516" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">通过SpringCloud了解微服务</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lesan</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>学习笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-11">2022-05-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2625 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是微服务">什么是微服务？</a>
+      <ul>
+        <li><a href="#微服务的特性">微服务的特性</a></li>
+        <li><a href="#微服务的优势">微服务的优势</a></li>
+      </ul>
+    </li>
+    <li><a href="#springcloud框架">SpringCloud框架</a></li>
+    <li><a href="#springcloud微服务模块分析">SpringCloud微服务模块分析</a>
+      <ul>
+        <li><a href="#服务网关">服务网关</a></li>
+        <li><a href="#认证中心">认证中心</a></li>
+        <li><a href="#注册中心">注册中心</a></li>
+        <li><a href="#配置中心">配置中心</a></li>
+        <li><a href="#服务调用">服务调用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="通过springcloud了解微服务">通过SpringCloud了解微服务</h1>
+<h2 id="什么是微服务">什么是微服务？</h2>
+<p>微服务是一种开发软件的架构和组织方法，其中软件由通过明确定义的 API 进行通信的小型独立服务组成。</p>
+<p>使用微服务架构，将应用程序构建为独立的组件，并将每个应用程序进程作为一项服务运行。这些服务使用轻量级 API 通过明确定义的接口进行通信。这些服务是围绕业务功能构建的，每项服务执行一项功能。由于它们是独立运行的，因此可以针对各项服务进行更新、部署和扩展，以满足对应用程序特定功能的需求。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%8b%86%e5%88%86%e5%9b%be.PNG"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%8b%86%e5%88%86%e5%9b%be.PNG, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%8b%86%e5%88%86%e5%9b%be.PNG 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%8b%86%e5%88%86%e5%9b%be.PNG 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/微服务拆分图.PNG"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/微服务拆分图.PNG" /></p>
+<h3 id="微服务的特性">微服务的特性</h3>
+<ol>
+<li><strong>自主性</strong></li>
+</ol>
+<p>可以对微服务架构中的每个组件服务进行开发、部署、运营和扩展，而不影响其他服务的功能。这些服务不需要与其他服务共享任何代码或实施。各个组件之间的任何通信都是通过明确定义的 API 进行的。</p>
+<ol>
+<li><strong>专用性</strong></li>
+</ol>
+<p>每项服务都是针对一组功能而设计的，并专注于解决特定的问题。如果开发人员逐渐将更多代码增加到一项服务中并且这项服务变得复杂，那么可以将其拆分成多项更小的服务。</p>
+<h3 id="微服务的优势">微服务的优势</h3>
+<ol>
+<li>敏捷性</li>
+</ol>
+<p>微服务促进若干小型独立团队形成一个组织，这些团队负责自己的服务。各团队在小型且易于理解的环境中行事，并且可以更独立、更快速地工作。这缩短了开发周期时间。您可以从组织的总吞吐量中显著获益。</p>
+<ol>
+<li>灵活扩展</li>
+</ol>
+<p>通过微服务，您可以独立扩展各项服务以满足其支持的应用程序功能的需求。这使团队能够适当调整基础设施需求，准确衡量功能成本，并在服务需求激增时保持可用性。</p>
+<ol>
+<li>轻松部署</li>
+</ol>
+<p>微服务支持持续集成和持续交付，可以轻松尝试新想法，并可以在无法正常运行时回滚。由于故障成本较低，因此可以大胆试验，更轻松地更新代码，并缩短新功能的上市时间。</p>
+<ol>
+<li>技术自由</li>
+</ol>
+<p>微服务架构不遵循“一刀切”的方法。团队可以自由选择最佳工具来解决他们的具体问题。因此，构建微服务的团队可以为每项作业选择最佳工具。</p>
+<ol>
+<li>可重复使用的代码</li>
+</ol>
+<p>将软件划分为小型且明确定义的模块，让团队可以将功能用于多种目的。专为某项功能编写的服务可以用作另一项功能的构建块。这样应用程序就可以自行引导，因为开发人员可以创建新功能，而无需从头开始编写代码。</p>
+<ol>
+<li>弹性</li>
+</ol>
+<p>服务独立性增加了应用程序应对故障的弹性。在整体式架构中，如果一个组件出现故障，可能导致整个应用程序无法运行。通过微服务，应用程序可以通过降低功能而不导致整个应用程序崩溃来处理总体服务故障。</p>
+<h2 id="springcloud框架">SpringCloud框架</h2>
+<p><code>Spring Cloud</code>是一系列框架的有序集合。它利用<code>Spring Boot</code>的开发便利性巧妙地简化了分布式系统基础设施的开发， 如服务发现注册、配置中心、消息总线、负载均衡、断路器、数据监控等，都可以用<code>Spring Boot</code>的开发风格做到一键启动和部署。 <code>Spring Cloud</code>并没有重复制造轮子，它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来， 通过<code>Spring Boot</code>风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包。</p>
+<p>它有以下优点：</p>
+<ol>
+<li>把模块拆分，使用接口通信，降低模块之间的耦合度。</li>
+<li>把项目拆分成若干个子项目，不同的团队负责不同的子项目。</li>
+<li>增加功能时只需要再增加一个子项目，调用其他系统的接口就可以。</li>
+<li>可以灵活的进行分布式部署。</li>
+</ol>
+<h2 id="springcloud微服务模块分析">SpringCloud微服务模块分析</h2>
+<p>通过RuoYi-Cloud来接触微服务的项目</p>
+<h3 id="服务网关">服务网关</h3>
+<p><code>API Gateway（APIGW / API 网关）</code>，顾名思义，是系统对外的唯一入口。<code>API</code>网关封装了系统内部架构，为每个客户端提供定制的API。 近几年来移动应用与企业间互联需求的兴起。从以前单一的Web应用，扩展到多种使用场景，且每种使用场景对后台服务的要求都不尽相同。 这不仅增加了后台服务的响应量，还增加了后台服务的复杂性。随着微服务架构概念的提出，API网关成为了微服务架构的一个标配组件。</p>
+<ol>
+<li>路由（Route）：路由是网关最基础的部分，路由信息由 ID、目标 URI、一组断言和一组过滤器组成。如果断言 路由为真，则说明请求的 URI 和配置匹配。</li>
+<li>断言（Predicate）：Java8 中的断言函数。Spring Cloud Gateway 中的断言函数输入类型是 Spring 5.0 框架中 的 ServerWebExchange。Spring Cloud Gateway 中的断言函数允许开发者去定义匹配来自于 Http Request 中的任 何信息，比如请求头和参数等。</li>
+<li>过滤器（Filter）：一个标准的 Spring Web Filter。Spring Cloud Gateway 中的 Filter 分为两种类型，分别是 Gateway Filter 和 Global Filter。过滤器将会对请求和响应进行处理。</li>
+</ol>
+<h3 id="认证中心">认证中心</h3>
+<p>身份认证，就是判断一个用户是否为合法用户的处理过程。最常用的简单身份认证方式是系统通过核对用户输入的用户名和口令，看其是否与系统中存储的该用户的用户名和口令一致，来判断用户身份是否正确。</p>
+<p>登录请求后台接口，为了安全认证，所有请求都携带<code>token</code>信息进行安全认证，比如使用<code>vue</code>、<code>react</code>后者<code>h5</code>开发的<code>app</code>，用于控制可访问系统的资源。</p>
+<h3 id="注册中心">注册中心</h3>
+<p>注册中心在微服务项目中扮演着非常重要的角色，是微服务架构中的纽带，类似于<code>通讯录</code>，它记录了服务和服务地址的映射关系。在分布式架构中，服务会注册到这里，当服务需要调用其它服务时，就到这里找到服务的地址，进行调用。</p>
+<p>注册中心解决了<code>服务发现</code>的问题。在没有注册中心时候，服务间调用需要知道被调方的地址或者代理地址。当服务更换部署地址，就不得不修改调用当中指定的地址或者修改代理配置。而有了注册中心之后，每个服务在调用别人的时候只需要知道服务名称就好，继续地址都会通过注册中心同步过来。</p>
+<p>RuoYi-Cloud使用的是<code>Nacos</code> ，阿里巴巴开源的一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/nacos%e5%be%ae%e6%9c%8d%e5%8a%a1%e5%b9%b3%e5%8f%b0.PNG"
+        data-srcset="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/nacos%e5%be%ae%e6%9c%8d%e5%8a%a1%e5%b9%b3%e5%8f%b0.PNG, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/nacos%e5%be%ae%e6%9c%8d%e5%8a%a1%e5%b9%b3%e5%8f%b0.PNG 1.5x, https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/nacos%e5%be%ae%e6%9c%8d%e5%8a%a1%e5%b9%b3%e5%8f%b0.PNG 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/nacos微服务平台.PNG"
+        title="https://cdn.jsdelivr.net/gh/LesanOuO/images@master/img/nacos微服务平台.PNG" /></p>
+<h3 id="配置中心">配置中心</h3>
+<p>在微服务架构中，当系统从一个单体应用，被拆分成分布式系统上一个个服务节点后，配置文件也必须跟着迁移（分割），这样配置就分散了，不仅如此，分散中还包含着冗余，总得来说，配置中心就是一种统一管理各种应用配置的基础服务组件。</p>
+<p><code>Nacos</code>是阿里巴巴开源的一个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。</p>
+<p>配置中心的服务流程如下：</p>
+<ol>
+<li>用户在配置中心更新配置信息。</li>
+<li>服务A和服务B及时得到配置更新通知，从配置中心获取配置。</li>
+</ol>
+<h3 id="服务调用">服务调用</h3>
+<ul>
+<li>Feign</li>
+</ul>
+<p>Feign 是<code>Spring Cloud Netflix</code>组件中的一量级<code>Restful</code>的 HTTP 服务客户端，实现了负载均衡和 Rest 调用的开源框架，封装了<code>Ribbon</code>和<code>RestTemplate</code>, 实现了<code>WebService</code>的面向接口编程，进一步降低了项目的耦合度。</p>
+<ul>
+<li>什么是服务调用</li>
+</ul>
+<p>顾名思义，就是服务之间的接口互相调用，在微服务架构中很多功能都需要调用多个服务才能完成某一项功能。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-05-11</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://blog.lesan.xyz/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1/" data-title="通过SpringCloud了解微服务" data-via="xxxx" data-hashtags="微服务,SpringCloud"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://blog.lesan.xyz/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1/" data-hashtag="微服务"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://blog.lesan.xyz/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1/" data-title="通过SpringCloud了解微服务" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://blog.lesan.xyz/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1/" data-title="通过SpringCloud了解微服务"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://blog.lesan.xyz/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1/" data-title="通过SpringCloud了解微服务"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://blog.lesan.xyz/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1/" data-title="通过SpringCloud了解微服务" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://blog.lesan.xyz/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1/" data-title="通过SpringCloud了解微服务" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://blog.lesan.xyz/%E9%80%9A%E8%BF%87springcloud%E4%BA%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1/" data-title="通过SpringCloud了解微服务"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>,&nbsp;<a href="/tags/springcloud/">SpringCloud</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98/" class="prev" rel="prev" title="生产者与消费者问题"><i class="fas fa-angle-left fa-fw"></i>生产者与消费者问题</a>
+            <a href="/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="next" rel="next" title="Redis学习">Redis学习<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Lesan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
